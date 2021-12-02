@@ -11,7 +11,7 @@ public class Test {
 				// 혹시 충돌을 경험하고싶다면 ~? 
 				// 혹시 수정 이걸로 가능????
 		
-		//한글??ㅇㅇㅇㅇ
+		//한글??ㅇㅇㅇㅇㅇㅇ
 System.out.println("Frist Code!");
 		
 		
