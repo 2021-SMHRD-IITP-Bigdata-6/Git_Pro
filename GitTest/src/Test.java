@@ -12,7 +12,7 @@ public class Test {
 				// 혹시 수정 이걸로 가능????
 		
 		//한글??
-System.out.println("Frist Code!");
+System.out.println("Frist C55ode!");
 		
 		
 		
