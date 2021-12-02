@@ -11,7 +11,7 @@ public class Test {
 				//ㅁㅇㄴㅁㅇㅁㄴ 혹시 충돌을 경험하고싶다면 ~? 
 				// 혹시 수정 이걸로 가능????
 		
-		//한글??
+		//한글??ㅋㅋ
 System.out.println("Frist C55ode!");
 		
 		
