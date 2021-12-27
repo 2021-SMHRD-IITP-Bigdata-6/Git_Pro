@@ -51,14 +51,14 @@
 								<p id="result"></p><br>
 								<li><input type="password" name="pw" placeholder="비밀번호를 입력하세요"></li> <br>
 								<li><input type="text" name="tel" placeholder="전화번호를 입력하세요" ></li><br>
-								<h2>견종있으신가요?</h2> 
-								<li><input type="checkbox" name="dog_yes" id="yes" value="yes">예 
-								<input type="checkbox" name="dog_no" id="no" value="no">아니요</li><br><br>
+								<h2>견종이 있으신가요?</h2> 
+								<li><input type="radio" name="dog_yes" id="yes" value="yes">예 
+								<input type="radio" name="dog_no" id="no" value="no">아니요</li><br><br>
 								<li><input type="submit" value="가입하기" class="button fit"></li>
 								<br>
 							</form>
 						</ul>
-						<script type="text/javascript">
+						<script>
 						const yes = document.querySelector('#yes');
 						const no = document.querySelector('#no');
 						String nextpage = "";
@@ -66,19 +66,44 @@
 						function yes() {
 							if(yes.checked == true) {
 							    no.checked = false;
-							    
-							    
-							    
-							    
+							    </select>
+							    <script id="browsers" name="browsers" class="browsers" required
+					               autofocus>
+					               <option value="종합비타민">종합비타민</option>
+					               <option value="향산화">향산화</option>
+					               <option value="식욕증진">식욕증진</option>
+					               <option value="영양공급">영양공급</option>
+					               <option value="결석예방">결석예방</option>
+					               <option value="보습">보습</option>
+					               <option value="구강관리">구강관리</option>
+					               <option value="냄새제거">냄새제거</option>
+					               <option value="다이어트">다이어트</option>
+					               <option value="중성화">중성화</option>
+					               <option value="인도어">인도어</option>
+					               <option value="눈물개선">눈물개선</option>
+					               <option value="눈건강">눈건강</option>
+					               <option value="저알러지">저알러지</option>
+					               <option value="피부개선">피부개선</option>
+					               <option value="털개선">털개선</option>
+					               <option value="러너리비뇨계">러너리비뇨계</option>
+					               <option value="뼈관절강화">뼈관절강화</option>
+					               <option value="퍼포먼스">퍼포먼스</option>
+					               <option value="소화 장기능 개선">소화 장기능 개선</option>
+					               <option value="치석제거">치석제거</option>
+					               <option value="체중유지">체중유지</option>
+					               <option value="처방식">처방식</option>
+					               <option value="신장요로">신장요로</option>
+					            
 							    nextpage="Login.html";
 							    }
+							return nextpage;
 							   }
 							function no() {
 							if(no.checked == true) {
 							    yes.checked = false;
 							    nextpage="Login.html";
-							    
 							    }
+							return nextpage;
 							   }
 						</script>
 
