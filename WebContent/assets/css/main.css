@@ -1672,7 +1672,6 @@ input, select, textarea {
 		-webkit-transition: background-color 0.25s ease-in-out;
 		-ms-transition: background-color 0.25s ease-in-out;
 		transition: background-color 0.25s ease-in-out;
-		-webkit-appearance: none;
 		display: block;
 		border: 0;
 		background: #e8e8e8;
