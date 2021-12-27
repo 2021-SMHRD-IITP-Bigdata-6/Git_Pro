@@ -43,7 +43,7 @@ public class Frontcontroller extends HttpServlet {
 		
 		if (command.equals("LoginCon.do")) {
 				com = new LoginService();
-				com.execute(request, response);
+				  nextpage = com.execute(request, response);
 		}
 			// Command Pattern
 			// 사용자의 요청을 객체인 클래스 파일로 처리

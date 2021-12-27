@@ -13,14 +13,14 @@ public class DeleteService implements Command{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = request.getParameter("delete_email");
-		System.out.println("삭제하는 이메일: " + email);
+		String id = request.getParameter("delete_id");
+		System.out.println("삭제하는 아이디: " + id);
 
 		request.setCharacterEncoding("euc-kr");
 		
 		memberDAO dao = new memberDAO();
 
-		int cnt = dao.Delete(email);
+		int cnt = dao.Delete(id);
 
 		return "selectMember.jsp";
 				

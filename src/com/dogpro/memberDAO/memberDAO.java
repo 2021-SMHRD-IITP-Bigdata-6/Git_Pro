@@ -23,7 +23,7 @@ public class memberDAO {
          
          System.out.println(dto1.getId());
          System.out.println(dto1.getPw());
-         String sql = "select * from T-MEMBER where m_id = ?";
+         String sql = "select * from t_member where where m_id= ? and m_pw= ?";
 
          psmt = conn.prepareStatement(sql);
          psmt.setString(1, dto1.getId());
@@ -33,12 +33,12 @@ public class memberDAO {
          if (rs.next()) {
             String getid = rs.getString(1); // db안의 아이디
             String getpw = rs.getString(2); // pw
-            String gettel = rs.getString(3); // tel
 
+            System.out.println(getid);
             System.out.println(getpw);
             
             if (dto1.getPw().equals(getpw)) {
-               dto = new memberDTO(getid, gettel);
+               dto = new memberDTO(getid, getpw);
             }
 
          }

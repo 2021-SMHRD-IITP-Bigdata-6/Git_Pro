@@ -134,7 +134,7 @@ body {
 				<!-- Nav -->
 				<nav id="nav">
 					<ul>
-						<li><a class="icon solid fa-home" href="MainPage.html"><span>메인 페이지</span></a></li>
+						<li><a class="icon solid fa-home" href="Mainpage.jsp"><span>메인 페이지</span></a></li>
 						<li><a href="#" class="icon fa-chart-bar"><span>두번째 탭</span></a>
 							<ul>
 								<li><a href="#">Lorem ipsum dolor</a></li>
@@ -176,7 +176,7 @@ body {
 								<input type="text" name="m_id" placeholder="ID을 입력하세요"><br>
 								<h5>비밀번호</h5>
 								<input type="password" name="m_pw" placeholder="PW를 입력하세요"><br>
-								<input type="submit" value="LogIn" class="button fit" style="margin-right: 10px;">
+								<input type="submit" value="Login" class="button fit" style="margin-right: 10px;">
 								<input type="submit" value="Sign Up" class="button fit"><br>
 							</form>
 						</ul>
