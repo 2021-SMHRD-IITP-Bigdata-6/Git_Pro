@@ -2733,3 +2733,18 @@ input, select, textarea {
 #browsers{
 	margin-right: 50px;
 }
+
+.image-box1 {
+	float : rifght;
+    width:380px;
+    height:220px;
+   
+}
+
+.image-thumbnail1 {
+ float : right;
+ align :  right;
+	margin : 10px;
+    width:60%;
+    height:100%;
+}
