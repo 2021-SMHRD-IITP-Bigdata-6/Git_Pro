@@ -24,7 +24,33 @@
 				<h1 id="logo">
 					<a href="index.html">회원가입 페이지</a>
 				</h1>
-				
+
+				<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<li><a class="icon solid fa-home" href="MainPage.html"><span>메인 페이지</span></a></li>
+						<li><a href="#" class="icon fa-chart-bar"><span>두번째 탭</span></a>
+							<ul>
+								<li><a href="#">Lorem ipsum dolor</a></li>
+								<li><a href="#">Magna phasellus</a></li>
+								<li><a href="#">Etiam dolore nisl</a></li>
+								<li><a href="#">Phasellus consequat</a>
+									<ul>
+										<li><a href="#">Magna phasellus</a></li>
+										<li><a href="#">Etiam dolore nisl</a></li>
+										<li><a href="#">Phasellus consequat</a></li>
+									</ul></li>
+								<li><a href="#">Veroeros feugiat</a></li>
+							</ul></li>
+						<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>세번째 탭
+									</span></a></li>
+						<li><a class="icon solid fa-retweet"
+							href="right-sidebar.html"><span>마이 페이지</span></a></li>
+						<li><a class="icon solid fa-sitemap" href="Login.html"><span>로그인
+									</span></a></li>
+					</ul>
+				</nav>
+
 			</div>
 		</section>
 
@@ -41,7 +67,8 @@
 							<li><h5>회원가입</h5></li>
 							<form action="JoinCon.do" method="post">
 								<li><input id="Join_id" type="text" name="id" placeholder="아이디을 입력하세요"></li>
-								<button id="check" onclick="idCheck()">중복체크</button>
+								<button id="check" onclick="idCheck()">중복체크</button><br>
+								<li><input type="password" name="pw" placeholder="비밀번호를 입력하세요"></li> <br>
 								<p id="result"></p><br>
 								<li><input type="text" name="nickname" placeholder="닉네임을 입력하세요"></li> 
 								<button id="check" onclick="nicknameCheck()">중복체크</button>
@@ -49,11 +76,8 @@
 								<li><input type="text" name="email" placeholder="이메일을 입력하세요" ></li>
 								<button id="check" onclick="emailCheck()">중복체크</button>
 								<p id="result"></p><br>
-								<li><input type="password" name="pw" placeholder="비밀번호를 입력하세요"></li> <br>
 								<li><input type="text" name="tel" placeholder="전화번호를 입력하세요" ></li><br>
-								<h2>견종이 있으신가요?</h2> 
-								<button name = "dog_no" id="yes" value="yes">예</button> 
-								<button name="dog_no" id="no" value="no">아니오</button> 
+								
 								<br><br>
 								<li><input type="submit" value="가입하기" class="button fit"></li>
 								<br>

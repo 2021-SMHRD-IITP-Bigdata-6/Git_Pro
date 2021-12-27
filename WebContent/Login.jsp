@@ -1,4 +1,6 @@
-<DOCTYPE HTML5>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -103,8 +105,7 @@ body {
 		<button type="button" class="btn" value="LogIn">LOG IN</button>
 		<button type="button" href="회원가입.html">Sign Up</button>
 	</form>
-	
-<!DOCTYPE HTML>
+
 <!--
 	Strongly Typed by HTML5 UP
 	html5up.net | @ajlkn

@@ -1,12 +1,12 @@
 package com.dogpro.memberDAO;
 
-import com.dogpro.memberDTO.memberDTO;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+
+import com.dogpro.memberDTO.memberDTO;
 
 public class memberDAO {
    Connection conn = null;
@@ -23,7 +23,7 @@ public class memberDAO {
          
          System.out.println(dto1.getId());
          System.out.println(dto1.getPw());
-         String sql = "select * from t_member where id = ?";
+         String sql = "select * from T-MEMBER where m_id = ?";
 
          psmt = conn.prepareStatement(sql);
          psmt.setString(1, dto1.getId());
@@ -110,20 +110,21 @@ public class memberDAO {
 
    public void getConn() {
       try {
-         Class.forName("oracle.jdbc.driver.OracleDriver");
-         System.out.println("클래스파일 로딩완료");
-
-         String url = "jdbc:oracle:thin:@127.0.0.1:1524";
-         String dbid = "cgi_8_2_1216";
-         String dbpw = "smrth2";
-
-         conn = DriverManager.getConnection(url, dbid, dbpw);
-
-         if (conn != null) {
-            System.out.println("연결성공");
-         } else {
-            System.out.println("연결실패");
-         }
+    	  Class.forName("oracle.jdbc.driver.OracleDriver");
+          System.out.println("클래스파일 로딩완료");
+          
+          //3.DB에서 사용하는 id/pw를 인증
+          String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524";
+          String dbid = "cgi_8_2_1216";
+          String dbpw = "smhrd2";
+          
+          conn = DriverManager.getConnection(url, dbid, dbpw);
+          
+          if(conn!=null) {
+             System.out.println("연결성공");
+          }else {
+             System.out.println("연결실패");
+          }
 
       } catch (Exception e) {
          e.printStackTrace();
@@ -173,38 +174,38 @@ public class memberDAO {
 
    }
 
-   public ArrayList<memberDTO> selectMember() {
+  // public ArrayList<memberDTO> selectMember() {
 
-      ArrayList<memberDTO> arr = new ArrayList<memberDTO>();
+  //    ArrayList<memberDTO> arr = new ArrayList<memberDTO>();
 
-      try {
-         getConn();
+  //    try {
+   //      getConn();
 
-         String sql = "select * from t_member";
-         psmt = conn.prepareStatement(sql);
-         rs = psmt.executeQuery();
+    //     String sql = "select * from t_member";
+    //     psmt = conn.prepareStatement(sql);
+    //     rs = psmt.executeQuery();
 
-         while (rs.next() == true) {
-            String id = rs.getString(1);
-            String tel = rs.getString(3);
-            String nickname = rs.getString(4);
+   //      while (rs.next() == true) {
+    //        String id = rs.getString(1);
+  //          String tel = rs.getString(3);
+   //         String nickname = rs.getString(4);
 
-         dto = new memberDTO(id, pw, tel, nickname);
-            arr.add(dto);
-         }
+   //      dto = new memberDTO(nickname,id ,pw,tel ,nickname);
+   //         arr.add(dto);
+   //      }
 
-      } catch (Exception e) {
-         System.out.println("클래스파일 로딩실패");
-         e.printStackTrace();
+    //  } catch (Exception e) {
+     //    System.out.println("클래스파일 로딩실패");
+     //    e.printStackTrace();
 
-      } finally {
-         close();
+   //   } finally {
+  //       close();
 
-      }
-      return arr;
-   }
+  //    }
+  //    return arr;
+ //  }
 
-   public boolean emailChechk(String email) {
+   public boolean emailChechk(String id) {
       try {
          getConn();
          
