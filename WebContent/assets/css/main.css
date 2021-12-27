@@ -1,6 +1,7 @@
 @import url("fontawesome-all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Arvo:700");
 
+
 /*
 	Strongly Typed by HTML5 UP
 	html5up.net | @ajlkn
@@ -2703,3 +2704,47 @@ input, select, textarea {
 				}
 
 	}
+	.image-boxmy {
+    width:400px;
+    height:600px;
+    overflow:hidden;
+   
+     margin-left: 10px;
+     margin-right : 50px;
+}
+.image-boxmain {
+    width:200px;
+    height:200px;
+    overflow:hidden;
+    margin:0 auto;
+}
+
+
+.image-thumbnail {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+.browsers{
+	margin-right: 50px;
+}
+
+}
+#browsers{
+	margin-right: 50px;
+}
+
+.image-box1 {
+	float : rifght;
+    width:380px;
+    height:220px;
+   
+}
+
+.image-thumbnail1 {
+ float : right;
+ align :  right;
+	margin : 10px;
+    width:60%;
+    height:100%;
+}
