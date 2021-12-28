@@ -14,13 +14,14 @@ public class memberDAO {
    ResultSet rs = null;
 
    int cnt = 0;
+   int cnt1 = 0;
    memberDTO dto = null;
    private boolean check;
 
    public memberDTO Login(memberDTO dto1) {
       try {
          getConn();
-         
+         System.out.println("Login 메소드입니다.");
          System.out.println(dto1.getId());
          System.out.println(dto1.getPw());
          String sql = "select * from t_member where m_id= ? and m_pw= ?";
@@ -155,16 +156,20 @@ public class memberDAO {
 
       try {
          getConn();
-
-         String sql = "insert into t_member values (?, ?, ?,?, sysdate)";
+         System.out.println("===Join===");
+         String sql = "insert into t_member values (?, ?, ?,?,?,?,?,?)";
          psmt = conn.prepareStatement(sql);
-         psmt.setString(1, dto.getEmail());
-         psmt.setString(2, dto.getPw());
-         psmt.setString(3, dto.getTel());
-         psmt.setString(4, dto.getId());
-
+         psmt.setString(1, dto.getId());
+         psmt.setString(4, dto.getPw());
+         psmt.setString(3, dto.getNickname());
+         psmt.setString(2, dto.getTel());
+         psmt.setString(6, dto.getDogname());
+         psmt.setString(5, dto.getDogkind());
+         psmt.setString(8, dto.getDogage());
+         psmt.setString(7, dto.getDogweight());
+        
          cnt = psmt.executeUpdate();
-
+        
       } catch (Exception e) {
          System.out.println("클래스파일 로딩실패");
          e.printStackTrace();

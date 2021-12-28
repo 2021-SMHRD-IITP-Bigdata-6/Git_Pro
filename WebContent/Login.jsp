@@ -97,14 +97,7 @@ body {
 </head>
 
 <body width="100%" height="100%">
-	<form action="index.html" method="post" class="loginForm">
-		<h1>L O I G N</h1>
-		
-			<input type="text" name ="id" class="id" placeholder="ID">
-			<input type="password" name = "pw" class="pw" placeholder="PW">
-		<button type="button" class="btn" value="LogIn">LOG IN</button>
-		<button type="button" href="회원가입.html">Sign Up</button>
-	</form>
+	
 
 <!--
 	Strongly Typed by HTML5 UP
@@ -128,32 +121,21 @@ body {
 
 				<!-- Logo -->
 				<h1 id="logo">
-					<a href="index.html">로그인</a>
+					<a href="Login.jsp">로그인</a>
 				</h1>
 
 				<!-- Nav -->
 				<nav id="nav">
 					<ul>
 						<li><a class="icon solid fa-home" href="Mainpage.jsp"><span>메인 페이지</span></a></li>
-						<li><a href="#" class="icon fa-chart-bar"><span>두번째 탭</span></a>
-							<ul>
-								<li><a href="#">Lorem ipsum dolor</a></li>
-								<li><a href="#">Magna phasellus</a></li>
-								<li><a href="#">Etiam dolore nisl</a></li>
-								<li><a href="#">Phasellus consequat</a>
-									<ul>
-										<li><a href="#">Magna phasellus</a></li>
-										<li><a href="#">Etiam dolore nisl</a></li>
-										<li><a href="#">Phasellus consequat</a></li>
-									</ul></li>
-								<li><a href="#">Veroeros feugiat</a></li>
-							</ul></li>
+						
 						<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>세번째 탭
 									</span></a></li>
 						<li><a class="icon solid fa-retweet"
 							href="right-sidebar.html"><span>마이 페이지</span></a></li>
-						<li><a class="icon solid fa-sitemap" href="Login.html"><span>로그인
+						<li><a class="icon solid fa-sitemap" href="Login.jsp"><span>로그인
 									</span></a></li>
+									
 					</ul>
 				</nav>
 
@@ -167,21 +149,39 @@ body {
 
 					<!-- Post -->
 					<article class="box post">
-						<header>
-							
-						</header>
-						<ul class="links" >
-							<h5>로그인</h5>
-							<form action="LoginCon.do" method="post">
-								<input type="text" name="m_id" placeholder="ID을 입력하세요"><br>
-								<h5>비밀번호</h5>
-								<input type="password" name="m_pw" placeholder="PW를 입력하세요"><br>
-								<input type="submit" value="Login" class="button fit" style="margin-right: 10px;">
-								<input type="submit" value="Sign Up" class="button fit"><br>
-							</form>
-						</ul>
-						
-					</article>
+                  <header>
+                     
+                  </header>
+                  <section>
+                  <ul class="links" >
+                     <h5>로그인</h5>
+                     <form action="LoginCon2.do" method="post">
+                        <input type="text" name="m_id" placeholder="ID"><br>
+                        <h5>비밀번호</h5>
+                        <input type="password" name="m_pw" placeholder="PW"><br>
+                        <input type="submit" value="Login" class="button fit" style="margin-right: 10px;">
+                        <!-- <input type="submit" value="Sign Up" class="button fit"><br> -->
+                     </form>
+                      </ul>
+                     </section>
+                     <section>
+                     <br>
+                     <h5>회원가입</h5>
+                     <form action="JoinCon.do" method="post">
+                     <input type="text" name="m_id1" placeholder="ID"><br>
+                     <input type="password" name="m_nick" placeholder="PW"><br>
+                     <input type="text" name="m_pw1" placeholder="Tel"><br>
+                     <input type="text" name="m_tel" placeholder="Nickname"><br>
+                     <input type="text" name="m_dogname" placeholder="Dogname"><br>
+                     <input type="text" name="m_dog" placeholder="DogKind"><br>
+                     <input type="text" name="m_dogage" placeholder="DogAge"><br>
+                     <input type="text" name="m_dogweight" placeholder="DogWeight"><br>
+                      <input type="submit" value="Sign up" class="button fit" style="margin-right: 10px;">
+                       </form>
+                       </section>
+                 
+                  
+               </article>
 
 				</div>
 			</div>

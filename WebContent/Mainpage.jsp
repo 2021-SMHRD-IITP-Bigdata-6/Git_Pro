@@ -106,7 +106,7 @@
 
 				<!-- Logo -->
 				<h1 id="logo">
-					<a href="MainPage.html">DOGPRO+</a>
+					<a href="Mainpage.jsp">DOGPRO+</a>
 				</h1>
 				<!--  <p></p>-->
 
@@ -115,24 +115,21 @@
 					<ul>
 						<li><a class="icon solid fa-home" href="Mainpage.jsp"><span>메인
 									페이지</span></a></li>
-						<li><a href="#" class="icon fa-chart-bar"><span>두번째탭</span></a>
-							<ul>
-								<li><a href="#">Lorem ipsum dolor</a></li>
-								<li><a href="#">Magna phasellus</a></li>
-								<li><a href="#">Etiam dolore nisl</a></li>
-								<li><a href="#">Phasellus consequat</a>
-									<ul>
-										<li><a href="#">Magna phasellus</a></li>
-										<li><a href="#">Etiam dolore nisl</a></li>
-										<li><a href="#">Phasellus consequat</a></li>
-									</ul></li>
-								<li><a href="#">Veroeros feugiat</a></li>
-							</ul></li>
 						<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>세번째
 									탭</span></a></li>
 						<li><a class="icon solid fa-retweet" href="Mypage_Rec.html"><span>마이
 									페이지</span></a></li>
-						<li><a class="icon solid fa-sitemap" href="Login.html"><span>로그인</span></a></li>
+						<%
+						memberDTO dto = (memberDTO) session.getAttribute("dto");
+			if (dto == null) {
+		%> <li><a class="icon solid fa-sitemap" href="Login.jsp"><span>로그인</span></a></li>
+		<% 
+ 	} else {
+ %> 
+ <li><a class="icon solid fa-sitemap" href="UpdateCon.do">회원정보수정</a>
+		<li><a class="icon solid fa-sitemap" href="LogoutCon.do">로그아웃</a> <%
+ 	}
+ %>
 					</ul>
 				</nav>
 
@@ -147,7 +144,7 @@
 						<img src="images/porme.jpg" class="image-thumbnail">
 					</div>
 					<%
-		memberDTO dto = (memberDTO) session.getAttribute("dto");
+					String id = (String)session.getAttribute("id");
 	int cnt = 0;
 	if (application.getAttribute("visit") == null) {
 		application.setAttribute("visit", 1);
@@ -158,6 +155,7 @@
 	}
 	%>
 				<%
+				
  	if (dto == null) {
  %>
 			<h1>DogPro에 오신것을 환영합니다 !</h1>
@@ -166,7 +164,8 @@
 			%>
 			<h1>
 				<%
-					out.print(dto.getNickname());
+				System.out.println("현재로그인한 아이디 : "+ dto.getId());
+					out.print(dto.getId());
 				%>님환영합니다.
 			</h1>
 			<%
@@ -217,7 +216,24 @@
  <br><br><br>
 			<!-- Feature -->
 			<div align="left" style="margin-left: 270px;">
-				<h4>%dog_name%를 위한 맞춤 추천 사료</h4>
+			<%
+			
+ 	if (dto == null) {
+ %>
+			<h1>DogPro에 오신것을 환영합니다 !</h1>
+			<%
+				} else {
+			%>
+			<h1>
+				<%  
+				System.out.println("현재로그인한 강아지의 이름 : "+ dto.getDogname());
+					out.print(dto.getDogname());
+				%>을 위한 추천 사료
+			</h1>
+			<%
+				}
+			%>
+			
 			</div>
 			<br>
 			<div

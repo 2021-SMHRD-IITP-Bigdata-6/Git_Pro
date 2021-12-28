@@ -31,18 +31,20 @@ public class Frontcontroller extends HttpServlet {
 		// 2. 중복되는 코드나 추적 , 보안을 적용할 때 하나의 Servlet에서 정의되기때문에에
 		// 유지보수에 용이
 
+		System.out.println("[Frontcontroller]");
 		String uri = request.getRequestURI();
 		System.out.println(uri);
 		String path = request.getContextPath();
 		System.out.println(path);
 		String command = uri.substring(path.length() + 1);
-		System.out.println("요청기능 : " + command);
+		System.out.println("요청url : " + command);
 
 		Command com = null;
 		String nextpage = null;
 		
-		if (command.equals("LoginCon.do")) {
+		if (command.equals("LoginCon2.do")) {
 				com = new LoginService();
+				System.out.println("로그인서비스 통과");
 				  nextpage = com.execute(request, response);
 		}
 			// Command Pattern
