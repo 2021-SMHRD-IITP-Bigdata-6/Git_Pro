@@ -117,7 +117,7 @@
 									페이지</span></a></li>
 						<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>세번째
 									탭</span></a></li>
-						<li><a class="icon solid fa-retweet" href="Mypage_Rec.html"><span>마이
+						<li><a class="icon solid fa-retweet" href="Mypage_First.jsp"><span>마이
 									페이지</span></a></li>
 						<%
 						memberDTO dto = (memberDTO) session.getAttribute("dto");

@@ -187,6 +187,9 @@ private String id;
 
    }
 
+   
+   //dog_list dao   
+   
   // public ArrayList<memberDTO> selectMember() {
 
   //    ArrayList<memberDTO> arr = new ArrayList<memberDTO>();
@@ -248,4 +251,6 @@ public ArrayList<memberDTO> searchMember(String id) {
    // TODO Auto-generated method stub
    return null;
 }
+
+
 }
