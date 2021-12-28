@@ -9,7 +9,7 @@
 <body>
 	<script>
 	alert("로그인에 실패하셨습니다.")
-	location.href="   "
+	location.href="Mainpage.jsp"
 </script>
 </body>
 </html>
