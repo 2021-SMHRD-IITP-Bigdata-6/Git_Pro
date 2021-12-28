@@ -23,10 +23,12 @@ public class memberDAO {
          
          System.out.println(dto1.getId());
          System.out.println(dto1.getPw());
-         String sql = "select * from t_member where where m_id= ? and m_pw= ?";
+         String sql = "select * from t_member where m_id= ? and m_pw= ?";
 
          psmt = conn.prepareStatement(sql);
          psmt.setString(1, dto1.getId());
+         psmt.setString(2, dto1.getPw());
+         
 
          rs = psmt.executeQuery();
 
@@ -110,14 +112,15 @@ public class memberDAO {
 
    public void getConn() {
       try {
-    	  Class.forName("oracle.jdbc.driver.OracleDriver");
+          Class.forName("oracle.jdbc.driver.OracleDriver");
+          String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524";
+         
           System.out.println("클래스파일 로딩완료");
           
           //3.DB에서 사용하는 id/pw를 인증
-          String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524";
           String dbid = "cgi_8_2_1216";
           String dbpw = "smhrd2";
-          
+
           conn = DriverManager.getConnection(url, dbid, dbpw);
           
           if(conn!=null) {

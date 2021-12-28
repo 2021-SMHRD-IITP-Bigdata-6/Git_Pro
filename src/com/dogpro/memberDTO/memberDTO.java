@@ -22,14 +22,17 @@ public class memberDTO {
       this.tel = tel;
       this.email = email;
    }
-   public memberDTO(String id, String pw) {
-	// TODO Auto-generated constructor stub
-}
+
 public String getNickname() {
       return nickname;
    }
    public void setNickname(String nickname) {
       this.nickname = nickname;
+   }
+   public memberDTO(String id, String pw) {
+	   super();
+	   this.id = id;
+	   this.pw = pw;
    }
    public String getId() {
       return id;
@@ -55,6 +58,7 @@ public String getNickname() {
    public void setEmail(String email) {
       this.email = email;
    }
+
 
 
 
