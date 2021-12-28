@@ -20,18 +20,20 @@ public class UpdateService implements Command{
 		HttpSession session = request.getSession();
 		memberDTO dto = (memberDTO) session.getAttribute("dto");
 
-		String id = dto.getId();
-		String nickname = request.getParameter("nickname");
-		String pw = request.getParameter("pw");
-		String tel = request.getParameter("tel");
-		String email = request.getParameter("email");
+		//String id = dto.getId();
+		String nick = request.getParameter("m_nick");
+		String tel = request.getParameter("m_tel");
+		String dogname = request.getParameter("m_dogname");
+		String dogkind = request.getParameter("m_dogkind");
+		String dogage = request.getParameter("m_dogage");
+		String dogweight = request.getParameter("m_dogweight");
 		memberDAO dao = new memberDAO();
-		int cnt = dao.Update(nickname, pw, tel, email);
+		int cnt = dao.Update(nick,tel,dogname,dogkind,dogage,dogweight);
 
 		if (cnt > 0) {
-			memberDTO update_dto = new memberDTO(nickname, pw, tel, email);
+			memberDTO update_dto = new memberDTO(nick,tel,dogname,dogkind,dogage,dogweight);
 			session.setAttribute("dto", update_dto);
-			response.sendRedirect("main.jsp");
+			response.sendRedirect("Mainpage.jsp");
 		} else {
 
 		}

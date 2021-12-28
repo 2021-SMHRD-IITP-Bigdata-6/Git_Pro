@@ -17,6 +17,7 @@ public class memberDAO {
    int cnt1 = 0;
    memberDTO dto = null;
    private boolean check;
+private String id;
 
    public memberDTO Login(memberDTO dto1) {
       try {
@@ -56,21 +57,25 @@ public class memberDAO {
       return dto;
    }
 
-   public int Update(String email, String pw, String tel, String id) {
+   public int Update(String nick , String tel, String dogname, String dogkind, String dogage, String dogweight) {
 
       try {
          getConn();
 
          // --------------------DB연결
 
-         String sql = "update t_member set id=?,pw=?,tel=? where id=? ";
+         String sql = "update t_member set m_nick=?,m_phone=?,m_dogname=?,m_dog=?,m_dogweight=?. m_dogage=? where m_id=?" ;
          // 5. SQL명령문을 준비
          psmt = conn.prepareStatement(sql);
          
-         psmt.setString(1, pw);
+         psmt.setString(1, nick);
          psmt.setString(2, tel);
-         psmt.setString(3, email);
-        psmt.setString(4, id);
+         psmt.setString(3, dogname);
+         psmt.setString(4, dogkind);
+         psmt.setString(5, dogage);
+         psmt.setString(6, dogweight);
+         psmt.setString(7, id);
+        
          // 6. SQL명령문 실행
          cnt = psmt.executeUpdate();
 

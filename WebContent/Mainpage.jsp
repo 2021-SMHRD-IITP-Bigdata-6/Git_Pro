@@ -126,7 +126,7 @@
 		<% 
  	} else {
  %> 
- <li><a class="icon solid fa-sitemap" href="UpdateCon.do">회원정보수정</a>
+ <li><a class="icon solid fa-sitemap" href="회원정보수정.jsp">회원정보수정</a>
 		<li><a class="icon solid fa-sitemap" href="LogoutCon.do">로그아웃</a> <%
  	}
  %>

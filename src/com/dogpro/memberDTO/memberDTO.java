@@ -14,6 +14,18 @@ public class memberDTO {
 	return dogkind;
 }
 
+public memberDTO(String dogkind, String dogage, String dogweight, String dogname, String nickname, String tel
+			) {
+		super();
+		this.dogkind = dogkind;
+		this.dogage = dogage;
+		this.dogweight = dogweight;
+		this.dogname = dogname;
+		this.nickname = nickname;
+		this.tel = tel;
+		
+	}
+
 public void setDogkind(String dogkind) {
 	this.dogkind = dogkind;
 }
