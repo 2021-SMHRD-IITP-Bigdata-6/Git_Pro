@@ -42,12 +42,10 @@ public class UploadService extends HttpServlet {
 					new DefaultFileRenamePolicy());
 			imgfileDAO dao = new imgfileDAO();
 
-			String author = multi.getParameter("author");
-			String title = multi.getParameter("title");
 			String file = multi.getFilesystemName("file");
 
 			try {
-				int result = dao.uploadFile(author, title, file);
+				int result = dao.uploadFile(file);
 				String moveUrl = "";
 				if (result > 0) {
 					System.out.println("저장완료");

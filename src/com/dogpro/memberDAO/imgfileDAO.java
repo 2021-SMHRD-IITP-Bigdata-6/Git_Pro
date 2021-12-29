@@ -30,11 +30,11 @@ public class imgfileDAO {
 		Properties p = new Properties();
 		p.load(in);
 
-		String url = p.getProperty("dburl");
-		String id = p.getProperty("dbid");
-		String pw = p.getProperty("dbpw");
+		String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524";
+		String id = "cgi_8_2_1216";
+		String pw = "smhrd2";
 
-		Class.forName(p.getProperty("dbclass"));
+		Class.forName(p.getProperty("oracle.jdbc.driver.OracleDriver"));
 		con = DriverManager.getConnection(url, id, pw);
 	}
 
@@ -49,15 +49,12 @@ public class imgfileDAO {
 	}
 
 	// 파일업로드
-	public int uploadFile(String author, String title, String file)
+	public int uploadFile(String file)
 			throws SQLException, ClassNotFoundException, IOException {
 		getConnection();
 
-		psmt = con.prepareStatement(
-				"insert into fileboard values(file_num.nextval,?,?,?,to_char(sysdate, 'YYYY-MM-DD'))");
-		psmt.setString(1, author);
-		psmt.setString(2, title);
-		psmt.setString(3, file);
+		psmt = con.prepareStatement("insert into t_member values(?)");
+		psmt.setString(1, file);
 
 		result = psmt.executeUpdate();
 
