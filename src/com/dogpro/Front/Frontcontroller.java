@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dogpro.member.DeleteService;
 import com.dogpro.member.JoinService;
 import com.dogpro.member.LoginService;
 import com.dogpro.member.LogoutService;
@@ -68,11 +67,9 @@ public class Frontcontroller extends HttpServlet {
 				 
 				 PrintWriter out = response.getWriter();
 				 out.print(json);
-			}
+			
 		
-		 else if (command.equals("DeleteCon.do")) {
-			 com = new DeleteService();
-			 nextpage=  com.execute(request, response);
+		 
 		
 			 
 		} else if (command.equals("LogoutCon.do")) {
@@ -81,10 +78,9 @@ public class Frontcontroller extends HttpServlet {
 			
 			
 		} else if (command.equals("UpdateCon.do")) {
-
+			System.out.println("test22222");
 			com = new UpdateService();
-			com.execute(request, response);
-
+			nextpage =com.execute(request, response);
 		}
 
 		else if (command.equals("check.do")) {

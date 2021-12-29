@@ -9,243 +9,234 @@ import java.util.ArrayList;
 import com.dogpro.memberDTO.memberDTO;
 
 public class memberDAO {
-   Connection conn = null;
-   PreparedStatement psmt = null;
-   ResultSet rs = null;
+	Connection conn = null;
+	PreparedStatement psmt = null;
+	ResultSet rs = null;
 
-   int cnt = 0;
-   int cnt1 = 0;
-   memberDTO dto = null;
-   private boolean check;
-private String id;
+	int cnt = 0;
+	int cnt1 = 0;
+	memberDTO dto = null;
+	private boolean check;
+	private String id;
 
-   public memberDTO Login(memberDTO dto1) {
-      try {
-         getConn();
-         System.out.println("Login 메소드입니다.");
-         System.out.println(dto1.getId());
-         System.out.println(dto1.getPw());
-         String sql = "select * from t_member where m_id= ? and m_pw= ?";
+	
+	public memberDTO Login(memberDTO dto1) {
+		try {
+			getConn();
+			System.out.println("Login 메소드입니다.");
+			System.out.println("무슨 id?"+dto1.getId()); //DB 에서 가져온 id값 
+			System.out.println("무슨 pw?"+dto1.getPw()); //DB 에서 가져온 pw값
+			String sql = "select * from t_member where m_id= ? and m_pw= ?";
 
-         psmt = conn.prepareStatement(sql);
-         psmt.setString(1, dto1.getId());
-         psmt.setString(2, dto1.getPw());
-         
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, dto1.getId()); 
+			psmt.setString(2, dto1.getPw());
 
-         rs = psmt.executeQuery();
+			rs = psmt.executeQuery();
 
-         if (rs.next()) {
-            String getid = rs.getString(1); // db안의 아이디
-            String getpw = rs.getString(2); // pw
+			if (rs.next()) {
+				String getid = rs.getString(1); // db안의 아이디
+				String getpw = rs.getString(2); // pw
+				String m_nick = rs.getString(3); // nickName
+				String m_phone = rs.getString(4);// 휴대폰 번호
+				String m_dogKind = rs.getString(5); // 로그인한 개종류 가져오는것
+				String dog_name = rs.getString(6);
+				String m_dogWeight = rs.getString(7);
+				String m_dogAge = rs.getString(8);
+				String date = rs.getString(9);
 
-            System.out.println(getid);
-            System.out.println(getpw);
-            
-            if (dto1.getPw().equals(getpw)) {
-               dto = new memberDTO(getid, getpw);
-            }
+				System.out.println(getid);
+				System.out.println(getpw);
 
-         }
-      } catch (Exception e) {
-         System.out.println("클래스파일 로딩실패");
-         e.printStackTrace();
+				if (dto1.getPw().equals(getpw)) {
+					dto = new memberDTO(getid, getpw, m_nick, m_phone, m_dogKind, dog_name, m_dogWeight, m_dogAge,date);
+				}
 
-      } finally {
-         close();
+			}
+		} catch (Exception e) {
+			System.out.println("클래스파일 로딩실패");
+			e.printStackTrace();
 
-      }
-      return dto;
-   }
+		} finally {
+			close();
 
-   public int Update(String nick , String tel, String dogname, String dogkind, String dogage, String dogweight) {
+		}
+		return dto;
+	}
 
-      try {
-         getConn();
+	public int Update(String nick, String tel, String dogname, String dogkind, String dogage,String dogweight, String id) {
 
-         // --------------------DB연결
+		try {
+			getConn();
 
-         String sql = "update t_member set m_nick=?,m_phone=?,m_dogname=?,m_dog=?,m_dogweight=?. m_dogage=? where m_id=?" ;
-         // 5. SQL명령문을 준비
-         psmt = conn.prepareStatement(sql);
-         
-         psmt.setString(1, nick);
-         psmt.setString(2, tel);
-         psmt.setString(3, dogname);
-         psmt.setString(4, dogkind);
-         psmt.setString(5, dogage);
-         psmt.setString(6, dogweight);
-         psmt.setString(7, id);
-        
-         // 6. SQL명령문 실행
-         cnt = psmt.executeUpdate();
+			// --------------------DB연결
+			int numAge = Integer.parseInt(dogage);
+			int numWeight = Integer.parseInt(dogweight);
+			String sql = "update t_member set m_nick=?,m_phone=?,m_dogname=?,m_dog=?,m_dogweight=?, m_dogage=? where m_id=?";
+			// 5. SQL명령문을 준비
+			psmt = conn.prepareStatement(sql);
 
-         // 7. 명령 후 처리
+			psmt.setString(1, nick);
+			psmt.setString(2, tel);
+			psmt.setString(3, dogname);
+			psmt.setString(4, dogkind);
+			psmt.setInt(5, numAge);
+			psmt.setInt(6, numWeight);
+			psmt.setString(7, id);
+			
 
-      } catch (Exception e) {
-         // ClassNotFoundException, SQLException
-         System.out.println("클래스파일 로딩실패");
-         e.printStackTrace();
+			// 6. SQL명령문 실행
+			cnt = psmt.executeUpdate();
 
-      } finally {
-         close();
+			// 7. 명령 후 처리
 
-      }
-      return cnt;
-   }
+		} catch (Exception e) {
+			// ClassNotFoundException, SQLException
+			System.out.println("클래스파일 로딩실패");
+			e.printStackTrace();
 
-   public int Delete(String id) {
+		} finally {
+			close();
 
-      try {
-         getConn();
+		}
+		return cnt;
+	}
 
-         String sql = "delete from t_member where id = ?";
 
-         psmt = conn.prepareStatement(sql);
-         psmt.setString(1, id);
 
-         cnt = psmt.executeUpdate();
 
-      } catch (Exception e) {
-         e.printStackTrace();
+	public int Join(memberDTO dto) {
 
-      } finally {
-         close();
+		try {
+			getConn();
+			System.out.println("===Join===");
+			String sql = "insert into t_member values (?, ?, ?,?,?,?,?,?,?,null)";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, dto.getId());
+			psmt.setString(2, dto.getPw());
+			psmt.setString(3, dto.getNickname());
+			psmt.setString(4, dto.getTel());
+			psmt.setString(6, dto.getDogkind());
+			psmt.setString(5, dto.getDogname());
+			psmt.setString(8, dto.getDogweight());
+			psmt.setString(7, dto.getDogage());
+			psmt.setString(9, dto.getDate());
 
-      }
+			cnt = psmt.executeUpdate();
 
-      return cnt;
-   }
+		} catch (Exception e) {
+			System.out.println("클래스파일 로딩실패");
+			e.printStackTrace();
 
-   public void getConn() {
-      try {
-          Class.forName("oracle.jdbc.driver.OracleDriver");
-          String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524";
-         
-          System.out.println("클래스파일 로딩완료");
-          
-          //3.DB에서 사용하는 id/pw를 인증
-          String dbid = "cgi_8_2_1216";
-          String dbpw = "smhrd2";
+		} finally {
+			close();
 
-          conn = DriverManager.getConnection(url, dbid, dbpw);
-          
-          if(conn!=null) {
-             System.out.println("연결성공");
-          }else {
-             System.out.println("연결실패");
-          }
+		}
+		return cnt;
 
-      } catch (Exception e) {
-         e.printStackTrace();
-      }
-   }
+	}
 
-   public void close() {
-      System.out.println("무조건실행");
-      try {
-         if (rs != null) {
-            rs.close();
-         }
-         if (psmt != null) {
-            psmt.close();
-         }
-         if (conn != null) {
-            conn.close();
-         }
-      } catch (Exception e) {
-         e.printStackTrace();
-      }
-   }
+	// dog_list dao
 
-   public int Join(memberDTO dto) {
+	// public ArrayList<memberDTO> selectMember() {
 
-      try {
-         getConn();
-         System.out.println("===Join===");
-         String sql = "insert into t_member values (?, ?, ?,?,?,?,?,?)";
-         psmt = conn.prepareStatement(sql);
-         psmt.setString(1, dto.getId());
-         psmt.setString(4, dto.getPw());
-         psmt.setString(3, dto.getNickname());
-         psmt.setString(2, dto.getTel());
-         psmt.setString(6, dto.getDogname());
-         psmt.setString(5, dto.getDogkind());
-         psmt.setString(8, dto.getDogage());
-         psmt.setString(7, dto.getDogweight());
-        
-         cnt = psmt.executeUpdate();
-        
-      } catch (Exception e) {
-         System.out.println("클래스파일 로딩실패");
-         e.printStackTrace();
+	// ArrayList<memberDTO> arr = new ArrayList<memberDTO>();
 
-      } finally {
-         close();
+	// try {
+	// getConn();
 
-      }
-      return cnt;
+	// String sql = "select * from t_member";
+	// psmt = conn.prepareStatement(sql);
+	// rs = psmt.executeQuery();
 
-   }
+	// while (rs.next() == true) {
+	// String id = rs.getString(1);
+	// String tel = rs.getString(3);
+	// String nickname = rs.getString(4);
 
-  // public ArrayList<memberDTO> selectMember() {
+	// dto = new memberDTO(nickname,id ,pw,tel ,nickname);
+	// arr.add(dto);
+	// }
 
-  //    ArrayList<memberDTO> arr = new ArrayList<memberDTO>();
+	// } catch (Exception e) {
+	// System.out.println("클래스파일 로딩실패");
+	// e.printStackTrace();
 
-  //    try {
-   //      getConn();
+	// } finally {
+	// close();
 
-    //     String sql = "select * from t_member";
-    //     psmt = conn.prepareStatement(sql);
-    //     rs = psmt.executeQuery();
+	// }
+	// return arr;
+	// }
 
-   //      while (rs.next() == true) {
-    //        String id = rs.getString(1);
-  //          String tel = rs.getString(3);
-   //         String nickname = rs.getString(4);
+	public boolean emailChechk(String id) { // id중복체크
+		try {
+			getConn();
 
-   //      dto = new memberDTO(nickname,id ,pw,tel ,nickname);
-   //         arr.add(dto);
-   //      }
+			String sql = "select * from member_message where id = ?";
 
-    //  } catch (Exception e) {
-     //    System.out.println("클래스파일 로딩실패");
-     //    e.printStackTrace();
+			psmt = conn.prepareStatement(sql);
 
-   //   } finally {
-  //       close();
+			psmt.setString(1, id);
 
-  //    }
-  //    return arr;
- //  }
+			rs = psmt.executeQuery();
 
-   public boolean emailChechk(String id) {
-      try {
-         getConn();
-         
-      
-         String sql = "select * from member_message where id = ?";
+			check = rs.next();
+		} catch (Exception e) {
+			System.out.println("클래스파일 로딩실패");
+			e.printStackTrace();
 
-         psmt = conn.prepareStatement(sql);
-         
-         psmt.setString(1, id);
+		} finally {
+			close();
 
-         rs = psmt.executeQuery();
-         
-         check = rs.next();
-      } catch (Exception e) {
-         System.out.println("클래스파일 로딩실패");
-         e.printStackTrace();
+		}
 
-      } finally {
-         close();
+		return check;
+	}
 
-      }
-      
-      return check;
-   }
+	public ArrayList<memberDTO> searchMember(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public void getConn() {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524";
 
-public ArrayList<memberDTO> searchMember(String id) {
-   // TODO Auto-generated method stub
-   return null;
-}
+			System.out.println("클래스파일 로딩완료");
+
+			// 3.DB에서 사용하는 id/pw를 인증
+			String dbid = "cgi_8_2_1216";
+			String dbpw = "smhrd2";
+
+			conn = DriverManager.getConnection(url, dbid, dbpw);
+
+			if (conn != null) {
+				System.out.println("연결성공");
+			} else {
+				System.out.println("연결실패");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void close() {
+		System.out.println("무조건실행");
+		try {
+			if (rs != null) {
+				rs.close();
+			}
+			if (psmt != null) {
+				psmt.close();
+			}
+			if (conn != null) {
+				conn.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

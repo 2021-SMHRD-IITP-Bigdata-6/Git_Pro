@@ -155,7 +155,9 @@ body {
                   <section>
                   <ul class="links" >
                   
-                     <form action="UpdateCon.do" method="post">
+                    
+                      </ul>
+                       <form action="UpdateCon.do" method="post">
                         <h5>변경할 닉네임</h5>
                         <input type="text" name="m_nick" placeholder="Nick"><br>
                         <h5>변경할 전화번호</h5>
@@ -171,7 +173,6 @@ body {
                         <input type="submit" value="Update" class="button fit" style="margin-right: 10px;">
                         <!-- <input type="submit" value="Sign Up" class="button fit"><br> -->
                      </form>
-                      </ul>
                      </section>
                    
                  
