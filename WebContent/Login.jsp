@@ -176,11 +176,17 @@ body {
                      <input type="text" name="m_dog" placeholder="DogKind"><br>
                      <input type="text" name="m_dogage" placeholder="DogAge"><br>
                      <input type="text" name="m_dogweight" placeholder="DogWeight"><br>
-                      <input type="submit" value="Sign up" class="button fit" style="margin-right: 10px;">
-                       </form>
-                       </section>
-                 
-                  
+          			 </form>
+                     <form action="UploadService" method="post" enctype="multipart/form-data">
+                     <tr>
+              		 <td>강아진 사진 : </td>
+              		 <td><input type="file" value="파일 선택" name="file"/></td>
+          			 </tr><br>
+          			 <div> </div>
+                     <input type="submit" value="Sign up" class="button fit" style="margin-right: 10px;">
+                     </form>
+                     </section>
+                
                </article>
 
 				</div>
