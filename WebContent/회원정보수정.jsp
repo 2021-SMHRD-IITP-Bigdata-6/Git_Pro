@@ -165,9 +165,9 @@ body {
                         <h5>변경할 강아지 견종</h5>
                         <input type="text" name="m_dogkind" placeholder="Dogkind"><br>
                         <h5>변경할 강아지 나이</h5>
-                        <input type="text" name="m_dogage" placeholder="Dogage"><br>
+                        <input type="text" name="m_dogage" placeholder="숫자를 입력해 주세요"><br>
                         <h5>변경할 강아지 무게</h5>
-                        <input type="text" name="m_dogweight" placeholder="Dogweight"><br>
+                        <input type="text" name="m_dogweight" placeholder="숫자를 입력해 주세요"><br>
                         <input type="submit" value="Update" class="button fit" style="margin-right: 10px;">
                         <!-- <input type="submit" value="Sign Up" class="button fit"><br> -->
                      </form>
