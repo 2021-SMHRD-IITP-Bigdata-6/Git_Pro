@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.dogpro.memberDTO.memberDTO;
@@ -155,6 +156,33 @@ private String id;
       } catch (Exception e) {
          e.printStackTrace();
       }
+   }
+   
+   public String[] getDogInfo(String dogKind) {
+	   
+	   getConn();
+	   String[] dogData = new String[2];
+	   
+	  
+       try {
+    	String sql = "select d_w_avg, d_w_max from dog_list where d_kind = ?";
+		psmt = conn.prepareStatement(sql);
+		psmt.setString(1, dogKind);
+		rs = psmt.executeQuery();
+		
+		if(rs.next()) {
+			dogData[0]= rs.getString(1);
+			dogData[1]= rs.getString(2);
+		}
+		
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	   
+	   return dogData;
+	   
    }
 
    public int Join(memberDTO dto) {

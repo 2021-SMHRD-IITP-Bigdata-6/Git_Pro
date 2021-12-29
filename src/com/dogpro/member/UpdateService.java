@@ -16,29 +16,38 @@ public class UpdateService implements Command{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-
+		
 		HttpSession session = request.getSession();
 		memberDTO dto = (memberDTO) session.getAttribute("dto");
-
-		//String id = dto.getId();
+		
+		String page=null;
+		String id = dto.getId();
+		
+		//사용자가 변경하려는 값 아래 6개 
 		String nick = request.getParameter("m_nick");
 		String tel = request.getParameter("m_tel");
 		String dogname = request.getParameter("m_dogname");
 		String dogkind = request.getParameter("m_dogkind");
 		String dogage = request.getParameter("m_dogage");
 		String dogweight = request.getParameter("m_dogweight");
+		
 		memberDAO dao = new memberDAO();
-		int cnt = dao.Update(nick,tel,dogname,dogkind,dogage,dogweight);
-
+		int cnt = dao.Update(nick,tel,dogname,dogkind,dogage,dogweight,id);
+		System.out.println("testtest1");
 		if (cnt > 0) {
 			memberDTO update_dto = new memberDTO(nick,tel,dogname,dogkind,dogage,dogweight);
+			session.removeAttribute("dto");
 			session.setAttribute("dto", update_dto);
-			response.sendRedirect("Mainpage.jsp");
+			page = "Mainpage.jsp";
+			
 		} else {
-
+			System.out.println("testtest");
+			
 		}
 		
-		return null;
+		return page;
+		
+		
 	}
 
 }
