@@ -12,8 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.dogpro.memberDAO.imgfileDAO;
-import com.dogpro.member.MultipartRequest;
-import com.dogpro.member.DefaultFileRenamePolicy;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 
 @WebServlet("/UploadService")
 public class UploadService extends HttpServlet {

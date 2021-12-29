@@ -24,9 +24,9 @@ public class JoinService implements Command {
 		String dog = request.getParameter("m_dog");
 		String dogage = request.getParameter("m_dogage");
 		String dogweight = request.getParameter("m_dogweight");
-		
+		String date = request.getParameter("date");
 
-		memberDTO dto = new memberDTO(id, pw, tel,nickname,dogname, dog, dogage, dogweight);
+		memberDTO dto = new memberDTO(id, pw, tel,nickname,dogname, dog, dogage, dogweight,date);
 		memberDAO dao = new memberDAO();
 		int cnt = dao.Join(dto);
 		// 7. 명령 후 처리

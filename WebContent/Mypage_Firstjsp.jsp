@@ -44,26 +44,12 @@
 				<!-- Nav -->
 				<nav id="nav">
 					<ul>
-						<li><a class="icon solid fa-home" href="index.html"><span>Introduction</span></a></li>
-						<li><a href="#" class="icon fa-chart-bar"><span>Dropdown</span></a>
-							<ul>
-								<li><a href="#">Lorem ipsum dolor</a></li>
-								<li><a href="#">Magna phasellus</a></li>
-								<li><a href="#">Etiam dolore nisl</a></li>
-								<li><a href="#">Phasellus consequat</a>
-									<ul>
-										<li><a href="#">Magna phasellus</a></li>
-										<li><a href="#">Etiam dolore nisl</a></li>
-										<li><a href="#">Phasellus consequat</a></li>
-									</ul></li>
-								<li><a href="#">Veroeros feugiat</a></li>
-							</ul></li>
-						<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>Left
-									Sidebar</span></a></li>
+						<li><a class="icon solid fa-home" href="Mainpage.jsp"><span>메인페이지</span></a></li>
+						
+						<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>두번째 탭</span></a></li>
 						<li><a class="icon solid fa-retweet"
 							href="right-sidebar.html"><span>Right Sidebar</span></a></li>
-						<li><a class="icon solid fa-sitemap" href="no-sidebar.html"><span>No
-									Sidebar</span></a></li>
+						<li><a class="icon solid fa-sitemap" href="LogoutCon.do">로그아웃</a>
 					</ul>
 				</nav>
 
@@ -91,7 +77,7 @@
 													memberDTO dto = (memberDTO) session.getAttribute("dto");
 												%>
 												<%
-													dto.getNickname();
+													out.print(dto.getNickname());
 												%>
 												님
 											</h3>
@@ -108,7 +94,7 @@
 													<a href="#"><%dto.getId();%></a>
 												</h3>
 											</header>
-											<p><%dto.getDogname();%>과 함께한지 <br>일째</p>
+											<p><%out.print(dto.getDogname());%>와(과) 함께한지 <br><%out.print( dto.getDate()); %>일째</p>
 										</article>
 
 										<!--  <p>Phasellus </p>-->
@@ -134,21 +120,22 @@
 								<br>
 								<h5>
 									<%
-										dto.getId();
+										out.print(dto.getNickname()+" ");
 									%>님의 반려견
 									<%
-										dto.getDogname();
+										out.print(dto.getDogname()+" ");
 									%>는
 									<%
-										dto.getDogage();
+										out.print(dto.getDogage()+" ");
 									%>살의
 									<%
-										dto.getDogweight();
+										out.print(dto.getDogweight()+" ");
 									%>kg의
 									<%
-										dto.getDogkind();
+										String userDogKind = dto.getDogkind(); //사용자의 개의 종류
 									%>입니다.
 								</h5>
+								<p class="chart_info"></p>
 								<br>
 							</header>
 
@@ -158,21 +145,52 @@
 							
 								<script type="text/javascript"
 									src="https://www.gstatic.com/charts/loader.js"></script>
+								<script src="./assets/js/jquery.min.js"></script>
 								<script type="text/javascript">
+								let userDogKind = "<%=userDogKind%>"; //사용자의 강아지 종류를 가져옴!
+								$.ajax({
+									url:"GetDogInfo",
+									type : "get",
+									data:{
+										kind:userDogKind
+									},
+									success:function(){
+										//alert("성공");
+									},
+									error:function(){
+										//alert("실패");
+									}						
+										
+								});
+								
+								console.log("test"+userDogKind);
 									google.charts.load("current", {
 										packages : [ 'corechart' ]
 									});
 									google.charts.setOnLoadCallback(drawChart);
 									function drawChart() {
+								
 										var data = google.visualization
 												.arrayToDataTable([
 														["분류", "값",{role : "style"} ],
-														[ "나이", <%dto.getDogage();%>,"pink" ],
-														[ "<%dto.getDogname();%>", <%dto.getDogweight();%>,"red" ],
-														[ "평균", <%%>,"silver" ],
-														[ "최대", <%%>, "silver" ],
+														[ "나이", <%=dto.getDogage()%>,"pink" ],
+														[ "몸무게",<%=dto.getDogweight()%>,"#ed786a" ],
+														[ "평균", 8,"silver" ],
+														[ "최대", 2.5, "silver" ],
 													 ]);
-
+													 
+										
+										/* var data = google.visualization
+										.arrayToDataTable([
+												[
+														"Element","Density",{role : "style"} ],
+												[ "Copper", 8.94,"#b87333" ],
+												[ "Silver", 10.49,"silver" ],
+												[ "Gold", 19.30, "gold" ],
+												[ "Platinum", 21.45,
+														"color: #e5e4e2" ] ]); */
+										
+										console.log(data);
 										var view = new google.visualization.DataView(
 												data);
 										view.setColumns([ 0, 1, {
@@ -260,7 +278,7 @@
 	<script src="assets/js/browser.min.js"></script>
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
+	<!-- <script src="assets/js/main.js"></script> -->
 
 </body>
 </html>

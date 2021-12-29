@@ -115,9 +115,9 @@
 					<ul>
 						<li><a class="icon solid fa-home" href="Mainpage.jsp"><span>메인
 									페이지</span></a></li>
-						<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>세번째
+						<li><a class="icon solid fa-cog" href="Mainpage.jsp"><span>세번째
 									탭</span></a></li>
-						<li><a class="icon solid fa-retweet" href="Mypage_First.jsp"><span>마이
+						<li><a class="icon solid fa-retweet" href="Mypage_Firstjsp.jsp"><span>마이
 									페이지</span></a></li>
 						<%
 						memberDTO dto = (memberDTO) session.getAttribute("dto");
@@ -126,7 +126,6 @@
 		<% 
  	} else {
  %> 
- <li><a class="icon solid fa-sitemap" href="회원정보수정.jsp">회원정보수정</a>
 		<li><a class="icon solid fa-sitemap" href="LogoutCon.do">로그아웃</a> <%
  	}
  %>
@@ -376,9 +375,7 @@
 				<h2 align="right" style="float: left; margin-left:550px;">  </h2>
 					<img id="imgfood" src="images/터키앤치킨독.jpg"> <img id="imgfood"
 						src="images/터키앤치킨독.jpg"> <img id="imgfood"
-						src="images/터키앤치킨독.jpg"> <img id="imgfood"
-						src="images/터키앤치킨독.jpg"> <img id="imgfood"
-						src="images/터키앤치킨독.jpg">
+						src="images/터키앤치킨독.jpg"> 
 				</section>
 		
 	
