@@ -53,7 +53,10 @@ public class imgfileDAO {
 			throws SQLException, ClassNotFoundException, IOException {
 		getConnection();
 
-		psmt = con.prepareStatement("insert into t_member values(?)");
+		
+		String sql = "insert into t_member values(?)";
+
+        psmt = con.prepareStatement(sql);
 		psmt.setString(1, file);
 
 		result = psmt.executeUpdate();
