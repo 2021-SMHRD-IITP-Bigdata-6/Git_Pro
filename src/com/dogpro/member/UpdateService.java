@@ -30,12 +30,14 @@ public class UpdateService implements Command{
 		String dogkind = request.getParameter("m_dogkind");
 		String dogage = request.getParameter("m_dogage");
 		String dogweight = request.getParameter("m_dogweight");
+		String adoptdate = request.getParameter("m_adoptdate");
 		
 		memberDAO dao = new memberDAO();
-		int cnt = dao.Update(nick,tel,dogname,dogkind,dogage,dogweight,id);
+		int cnt = dao.Update(nick,tel,dogname,dogkind,dogage,dogweight,adoptdate,id);
 		System.out.println("testtest1");
 		if (cnt > 0) {
-			memberDTO update_dto = new memberDTO(nick,tel,dogname,dogkind,dogage,dogweight);
+			memberDTO update_dto = new memberDTO(dogkind, dogage, dogweight, dogname, nick, tel, adoptdate);
+			//memberDTO update_dto = new memberDTO(nick,tel,dogname,dogkind,dogage,dogweight);
 			session.removeAttribute("dto");
 			session.setAttribute("dto", update_dto);
 			page = "Mainpage.jsp";

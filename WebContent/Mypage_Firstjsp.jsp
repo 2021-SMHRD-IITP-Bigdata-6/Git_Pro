@@ -1,3 +1,7 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="org.apache.catalina.tribes.util.Arrays"%>
 <%@page import="com.dogpro.memberDTO.memberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -45,8 +49,9 @@
 				<nav id="nav">
 					<ul>
 						<li><a class="icon solid fa-home" href="Mainpage.jsp"><span>메인페이지</span></a></li>
-						
-						<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>두번째 탭</span></a></li>
+
+						<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>두번째
+									탭</span></a></li>
 						<li><a class="icon solid fa-retweet"
 							href="right-sidebar.html"><span>Right Sidebar</span></a></li>
 						<li><a class="icon solid fa-sitemap" href="LogoutCon.do">로그아웃</a>
@@ -71,19 +76,21 @@
 									<!-- Highlight -->
 									<article class="box highlight">
 										<header>
-											<h3>
-												환영합니다 <br>
+											<h5>
+												환영합니다 <br><br>
+												
 												<%
 													memberDTO dto = (memberDTO) session.getAttribute("dto");
 												%>
 												<%
 													out.print(dto.getNickname());
 												%>
+												
 												님
-											</h3>
+											</h5><br>
 
 										</header>
-										<img src="images/pic06.jpg" width=58%>
+										<img src="images/마이페이지null사진.png" width=58%>
 
 										<!-- Excerpt -->
 										<article class="box excerpt">
@@ -91,16 +98,37 @@
 
 												<br>
 												<h3>
-													<a href="#"><%dto.getId();%></a>
+													<%
+														dto.getId();
+													%>
 												</h3>
 											</header>
-											<p><%out.print(dto.getDogname());%>와(과) 함께한지 <br><%out.print( dto.getDate()); %>일째</p>
+
+											<%
+												out.print(dto.getDogname());
+											%>와(과) 함께한지<br>
+											
+											<%
+												Calendar getToday = Calendar.getInstance();
+											getToday.setTime(new Date()); //금일 날짜
+
+											String s_date = dto.getDate();
+											Date date = new SimpleDateFormat("yy/MM/dd").parse(s_date);
+											Calendar cmpDate = Calendar.getInstance();
+											cmpDate.setTime(date); //특정 일자
+
+											long diffSec = (getToday.getTimeInMillis() - cmpDate.getTimeInMillis()) / 1000;
+											long diffDays = diffSec / (24 * 60 * 60); //일자수 차이
+
+											out.println(diffDays);
+											%> 일째
+
 										</article>
 
 										<!--  <p>Phasellus </p>-->
 										<ul class="actions">
-											<li><a href="회원정보수정.jsp" class="button icon solid fa-file">회원
-													정보 수정</a></li>
+											<li><a href="회원정보수정.jsp"
+												class="button icon solid fa-file">회원 정보 수정</a></li>
 										</ul>
 									</article>
 
@@ -116,111 +144,151 @@
 						<!-- Post -->
 						<article class="box post">
 							<header>
-								<h5>반려견 정보</h5>
-								<br>
+								<h5>반려견 정보</h5><br>
+
 								<h5>
+								
 									<%
-										out.print(dto.getNickname()+" ");
+										out.print(dto.getNickname());
 									%>님의 반려견
 									<%
-										out.print(dto.getDogname()+" ");
+										out.print("   " + dto.getDogname());
 									%>는
 									<%
-										out.print(dto.getDogage()+" ");
+										out.print("   " + dto.getDogage());
+									String age = dto.getDogage();
 									%>살의
 									<%
-										out.print(dto.getDogweight()+" ");
+										out.print("   " + dto.getDogweight());
+									String weight = dto.getDogweight();
 									%>kg의
 									<%
 										String userDogKind = dto.getDogkind(); //사용자의 개의 종류
+									out.print("   " + userDogKind);
 									%>입니다.
 								</h5>
 								<p class="chart_info"></p>
-								<br>
+
 							</header>
 
 							<!-- 차트 -->
 							<div>
-							
-							
+
 								<script type="text/javascript"
 									src="https://www.gstatic.com/charts/loader.js"></script>
 								<script src="./assets/js/jquery.min.js"></script>
 								<script type="text/javascript">
+								let userDogData = []; //
+								let dogAge = "<%=age%>";
+								let dogWeight = "<%=weight%>";
 								let userDogKind = "<%=userDogKind%>"; //사용자의 강아지 종류를 가져옴!
-								$.ajax({
-									url:"GetDogInfo",
-									type : "get",
-									data:{
-										kind:userDogKind
-									},
-									success:function(){
-										//alert("성공");
-									},
-									error:function(){
-										//alert("실패");
-									}						
-										
-								});
-								
-								console.log("test"+userDogKind);
-									google.charts.load("current", {
-										packages : [ 'corechart' ]
-									});
-									google.charts.setOnLoadCallback(drawChart);
-									function drawChart() {
-								
-										var data = google.visualization
-												.arrayToDataTable([
-														["분류", "값",{role : "style"} ],
-														[ "나이", <%=dto.getDogage()%>,"pink" ],
-														[ "몸무게",<%=dto.getDogweight()%>,"#ed786a" ],
-														[ "평균", 8,"silver" ],
-														[ "최대", 2.5, "silver" ],
-													 ]);
-													 
-										
-										/* var data = google.visualization
-										.arrayToDataTable([
-												[
-														"Element","Density",{role : "style"} ],
-												[ "Copper", 8.94,"#b87333" ],
-												[ "Silver", 10.49,"silver" ],
-												[ "Gold", 19.30, "gold" ],
-												[ "Platinum", 21.45,
-														"color: #e5e4e2" ] ]); */
-										
-										console.log(data);
-										var view = new google.visualization.DataView(
-												data);
-										view.setColumns([ 0, 1, {
-											calc : "stringify",
-											sourceColumn : 1,
-											type : "string",
-											role : "annotation"
-										}, 2 ]);
+									$.ajax({
+												url : "GetDogInfo",
+												type : "get",
+												dataType : "json",
+												data : {
+													kind : userDogKind
+												},
+												success : function(dogData) {
+													//alert("성공");
 
-										var options = {
-											title : "",
-											width : 800,
-											height : 500,
-											bar : {
-												groupWidth : "60%"
-											},
-											legend : {
-												position : "none"
-											},
-										};
-										var chart = new google.visualization.ColumnChart(
-												document
-														.getElementById("columnchart_values"));
-										chart.draw(view, options);
-									}
+													userDogData.push(dogData.avg);
+													userDogData.push(dogData.Max);
+													console.log(userDogData);
+
+													console.log("test"+ userDogKind);
+													google.charts.load(
+															"current",
+																	{packages : [ 'corechart' ]});
+
+													google.charts.setOnLoadCallback(drawChart);
+
+													function drawChart() {
+														console.log("testDog222"+ userDogData[0]);
+														var data = google.visualization.arrayToDataTable([
+																		[
+																				"분류",
+																				"값",
+																				{
+																					role : "style"
+																				} ],
+																		[
+																				"나이",
+																				Number(dogAge),
+																				"pink" ],
+																		[
+																				"몸무게",
+																				Number(dogWeight),
+																				"#ed786a" ],
+																		[
+																				"평균 몸무게",
+																				Number(userDogData[0]),
+																				"silver" ], // ??위에 dogData에 있는 값을 적으면 되는데 안됩니다
+																		[
+																				"최대 몸무게",
+																				Number(userDogData[1]),
+																				"silver" ], // 
+																]);
+
+														/* var data = google.visualization
+														.arrayToDataTable([
+														[
+														"Element","Density",{role : "style"} ],
+														[ "Copper", 8.94,"#b87333" ],
+														[ "Silver", 10.49,"silver" ],
+														[ "Gold", 19.30, "gold" ],
+														[ "Platinum", 21.45,
+														"color: #e5e4e2" ] ]); */
+
+														console.log(data);
+														var view = new google.visualization.DataView(data);
+														view.setColumns([
+																		0,
+																		1,
+																		{
+																			calc : "stringify",
+																			sourceColumn : 1,
+																			type : "string",
+																			role : "annotation"
+																		}, 2 ]);
+
+														var options = {
+															title : "",
+															width : 750,
+															height : 500,
+															bar : {
+																groupWidth : "60%"
+															},
+															legend : {
+																position : "none"
+															},
+														};
+														var chart = new google.visualization.ColumnChart(
+																document.getElementById("columnchart_values"));
+														chart.draw(view,options);
+													}
+
+												},
+												error : function() {
+													alert("실패");
+												}
+
+											});
+								<%-- 
+								<% //시도 1
+							  	 String[] dogData = (String[])request.getAttribute("dogData"); // 어디서 받아와요? 이 값
+								 // System.out.println(Arrays.toString(dogData)); // 여기까지 됐었어요
+								 for(int i=0; i<dogData.length; i++){
+									 System.out.println(dogData[i]);
+								 }
+								 %> --%>
+									
 								</script>
 								<div id="columnchart_values"
-									style="width: 900px; height: 300px;"></div>
+									style="width: 750px; height: 300px;"></div>
 							</div>
-							<br> <br> <br> <br> <br>
+							<br> <br> <br> <br> <br> <br> <br>
+
 
 
 							<header>
@@ -235,7 +303,7 @@
 								<img style="margin: 10px;" src="images/터키앤치킨독.jpg" width=30%;>
 
 							</div>
-							<br>
+							<br><br>
 							<p>몸무게에 따른 추천 사료</p>
 							<div>
 								<img style="margin: 10px;" src="images/터키앤치킨독.jpg" width=30%;>
@@ -243,12 +311,12 @@
 								<img style="margin: 10px;" src="images/터키앤치킨독.jpg" width=30%;>
 
 							</div>
-							<br>
+							
 						</article>
 
 						<!-- Post -->
 						<article class="box post">
-							<header>
+							<!--  <header>
 								<h5>최근 본 상품</h5>
 								<br>
 							</header>
@@ -259,7 +327,7 @@
 
 							</div>
 
-							<br>
+							<br>-->
 
 
 

@@ -11,8 +11,9 @@ public class memberDTO {
 	private String tel;
 	private String date;
 
+	 // 회원가입
 	public memberDTO(String id, String pw, String nickname, String tel, String dogkind, String dogname,
-			String dogweight, String dogage, String date) { // 회원가입
+			String dogweight, String dogage, String date) {
 		super();
 		this.id = id;
 		this.pw = pw;
@@ -25,7 +26,8 @@ public class memberDTO {
 		this.date = date;
 	}
 
-	public memberDTO(String dogkind, String dogage, String dogweight, String dogname, String nickname, String tel) {
+	// 회원정보수정
+	public memberDTO(String dogkind, String dogage, String dogweight, String dogname, String nickname, String tel, String date) {
 		super();
 		this.dogkind = dogkind;
 		this.dogage = dogage;
@@ -33,6 +35,7 @@ public class memberDTO {
 		this.dogname = dogname;
 		this.nickname = nickname;
 		this.tel = tel;
+		this.date = date;
 
 	}
 
