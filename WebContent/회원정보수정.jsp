@@ -159,17 +159,19 @@ body {
                       </ul>
                        <form action="UpdateCon.do" method="post">
                         <h5>변경할 닉네임</h5>
-                        <input type="text" name="m_nick" placeholder="Nick"><br>
+                        <input type="text" name="m_nick" placeholder="닉네임"><br>
                         <h5>변경할 전화번호</h5>
-                        <input type="text" name="m_tel" placeholder="Tel"><br>
-                        <h5>변경할 강아지 이름</h5>
-                        <input type="text" name="m_dogname" placeholder="Dogname"><br>
-                        <h5>변경할 강아지 견종</h5>
-                        <input type="text" name="m_dogkind" placeholder="Dogkind"><br>
-                        <h5>변경할 강아지 나이</h5>
-                        <input type="text" name="m_dogage" placeholder="Dogage"><br>
-                        <h5>변경할 강아지 무게</h5>
-                        <input type="text" name="m_dogweight" placeholder="Dogweight"><br>
+                        <input type="text" name="m_tel" placeholder="전화번호"><br>
+                        <h5>변경할 반려견 이름</h5>
+                        <input type="text" name="m_dogname" placeholder="반려견 이름"><br>
+                        <h5>변경할 견종</h5>
+                        <input type="text" name="m_dogkind" placeholder="견종"><br>
+                        <h5>변경할 반려견 나이</h5>
+                        <input type="text" name="m_dogage" placeholder="반려견 나이(살) ex) 7"><br>
+                        <h5>변경할 반려견 무게</h5>
+                        <input type="text" name="m_dogweight" placeholder="반려견 몸무게(kg) ex) 5.5"><br>
+                        <h5>변경할 입양날짜</h5>
+                        <input type="text" name="m_adoptdate" placeholder="입양날짜  ex) 20/01/01"><br>
                         <input type="submit" value="Update" class="button fit" style="margin-right: 10px;">
                         <!-- <input type="submit" value="Sign Up" class="button fit"><br> -->
                      </form>

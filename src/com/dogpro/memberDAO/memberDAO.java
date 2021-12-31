@@ -64,7 +64,7 @@ public class memberDAO {
 		return dto;
 	}
 
-	public int Update(String nick, String tel, String dogname, String dogkind, String dogage,String dogweight, String id) {
+	public int Update(String nick, String tel, String dogname, String dogkind, String dogage,String dogweight, String adoptdate, String id) {
 
 		try {
 			getConn();
@@ -72,7 +72,7 @@ public class memberDAO {
 			// --------------------DB연결
 			int numAge = Integer.parseInt(dogage);
 			int numWeight = Integer.parseInt(dogweight);
-			String sql = "update t_member set m_nick=?,m_phone=?,m_dogname=?,m_dog=?,m_dogweight=?, m_dogage=? where m_id=?";
+			String sql = "update t_member set m_nick=?,m_phone=?,m_dogname=?,m_dog=?,m_dogweight=?, m_dogage=?, adoptdate=? where m_id=?";
 			// 5. SQL명령문을 준비
 			psmt = conn.prepareStatement(sql);
 
@@ -82,7 +82,8 @@ public class memberDAO {
 			psmt.setString(4, dogkind);
 			psmt.setInt(5, numAge);
 			psmt.setInt(6, numWeight);
-			psmt.setString(7, id);
+			psmt.setString(7, adoptdate);
+			psmt.setString(8, id);
 			
 
 			// 6. SQL명령문 실행
