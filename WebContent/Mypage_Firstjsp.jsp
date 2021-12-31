@@ -1,3 +1,5 @@
+<%@page import="com.dogpro.memberDAO.imgfileDAO"%>
+<%@page import="com.dogpro.memberDTO.imgfileDTO"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -90,6 +92,11 @@
                                  </h5><br>
 
                               </header>
+                              
+                              
+                                    <%
+                                       out.print(dto.getNickname());
+                                    %>
                               <img src="images/마이페이지null사진.png" width=58%>
 
                               <!-- Excerpt -->
@@ -99,7 +106,7 @@
                                     <br>
                                     <h3>
                                        <%
-                                          dto.getId();
+                                          out.print(dto.getId());
                                        %>
                                     </h3>
                                  </header>
