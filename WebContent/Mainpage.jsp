@@ -278,7 +278,7 @@
 			검색</h2>
 			<br>
 			<br><br><br>
-			<h6 align="left" style="float: left; margin-left: 90px;">기능별 사료 검색에 대한 설명</h6>
+			<h6 align="left" style="float: left; margin-left: 90px;">기능별 사료 검색에 대한 설명!</h6>
 			<br><br>
 	</section>
 	
