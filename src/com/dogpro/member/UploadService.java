@@ -22,8 +22,6 @@ public class UploadService extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String fileName = request.getParameter("file");
-		System.out.println(fileName);
 
 		ServletContext context = getServletContext(); // 어플리케이션에 대한 정보를 ServletContext 객체가 갖게 됨. (서버의 절대경로를 구하는 데 필요)
 		String saveDir = context.getRealPath("Upload"); // 절대경로를 가져옴
@@ -43,10 +41,20 @@ public class UploadService extends HttpServlet {
 					new DefaultFileRenamePolicy());
 			imgfileDAO dao = new imgfileDAO();
 
+			String id= multi.getParameter("m_id1");
+			String pw = multi.getParameter("m_pw1");
+			String tel= multi.getParameter("m_tel");
+			String nick = multi.getParameter("m_nick");
+			String dogname = multi.getParameter("m_dogname");
+			String dogkind = multi.getParameter("m_dogkind");
+			String dogage = multi.getParameter("m_dogage");
+			String dogweight = multi.getParameter("m_dogweight");
+			String adoptdate = multi.getParameter("adoptdate");
 			String file = multi.getFilesystemName("file");
-
+			
+			
 			try {
-				int result = dao.uploadFile(file);
+				int result = dao.uploadFile(id,pw,tel,nick,dogname,dogkind,dogage,dogweight,file,adoptdate);
 				String moveUrl = "";
 				if (result > 0) {
 					System.out.println("저장완료");

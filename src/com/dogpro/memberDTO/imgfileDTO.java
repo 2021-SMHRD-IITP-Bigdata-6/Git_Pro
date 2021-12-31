@@ -3,8 +3,6 @@ package com.dogpro.memberDTO;
 public class imgfileDTO {
 	
 	private int num;
-    private String author;
-    private String title;
     private String file;
     private String day;
 	public imgfileDTO(int num, String file, String day) {

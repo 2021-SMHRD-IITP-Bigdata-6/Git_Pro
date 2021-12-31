@@ -25,17 +25,26 @@ public class imgfileDAO {
 	}
 
 	// DB연결
-	public void getConnection() throws ClassNotFoundException, IOException, SQLException {
-		InputStream in = (this.getClass().getResourceAsStream("../../../../db.properties"));
-		Properties p = new Properties();
-		p.load(in);
+	public void getConnection() {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			System.out.println("클래스파일 로딩완료");
 
-		String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524";
-		String id = "cgi_8_2_1216";
-		String pw = "smhrd2";
+			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524";
+			String dbid = "cgi_8_2_1216";
+			String dbpw = "smhrd2";
 
-		Class.forName(p.getProperty("oracle.jdbc.driver.OracleDriver"));
-		con = DriverManager.getConnection(url, id, pw);
+			con = DriverManager.getConnection(url, dbid, dbpw);
+
+			if (con != null) {
+				System.out.println("연결성공");
+			} else {
+				System.out.println("연결실패");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	// DB연결 종료
@@ -48,26 +57,36 @@ public class imgfileDAO {
 			con.close();
 	}
 
+	public ArrayList<imgfileDTO> selectAll() {
+		// 코드생략
+		return new ArrayList<imgfileDTO>();
+	}
+
 	// 파일업로드
-	public int uploadFile(String file)
-			throws SQLException, ClassNotFoundException, IOException {
+
+	public int uploadFile( String id, String pw, String tel, String nick, String dogname, String dogkind,
+			String dogage, String dogweight,String adoptdate , String file) throws SQLException, ClassNotFoundException, IOException {
 		getConnection();
 
-		
-		String sql = "insert into t_member values(?)";
+		String sql = "insert into t_member values(?,?,?,?,?,?,?,?,?,?)";
 
-        psmt = con.prepareStatement(sql);
-		psmt.setString(1, file);
+		psmt = con.prepareStatement(sql);
+		psmt.setString(1, id);
+		psmt.setString(2, pw);
+		psmt.setString(3, nick);
+		psmt.setString(4, tel);
+		psmt.setString(5, dogkind);
+		psmt.setString(6, dogname);
+		psmt.setString(7, dogweight);
+		psmt.setString(8, dogage);
+		psmt.setString(9, adoptdate);
+		psmt.setString(10, file);
+		
 
 		result = psmt.executeUpdate();
 
 		close();
 
 		return result;
-	}
-
-	public ArrayList<imgfileDTO> selectAll() {
-	    //코드생략
-	    return new ArrayList<imgfileDTO>();
 	}
 }

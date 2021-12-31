@@ -173,7 +173,7 @@ public class memberDAO {
 		try {
 			getConn();
 
-			String sql = "select * from member_message where id = ?";
+			String sql = "select * from t_member where id = ?";
 
 			psmt = conn.prepareStatement(sql);
 

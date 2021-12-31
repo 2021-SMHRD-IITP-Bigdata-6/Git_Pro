@@ -176,34 +176,12 @@ body {
                      <input type="text" name="m_dog" placeholder="DogKind"><br>
                      <input type="text" name="m_dogage" placeholder="DogAge"><br>
                      <input type="text" name="m_dogweight" placeholder="DogWeight"><br>
-<<<<<<< HEAD
-          			 </form>
-                     <form action="UploadService" method="post" enctype="multipart/form-data">
-                     <tr>
-              		 <td>강아진 사진 : </td>
-              		 <td><input type="file" value="파일 선택" name="file"/></td>
-          			 </tr><br>
-          			 <div> </div>
+                     
                      <input type="submit" value="Sign up" class="button fit" style="margin-right: 10px;">
                      </form>
                      </section>
                 
-=======
-                     <input type="text" name="date" placeholder="adoption date(입양날짜)"><br>
-                   <!--     </form>
-                      <form action="UploadService" method="post" enctype="multipart/form-data">
-                     <tr>
-                     <td>강아진 사진 : </td>
-                     <td><input type="file" value="파일 선택" name="file"/></td>
-                    </tr>
-                    <br>
-                    <div> </div>-->
-                     <input type="submit" value="Sign up" class="button fit" style="margin-right: 10px;"> 
-                     </form>
-                       </section>
-                 
-                  
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
+
                </article>
 
 				</div>
@@ -222,12 +200,6 @@ body {
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
-	<script>
-	$('#dog_imgFile').filebox({
-		buttonText : '파일 찾아보기',
-		buttonAlign : 'right'
-	});
-	</script>
 
 </body>
 </html>
