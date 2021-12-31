@@ -81,23 +81,28 @@
                                  <h5>
                                     환영합니다 <br><br>
                                     
-                                    <%
+                                    <%//여기에 넣어주는 곳에서 img값도 넣어서 가져와야한다 / 현재 memberDTO에 img를 넣을 곳이 없음 (추가해줘야함)
+                                   
                                        memberDTO dto = (memberDTO) session.getAttribute("dto");
                                     %>
                                     <%
                                        out.print(dto.getNickname());
-                                    %>
-                                    
-                                    님
+                                    %>님
                                  </h5><br>
 
                               </header>
                               
                               
                                     <%
-                                       out.print(dto.getNickname());
+                                    ServletContext context = getServletContext(); 
+                            		String saveDir = context.getRealPath("Upload");
+                                    System.out.println(saveDir+"BGM10.PNG");
+                                    
                                     %>
-                              <img src="images/마이페이지null사진.png" width=58%>
+                                    <!-- 그러면 자동적으로 값을 가져올꺼같음 -->
+                                    <img src="Upload/<%=dto.getFilename1()%>" width=58% />
+                             
+                             
 
                               <!-- Excerpt -->
                               <article class="box excerpt">
@@ -106,7 +111,7 @@
                                     <br>
                                     <h3>
                                        <%
-                                          out.print(dto.getId());
+                                         dto.getId();
                                        %>
                                     </h3>
                                  </header>
@@ -353,6 +358,7 @@
    <script src="assets/js/browser.min.js"></script>
    <script src="assets/js/breakpoints.min.js"></script>
    <script src="assets/js/util.js"></script>
+   <script type="text/javascript"> String img = {C:\Users\smhrd\Desktop\web(servlet)\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\DOGPRO_Final\Upload} + {images(실패시)4.jfif} </script>
    <!-- <script src="assets/js/main.js"></script> -->
 
 </body>

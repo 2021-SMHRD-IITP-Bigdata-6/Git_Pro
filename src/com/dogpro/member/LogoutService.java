@@ -9,10 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import com.inter.Command;
 
-public class LogoutService implements Command {
-
-	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+public class LogoutService implements Command{
+	   public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.removeAttribute("dto");
 

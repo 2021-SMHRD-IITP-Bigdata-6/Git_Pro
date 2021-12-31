@@ -12,12 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.dogpro.memberDAO.imgfileDAO;
+import com.inter.Command;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 
 @WebServlet("/UploadService")
-public class UploadService extends HttpServlet {
+public class UploadService extends HttpServlet implements Command {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -61,7 +62,7 @@ public class UploadService extends HttpServlet {
 					moveUrl = "Mainpage.jsp";
 				} else {
 					System.out.println("저장실패");
-					moveUrl = "LoginFalse.jsp";
+					moveUrl = "Login.jsp";
 				}
 				response.sendRedirect(moveUrl);
 			} catch (Exception e) {
@@ -73,8 +74,5 @@ public class UploadService extends HttpServlet {
 		return;
 	}
 
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
+	
 	}
-}

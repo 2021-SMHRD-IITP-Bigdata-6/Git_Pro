@@ -44,12 +44,13 @@ public class memberDAO {
             String m_dogWeight = rs.getString(7);
             String m_dogAge = rs.getString(8);
             String date = rs.getString(9);
+            String file = rs.getString(10);
 
             System.out.println(getid);
             System.out.println(getpw);
 
             if (dto1.getPw().equals(getpw)) {
-               dto = new memberDTO(getid, getpw, m_nick, m_phone, m_dogKind, dog_name, m_dogWeight, m_dogAge,date);
+               dto = new memberDTO(getid, getpw, m_nick, m_phone, m_dogKind, dog_name, m_dogWeight, m_dogAge,date,file);
             }
 
          }
