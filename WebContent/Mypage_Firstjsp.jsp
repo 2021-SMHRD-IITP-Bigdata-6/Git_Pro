@@ -1,12 +1,14 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="org.apache.catalina.tribes.util.Arrays"%>
 <%@page import="com.dogpro.memberDTO.memberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE HTML>
 <!--
-	Strongly Typed by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+   Strongly Typed by HTML5 UP
+   html5up.net | @ajlkn
+   Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
 <head>
@@ -45,8 +47,9 @@
 				<nav id="nav">
 					<ul>
 						<li><a class="icon solid fa-home" href="Mainpage.jsp"><span>메인페이지</span></a></li>
-						
-						<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>두번째 탭</span></a></li>
+
+						<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>두번째
+									탭</span></a></li>
 						<li><a class="icon solid fa-retweet"
 							href="right-sidebar.html"><span>Right Sidebar</span></a></li>
 						<li><a class="icon solid fa-sitemap" href="LogoutCon.do">로그아웃</a>
@@ -74,11 +77,11 @@
 											<h3>
 												환영합니다 <br>
 												<%
-													memberDTO dto = (memberDTO) session.getAttribute("dto");
-												%>
+                                       memberDTO dto = (memberDTO) session.getAttribute("dto");
+                                    %>
 												<%
-													out.print(dto.getNickname());
-												%>
+                                       out.print(dto.getNickname());
+                                    %>
 												님
 											</h3>
 
@@ -91,16 +94,23 @@
 
 												<br>
 												<h3>
-													<a href="#"><%dto.getId();%></a>
+													<%dto.getId();%>
 												</h3>
 											</header>
-											<p><%out.print(dto.getDogname());%>와(과) 함께한지 <br><%out.print( dto.getDate()); %>일째</p>
+											<p>
+											
+											        				 		
+											 
+											
+												<%out.print(dto.getDogname());%>와(과) 함께한지 <br>
+												<%out.print(dto.getDate()); %>일째
+											</p>
 										</article>
 
 										<!--  <p>Phasellus </p>-->
 										<ul class="actions">
-											<li><a href="회원정보수정.jsp" class="button icon solid fa-file">회원
-													정보 수정</a></li>
+											<li><a href="회원정보수정.jsp"
+												class="button icon solid fa-file">회원 정보 수정</a></li>
 										</ul>
 									</article>
 
@@ -117,23 +127,24 @@
 						<article class="box post">
 							<header>
 								<h5>반려견 정보</h5>
-								<br>
+
 								<h5>
 									<%
-										out.print(dto.getNickname()+" ");
-									%>님의 반려견
+                              out.print(dto.getNickname());
+                           %>님의 반려견
 									<%
-										out.print(dto.getDogname()+" ");
-									%>는
+                              out.print("   " + dto.getDogname());
+                           %>는
 									<%
-										out.print(dto.getDogage()+" ");
-									%>살의
+                              out.print("   " + dto.getDogage());
+                           %>살의
 									<%
-										out.print(dto.getDogweight()+" ");
-									%>kg의
+                              out.print("   " + dto.getDogweight());
+                           %>kg의
 									<%
-										String userDogKind = dto.getDogkind(); //사용자의 개의 종류
-									%>입니다.
+                              String userDogKind = dto.getDogkind(); //사용자의 개의 종류
+                              out.print("   " + userDogKind);
+                           %>입니다.
 								</h5>
 								<p class="chart_info"></p>
 								<br>
@@ -141,82 +152,88 @@
 
 							<!-- 차트 -->
 							<div>
-							
-							
+
+
 								<script type="text/javascript"
 									src="https://www.gstatic.com/charts/loader.js"></script>
 								<script src="./assets/js/jquery.min.js"></script>
 								<script type="text/javascript">
-								let userDogKind = "<%=userDogKind%>"; //사용자의 강아지 종류를 가져옴!
-								$.ajax({
-									url:"GetDogInfo",
-									type : "get",
-									data:{
-										kind:userDogKind
-									},
-									success:function(){
-										//alert("성공");
-									},
-									error:function(){
-										//alert("실패");
-									}						
-										
-								});
-								
-								console.log("test"+userDogKind);
-									google.charts.load("current", {
-										packages : [ 'corechart' ]
-									});
-									google.charts.setOnLoadCallback(drawChart);
-									function drawChart() {
-								
-										var data = google.visualization
-												.arrayToDataTable([
-														["분류", "값",{role : "style"} ],
-														[ "나이", <%=dto.getDogage()%>,"pink" ],
-														[ "몸무게",<%=dto.getDogweight()%>,"#ed786a" ],
-														[ "평균", 8,"silver" ],
-														[ "최대", 2.5, "silver" ],
-													 ]);
-													 
-										
-										/* var data = google.visualization
-										.arrayToDataTable([
-												[
-														"Element","Density",{role : "style"} ],
-												[ "Copper", 8.94,"#b87333" ],
-												[ "Silver", 10.49,"silver" ],
-												[ "Gold", 19.30, "gold" ],
-												[ "Platinum", 21.45,
-														"color: #e5e4e2" ] ]); */
-										
-										console.log(data);
-										var view = new google.visualization.DataView(
-												data);
-										view.setColumns([ 0, 1, {
-											calc : "stringify",
-											sourceColumn : 1,
-											type : "string",
-											role : "annotation"
-										}, 2 ]);
+                        let userDogKind = "<%=userDogKind%>"; //사용자의 강아지 종류를 가져옴!
+                        $.ajax({
+                           url:"GetDogInfo",
+                           type : "get",
+                           data:{
+                              kind:userDogKind
+                           },
+                           success:function(){
+                              //alert("성공");
+                           },
+                           error:function(){
+                              //alert("실패");
+                           }                  
+                              
+                        });
+                        
+                        
+                        <% //시도 1
+                           String[] dogData = (String[])request.getAttribute("dogData");
+                         System.out.println(Arrays.toString(dogData));
+                         %>
+                        
+                        console.log("test"+userDogKind);
+                           google.charts.load("current", {
+                              packages : [ 'corechart' ]
+                           });
+                           google.charts.setOnLoadCallback(drawChart);
+                           function drawChart() {
+                        
+                              var data = google.visualization
+                                    .arrayToDataTable([
+                                          ["분류", "값",{role : "style"} ],
+                                          [ "나이", <%=dto.getDogage()%>,"pink" ],
+                                          [ "몸무게",<%=dto.getDogweight()%>,"#ed786a" ],
+                                          [ "평균 몸무게", <%//dogData[0]%>,"silver" ],
+                                          [ "최대 몸무게", <%//dogData[1];%>, "silver" ],
+                                        ]);
+                                        
+                              
+                              /* var data = google.visualization
+                              .arrayToDataTable([
+                                    [
+                                          "Element","Density",{role : "style"} ],
+                                    [ "Copper", 8.94,"#b87333" ],
+                                    [ "Silver", 10.49,"silver" ],
+                                    [ "Gold", 19.30, "gold" ],
+                                    [ "Platinum", 21.45,
+                                          "color: #e5e4e2" ] ]); */
+                              
+                              console.log(data);
+                              var view = new google.visualization.DataView(
+                                    data);
+                              view.setColumns([ 0, 1, {
+                                 calc : "stringify",
+                                 sourceColumn : 1,
+                                 type : "string",
+                                 role : "annotation"
+                              }, 2 ]);
 
-										var options = {
-											title : "",
-											width : 800,
-											height : 500,
-											bar : {
-												groupWidth : "60%"
-											},
-											legend : {
-												position : "none"
-											},
-										};
-										var chart = new google.visualization.ColumnChart(
-												document
-														.getElementById("columnchart_values"));
-										chart.draw(view, options);
-									}
-								</script>
+                              var options = {
+                                 title : "",
+                                 width : 800,
+                                 height : 500,
+                                 bar : {
+                                    groupWidth : "60%"
+                                 },
+                                 legend : {
+                                    position : "none"
+                                 },
+                              };
+                              var chart = new google.visualization.ColumnChart(
+                                    document
+                                          .getElementById("columnchart_values"));
+                              chart.draw(view, options);
+                           }
+                        </script>
 								<div id="columnchart_values"
 									style="width: 900px; height: 300px;"></div>
 							</div>
