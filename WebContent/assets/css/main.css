@@ -1468,9 +1468,7 @@ input, select, textarea {
 
 /* Sections/Article */
 
-	section, article {
-		margin-bottom: 3em;
-	}
+	
 
 	section > :last-child,
 	article > :last-child,
@@ -2084,7 +2082,7 @@ input, select, textarea {
 		overflow: hidden;
 		background: #fff;
 		text-align: center;
-		padding: 6em 0;
+		padding: 0;
 	}
 
 		#features p {
