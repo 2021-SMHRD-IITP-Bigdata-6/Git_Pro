@@ -39,6 +39,7 @@ public class UploadService extends HttpServlet {
 		if (isMulti) {
 			MultipartRequest multi = new MultipartRequest(request, saveDir, maxSize, encoding,
 					new DefaultFileRenamePolicy());
+			request.setCharacterEncoding("utf-8");
 			imgfileDAO dao = new imgfileDAO();
 
 			String id= multi.getParameter("m_id1");
@@ -54,14 +55,14 @@ public class UploadService extends HttpServlet {
 			
 			
 			try {
-				int result = dao.uploadFile(id,pw,tel,nick,dogname,dogkind,dogage,dogweight,file,adoptdate);
+				int result = dao.uploadFile(id,pw,tel,nick,dogname,dogkind,dogage,dogweight,adoptdate,file);
 				String moveUrl = "";
 				if (result > 0) {
 					System.out.println("저장완료");
-					moveUrl = "selectService";
+					moveUrl = "Mainpage.jsp";
 				} else {
 					System.out.println("저장실패");
-					moveUrl = "Upload.html";
+					moveUrl = "Login.jsp";
 				}
 				response.sendRedirect(moveUrl);
 			} catch (Exception e) {
@@ -70,6 +71,11 @@ public class UploadService extends HttpServlet {
 		} else {
 			System.out.println("일반 전송 form 입니다.");
 		}
+		return;
+	}
 
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
 	}
 }

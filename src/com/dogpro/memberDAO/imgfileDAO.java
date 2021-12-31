@@ -82,6 +82,17 @@ public class imgfileDAO {
 		psmt.setString(9, adoptdate);
 		psmt.setString(10, file);
 		
+		System.out.println(id);
+		System.out.println(pw);
+		System.out.println(nick);
+		System.out.println(tel);
+		System.out.println(dogkind);
+		System.out.println(dogname);
+		System.out.println(dogweight);
+		System.out.println(dogage);
+		System.out.println(adoptdate);
+		System.out.println(file);
+		
 
 		result = psmt.executeUpdate();
 

@@ -167,7 +167,7 @@ body {
                      <section>
                      <br>
                      <h5>회원가입</h5>
-                     <form action="JoinCon.do" method="post">
+                     <form action="UploadService" method="post" enctype="multipart/form-data">
                      <input type="text" name="m_id1" placeholder="ID"><br>
                      <input type="password" name="m_pw1" placeholder="PW"><br>
                      <input type="text" name="m_tel" placeholder="Nickname"><br>
@@ -176,7 +176,11 @@ body {
                      <input type="text" name="m_dog" placeholder="DogKind"><br>
                      <input type="text" name="m_dogage" placeholder="DogAge"><br>
                      <input type="text" name="m_dogweight" placeholder="DogWeight"><br>
-                     
+                     <tr>
+              		 <td>강아진 사진 : </td>
+              		 <td><input type="file" value="파일 선택" name="file"/></td>
+          			 </tr><br>
+          			 <img src="Upload/images.jpg"><br>
                      <input type="submit" value="Sign up" class="button fit" style="margin-right: 10px;">
                      </form>
                      </section>
