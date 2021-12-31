@@ -47,12 +47,11 @@ public class UploadService extends HttpServlet {
 			String tel= multi.getParameter("m_tel");
 			String nick = multi.getParameter("m_nick");
 			String dogname = multi.getParameter("m_dogname");
-			String dogkind = multi.getParameter("m_dogkind");
+			String dogkind = multi.getParameter("m_dog");
 			String dogage = multi.getParameter("m_dogage");
 			String dogweight = multi.getParameter("m_dogweight");
-			String adoptdate = multi.getParameter("adoptdate");
-			String file = multi.getFilesystemName("file");
-			
+			String adoptdate = multi.getParameter("date");
+			String file = multi.getFilesystemName("filename1");
 			
 			try {
 				int result = dao.uploadFile(id,pw,tel,nick,dogname,dogkind,dogage,dogweight,adoptdate,file);
@@ -62,7 +61,7 @@ public class UploadService extends HttpServlet {
 					moveUrl = "Mainpage.jsp";
 				} else {
 					System.out.println("저장실패");
-					moveUrl = "Login.jsp";
+					moveUrl = "LoginFalse.jsp";
 				}
 				response.sendRedirect(moveUrl);
 			} catch (Exception e) {

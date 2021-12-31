@@ -174,11 +174,7 @@ public class memberDAO {
       try {
          getConn();
 
-<<<<<<< HEAD
-			String sql = "select * from t_member where id = ?";
-=======
-         String sql = "select * from member_message where id = ?";
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
+         String sql = "select * from t_member where id = ?";
 
          psmt = conn.prepareStatement(sql);
 

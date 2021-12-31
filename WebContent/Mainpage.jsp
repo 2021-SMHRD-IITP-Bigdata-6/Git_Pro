@@ -97,22 +97,29 @@
 	margin: 20px;
 }
 </style>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
       google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
+          ['조단백',     38],
+          ['조지방',      20],
+          ['탄수화물',  17],
+          ['조회분', 8],
+          ['수분',    12],
+          ['칼슘',    1.4],
+          ['인',    1.1],
+          ['오메가6',    3],
+          ['오메가3',    1.1],
+          ['DHA',    0.4],
+          ['EPA',    0.3]
         ]);
 
         var options = {
-          title: 'My Daily Activities',
+          title: '사료성분(100g 당)',
           pieHole: 0.4,
         };
 
@@ -190,12 +197,13 @@
 					<%out.print(cnt); %>
 					번째 방문자 입니다 ♥
 				</h1>
-				<br><br><br>
+				<br>
+				<br>
+				<br>
 				<%
             } else {
          %>
-				<h style= " font-size: xx-large;" >
-					<strong> <%
+				<h style=" font-size: xx-large;"> <strong> <%
                out.print(dto.getNickname());
             %></strong>님 환영합니다.
 				</h1>
@@ -298,134 +306,141 @@
 
 			<br>
 			<h2 align="left" style="float: left; margin-left: 90px;">기능별 사료
-			검색</h2>
+				검색</h2>
+			<br> <br>
 			<br>
-			<br><br><br>
-			<h6 align="left" style="float: left; margin-left: 90px;">기능별 사료 검색에 대한 설명!</h6>
-			<br><br>
+			<br>
+			<h6 align="left" style="float: left; margin-left: 90px;">기능별 사료
+				검색에 대한 설명!</h6>
+			<br>
+			<br>
 	</section>
-	
-<<<<<<< HEAD
-		<!-- 일반쇼팡 -->
-		<section>
-			
-					<img id="imgfood" src="images/터키앤치킨독.jpg"> <img id="imgfood"
-						src="images/터키앤치킨독.jpg"> <img id="imgfood"
-						src="images/터키앤치킨독.jpg"> <img id="imgfood"
-						src="images/터키앤치킨독.jpg"> <img id="imgfood"
-						src="images/터키앤치킨독.jpg">
-				<h2 align="right" style="float: left; margin-left:550px;">  </h2>
-					<img id="imgfood" src="images/터키앤치킨독.jpg"> <img id="imgfood"
-						src="images/터키앤치킨독.jpg"> <img id="imgfood"
-						src="images/터키앤치킨독.jpg"> 
-				</section>
-		<div id="donutchart" style="width: 900px; height: 500px;"></div>
-=======
 
 
+	<!-- 일반쇼팡 -->
+	<section>
 
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
-	
+		<img id="imgfood" src="images/터키앤치킨독.jpg"> <img id="imgfood"
+			src="images/터키앤치킨독.jpg"> <img id="imgfood"
+			src="images/터키앤치킨독.jpg"> <img id="imgfood"
+			src="images/터키앤치킨독.jpg"> <img id="imgfood"
+			src="images/터키앤치킨독.jpg">
+		<h2 align="right" style="float: left; margin-left: 550px;"></h2>
+		<img id="imgfood" src="images/터키앤치킨독.jpg"> <img id="imgfood"
+			src="images/터키앤치킨독.jpg"> <img id="imgfood"
+			src="images/터키앤치킨독.jpg">
+	</section>
+	<div id="donutchart" style="width: 900px; height: 500px;"></div>
+
 	<section id="features">
-		
-		<select id="browsers" name="browsers" class="browsers" onchange="selectBoxChange1(this.value);">
-			<option>기능</option>
-			<option value="종합비타민">종합비타민</option>
-			<option value="향산화">향산화</option>
-			<option value="식욕증진">식욕증진</option>
-			<option value="영양공급">영양공급</option>
-			<option value="결석예방">결석예방</option>
-			<option value="보습">보습</option>
-			<option value="구강관리">구강관리</option>
-			<option value="냄새제거">냄새제거</option>
-			<option value="다이어트">다이어트</option>
-			<option value="중성화">중성화</option>
-			<option value="인도어">인도어</option>
-			<option value="눈물개선">눈물개선</option>
-			<option value="눈건강">눈건강</option>
-			<option value="저알러지">저알러지</option>
-			<option value="피부개선">피부개선</option>
-			<option value="털개선">털개선</option>
-			<option value="러너리비뇨계">러너리비뇨계</option>
-			<option value="뼈관절강화">뼈관절강화</option>
-			<option value="퍼포먼스">퍼포먼스</option>
-			<option value="소화 장기능 개선">소화 장기능 개선</option>
-			<option value="치석제거">치석제거</option>
-			<option value="체중유지">체중유지</option>
-			<option value="처방식">처방식</option>
-			<option value="신장요로">신장요로</option>
-		</select> 
-		<select id="browsers1" name="browsers1" class="browsers1"onchange="selectBoxChange2(this.value);">
-			<option>기능</option>
-			<option value="종합비타민">종합비타민</option>
-			<option value="향산화">향산화</option>
-			<option value="식욕증진">식욕증진</option>
-			<option value="영양공급">영양공급</option>
-			<option value="결석예방">결석예방</option>
-			<option value="보습">보습</option>
-			<option value="구강관리">구강관리</option>
-			<option value="냄새제거">냄새제거</option>
-			<option value="다이어트">다이어트</option>
-			<option value="중성화">중성화</option>
-			<option value="인도어">인도어</option>
-			<option value="눈물개선">눈물개선</option>
-			<option value="눈건강">눈건강</option>
-			<option value="저알러지">저알러지</option>
-			<option value="피부개선">피부개선</option>
-			<option value="털개선">털개선</option>
-			<option value="러너리비뇨계">러너리비뇨계</option>
-			<option value="뼈관절강화">뼈관절강화</option>
-			<option value="퍼포먼스">퍼포먼스</option>
-			<option value="소화 장기능 개선">소화 장기능 개선</option>
-			<option value="치석제거">치석제거</option>
-			<option value="체중유지">체중유지</option>
-			<option value="처방식">처방식</option>
-			<option value="신장요로">신장요로</option>
-		</select> <select id="browsers2" name="browsers2" class="browsers2"onchange="selectBoxChange3(this.value);">
-			<option>기능</option>
-			<option value="종합비타민">종합비타민</option>
-			<option value="향산화">향산화</option>
-			<option value="식욕증진">식욕증진</option>
-			<option value="영양공급">영양공급</option>
-			<option value="결석예방">결석예방</option>
-			<option value="보습">보습</option>
-			<option value="구강관리">구강관리</option>
-			<option value="냄새제거">냄새제거</option>
-			<option value="다이어트">다이어트</option>
-			<option value="중성화">중성화</option>
-			<option value="인도어">인도어</option>
-			<option value="눈물개선">눈물개선</option>
-			<option value="눈건강">눈건강</option>
-			<option value="저알러지">저알러지</option>
-			<option value="피부개선">피부개선</option>
-			<option value="털개선">털개선</option>
-			<option value="러너리비뇨계">러너리비뇨계</option>
-			<option value="뼈관절강화">뼈관절강화</option>
-			<option value="퍼포먼스">퍼포먼스</option>
-			<option value="소화 장기능 개선">소화 장기능 개선</option>
-			<option value="치석제거">치석제거</option>
-			<option value="체중유지">체중유지</option>
-			<option value="처방식">처방식</option>
-			<option value="신장요로">신장요로</option>
-		</select>
-		<br><br>
-</section>
 
-		<!-- 일반쇼팡 -->
-		<section id="features">
+		<select id="browsers" name="browsers" class="browsers"
+			onchange="selectBoxChange1(this.value);">
+			<option>기능</option>
+			<option value="종합비타민">종합비타민</option>
+			<option value="향산화">향산화</option>
+			<option value="식욕증진">식욕증진</option>
+			<option value="영양공급">영양공급</option>
+			<option value="결석예방">결석예방</option>
+			<option value="보습">보습</option>
+			<option value="구강관리">구강관리</option>
+			<option value="냄새제거">냄새제거</option>
+			<option value="다이어트">다이어트</option>
+			<option value="중성화">중성화</option>
+			<option value="인도어">인도어</option>
+			<option value="눈물개선">눈물개선</option>
+			<option value="눈건강">눈건강</option>
+			<option value="저알러지">저알러지</option>
+			<option value="피부개선">피부개선</option>
+			<option value="털개선">털개선</option>
+			<option value="러너리비뇨계">러너리비뇨계</option>
+			<option value="뼈관절강화">뼈관절강화</option>
+			<option value="퍼포먼스">퍼포먼스</option>
+			<option value="소화 장기능 개선">소화 장기능 개선</option>
+			<option value="치석제거">치석제거</option>
+			<option value="체중유지">체중유지</option>
+			<option value="처방식">처방식</option>
+			<option value="신장요로">신장요로</option>
+		</select> <select id="browsers1" name="browsers1" class="browsers1"
+			onchange="selectBoxChange2(this.value);">
+			<option>기능</option>
+			<option value="종합비타민">종합비타민</option>
+			<option value="향산화">향산화</option>
+			<option value="식욕증진">식욕증진</option>
+			<option value="영양공급">영양공급</option>
+			<option value="결석예방">결석예방</option>
+			<option value="보습">보습</option>
+			<option value="구강관리">구강관리</option>
+			<option value="냄새제거">냄새제거</option>
+			<option value="다이어트">다이어트</option>
+			<option value="중성화">중성화</option>
+			<option value="인도어">인도어</option>
+			<option value="눈물개선">눈물개선</option>
+			<option value="눈건강">눈건강</option>
+			<option value="저알러지">저알러지</option>
+			<option value="피부개선">피부개선</option>
+			<option value="털개선">털개선</option>
+			<option value="러너리비뇨계">러너리비뇨계</option>
+			<option value="뼈관절강화">뼈관절강화</option>
+			<option value="퍼포먼스">퍼포먼스</option>
+			<option value="소화 장기능 개선">소화 장기능 개선</option>
+			<option value="치석제거">치석제거</option>
+			<option value="체중유지">체중유지</option>
+			<option value="처방식">처방식</option>
+			<option value="신장요로">신장요로</option>
+		</select> <select id="browsers2" name="browsers2" class="browsers2"
+			onchange="selectBoxChange3(this.value);">
+			<option>기능</option>
+			<option value="종합비타민">종합비타민</option>
+			<option value="향산화">향산화</option>
+			<option value="식욕증진">식욕증진</option>
+			<option value="영양공급">영양공급</option>
+			<option value="결석예방">결석예방</option>
+			<option value="보습">보습</option>
+			<option value="구강관리">구강관리</option>
+			<option value="냄새제거">냄새제거</option>
+			<option value="다이어트">다이어트</option>
+			<option value="중성화">중성화</option>
+			<option value="인도어">인도어</option>
+			<option value="눈물개선">눈물개선</option>
+			<option value="눈건강">눈건강</option>
+			<option value="저알러지">저알러지</option>
+			<option value="피부개선">피부개선</option>
+			<option value="털개선">털개선</option>
+			<option value="러너리비뇨계">러너리비뇨계</option>
+			<option value="뼈관절강화">뼈관절강화</option>
+			<option value="퍼포먼스">퍼포먼스</option>
+			<option value="소화 장기능 개선">소화 장기능 개선</option>
+			<option value="치석제거">치석제거</option>
+			<option value="체중유지">체중유지</option>
+			<option value="처방식">처방식</option>
+			<option value="신장요로">신장요로</option>
+		</select> <br>
+		<br>
+	</section>
 
-			<img src ="https://shop-phinf.pstatic.net/20211227_179/16405672092604Xbf3_PNG/41703043034370750_331789386.png?type=m510" id="imgfood"  style=""> <img id="imgfood"
-				src="https://shop-phinf.pstatic.net/20190816_56/ymy3610_1565895228726Xcyrw_JPEG/3258617282284687_474009739.jpg?type=m510"> <img id="imgfood"
-				src="https://shop-phinf.pstatic.net/20190816_208/ymy3610_1565893948450ro5hf_JPEG/3255491042927899_1148679319.jpg?type=m510"> <img id="imgfood"
-				src="https://shop-phinf.pstatic.net/20200701_236/1593615442594HzO58_JPEG/30976181189313696_1668720815.jpg?type=m510">
-				</section>
-				<section id=features>
-				 <img id="imgfood"
-				src="https://shop-phinf.pstatic.net/20190425_62/jdog_1556162663833Jo0TX_JPEG/38793843487881718_1163767463.jpg?type=m510">
-			<img id="imgfood" src="https://shop-phinf.pstatic.net/20211227_297/1640567258711SSGk2_PNG/41703092464969437_2001816975.png?type=m510" > <img id="imgfood"
-				src="https://shop-phinf.pstatic.net/20190816_166/ymy3610_15658898547371n7ju_JPEG/3253243294775728_1306003153.jpg?type=m510"> <img id="imgfood"
-				src="https://shop-phinf.pstatic.net/20211124_72/1637737440095jPQSV_JPEG/38873335829819376_918322601.jpg?type=m510">
-		</section>
+	<!-- 일반쇼팡 -->
+	<section id="features">
+
+		<img
+			src="https://shop-phinf.pstatic.net/20211227_179/16405672092604Xbf3_PNG/41703043034370750_331789386.png?type=m510"
+			id="imgfood" style=""> <img id="imgfood"
+			src="https://shop-phinf.pstatic.net/20190816_56/ymy3610_1565895228726Xcyrw_JPEG/3258617282284687_474009739.jpg?type=m510">
+		<img id="imgfood"
+			src="https://shop-phinf.pstatic.net/20190816_208/ymy3610_1565893948450ro5hf_JPEG/3255491042927899_1148679319.jpg?type=m510">
+		<img id="imgfood"
+			src="https://shop-phinf.pstatic.net/20200701_236/1593615442594HzO58_JPEG/30976181189313696_1668720815.jpg?type=m510">
+	</section>
+	<section id=features>
+		<img id="imgfood"
+			src="https://shop-phinf.pstatic.net/20190425_62/jdog_1556162663833Jo0TX_JPEG/38793843487881718_1163767463.jpg?type=m510">
+		<img id="imgfood"
+			src="https://shop-phinf.pstatic.net/20211227_297/1640567258711SSGk2_PNG/41703092464969437_2001816975.png?type=m510">
+		<img id="imgfood"
+			src="https://shop-phinf.pstatic.net/20190816_166/ymy3610_15658898547371n7ju_JPEG/3253243294775728_1306003153.jpg?type=m510">
+		<img id="imgfood"
+			src="https://shop-phinf.pstatic.net/20211124_72/1637737440095jPQSV_JPEG/38873335829819376_918322601.jpg?type=m510">
+	</section>
 
 
 	<!-- Scripts -->
@@ -436,7 +451,7 @@
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
 
-<script type="text/javascript">
+	<script type="text/javascript">
 var selectBoxChange1 = function (value) {
 	console.log("첫번째 선택한 기능 : "+ value);
 	$("#changeInput").val(value);
