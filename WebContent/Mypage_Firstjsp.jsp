@@ -296,8 +296,8 @@
                         <br>
 
                      </header>
-                     <p>나이에 따른 추천 사료</p>
-                     <div>
+                     <p>나이에 따른 추천 사료</p> <!-- 나이 값이  -->
+                     <div> 
                         <img style="margin: 10px;" src="images/터키앤치킨독.jpg" width=30%;>
                         <img style="margin: 10px;" src="images/터키앤치킨독.jpg" width=30%;>
                         <img style="margin: 10px;" src="images/터키앤치킨독.jpg" width=30%;>
