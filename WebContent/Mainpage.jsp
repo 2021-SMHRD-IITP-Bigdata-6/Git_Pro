@@ -379,8 +379,10 @@ how?
 
 
 -->
+		
+		
 		<%if (dto == null) {%> 
-		<div style="width: 1200px; height: 2000px; margin-left: 333px;">
+		  <div style="width: 1200px; height: 2000px; margin-left: 333px;">
 			<%  for(int i=0 ; i<9 ; i++){
                 %>
 			<div style="float: right; width: 380px; height: 620px; margin-left:">
@@ -405,7 +407,9 @@ how?
 			</div>
 			<%     }}%>
 			
-		</div>
+		</div>-->
+		
+		
 
 		<!-- <img src ="https://shop-phinf.pstatic.net/20211227_179/16405672092604Xbf3_PNG/41703043034370750_331789386.png?type=m510" id="imgfood"  style=""> <img id="imgfood"
 				src="https://shop-phinf.pstatic.net/20190816_56/ymy3610_1565895228726Xcyrw_JPEG/3258617282284687_474009739.jpg?type=m510"> <img id="imgfood"
