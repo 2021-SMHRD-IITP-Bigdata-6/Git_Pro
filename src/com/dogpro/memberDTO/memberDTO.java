@@ -10,10 +10,11 @@ public class memberDTO {
    private String pw;
    private String tel;
    private String date;
+   private String filename1;
 
     // 회원가입
    public memberDTO(String id, String pw, String nickname, String tel, String dogkind, String dogname,
-         String dogweight, String dogage, String date) {
+         String dogweight, String dogage, String date,String file) {
       super();
       this.id = id;
       this.pw = pw;
@@ -24,9 +25,11 @@ public class memberDTO {
       this.dogage = dogage;
       this.dogweight = dogweight;
       this.date = date;
+	  this.filename1 = file;
    }
 
-   // 회원정보수정
+
+// 회원정보수정
    public memberDTO(String dogkind, String dogage, String dogweight, String dogname, String nickname, String tel, String date) {
       super();
       this.dogkind = dogkind;
@@ -135,5 +138,11 @@ public class memberDTO {
    public void setTel(String tel) {
       this.tel = tel;
    }
+	public String getFilename1() {
+		return filename1;
+	}
+	public void setFilename1(String file) {
+		this.filename1 = file;
+	}
 
 }
