@@ -7,56 +7,36 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import com.dogpro.memberDTO.foodDTO;
 import com.dogpro.memberDTO.memberDTO;
 
 public class memberDAO {
-<<<<<<< HEAD
    Connection conn = null;
    PreparedStatement psmt = null;
    ResultSet rs = null;
-=======
-	Connection conn = null;
-	PreparedStatement psmt = null;
-	ResultSet rs = null;
-
-	String sql = "";
-	int cnt = 0;
-	int cnt1 = 0;
-	memberDTO dto = null;
-	foodDTO fdto = null;
-	private boolean check;
-	private String id;
-	ArrayList<foodDTO> farr = new ArrayList<foodDTO>();
-	
-	public memberDTO Login(memberDTO dto1,HttpServletRequest request) {
-		
-		try {
-			getConn();
-			
-			System.out.println("Login 메소드입니다.");
-			System.out.println("무슨 id?" + dto1.getId()); // DB 에서 가져온 id값
-			System.out.println("무슨 pw?" + dto1.getPw()); // DB 에서 가져온 pw값
-			sql = "select * from t_member where m_id= ? and m_pw= ?";
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
-
+   String sql = "";
    int cnt = 0;
    int cnt1 = 0;
    memberDTO dto = null;
+   foodDTO fdto = null;
    private boolean check;
    private String id;
-
+   ArrayList<foodDTO> farr = new ArrayList<foodDTO>();
    
-   public memberDTO Login(memberDTO dto1) {
+   public memberDTO Login(memberDTO dto1,HttpServletRequest request) {
+      
       try {
          getConn();
+         
          System.out.println("Login 메소드입니다.");
-         System.out.println("무슨 id?"+dto1.getId()); //DB 에서 가져온 id값 
-         System.out.println("무슨 pw?"+dto1.getPw()); //DB 에서 가져온 pw값
-         String sql = "select * from t_member where m_id= ? and m_pw= ?";
+         System.out.println("무슨 id?" + dto1.getId()); // DB 에서 가져온 id값
+         System.out.println("무슨 pw?" + dto1.getPw()); // DB 에서 가져온 pw값
+         sql = "select * from t_member where m_id= ? and m_pw= ?";
 
          psmt = conn.prepareStatement(sql);
-         psmt.setString(1, dto1.getId()); 
+         psmt.setString(1, dto1.getId());
          psmt.setString(2, dto1.getPw());
 
          rs = psmt.executeQuery();
@@ -77,9 +57,59 @@ public class memberDAO {
             System.out.println(getpw);
 
             if (dto1.getPw().equals(getpw)) {
-               dto = new memberDTO(getid, getpw, m_nick, m_phone, m_dogKind, dog_name, m_dogWeight, m_dogAge,date,file);
-            }
+               dto = new memberDTO(getid, getpw, m_nick, m_phone, m_dogKind, dog_name, m_dogWeight, m_dogAge,
+                     date, file);
+               HttpSession session = request.getSession();
+               session.setAttribute("dto", dto);
+               
+               sql = "select * from t_food ";
 
+               psmt = conn.prepareStatement(sql);
+
+               rs = psmt.executeQuery();
+               
+               while (rs.next()) {
+                  
+               
+               
+               String f_SEQ = rs.getString(1);
+               String f_NAME = rs.getString(2);
+               String f_TYPE = rs.getString(3);
+               String f_VITAMIN = rs.getString(4);
+               String f_ANTIOXIDATION = rs.getString(5);
+               String f_APPETITE = rs.getString(6);
+               String f_NUTRITION = rs.getString(7);
+               String f_STONE = rs.getString(8);
+               String f_HUMIDITY = rs.getString(9);
+               String f_MOUTH = rs.getString(10);
+               String f_SMELL = rs.getString(11);
+               String f_DIET = rs.getString(12);
+               String f_NEUTRAL = rs.getString(13);
+               String f_INDOOR = rs.getString(14);
+               String f_TEAR = rs.getString(15);
+               String f_EYE = rs.getString(16);
+               String f_ALLERGY = rs.getString(17);
+               String f_SKIN = rs.getString(18);
+               String f_FUR = rs.getString(19);
+               String f_URINATION = rs.getString(20);
+               String f_BONE = rs.getString(21);
+               String f_PERFORMANCE = rs.getString(22);
+               String f_DIGESTIVE = rs.getString(23);
+               String f_TOOTH = rs.getString(24);
+               String f_WEIGHT = rs.getString(25);
+               String f_REMEDY = rs.getString(26);
+               String f_KIDNEY = rs.getString(27);
+               String f_SITE = rs.getString(28);
+               String f_PRICE = rs.getString(29);
+               String f_IMG = rs.getString(30);
+
+               fdto = new foodDTO(f_SEQ, f_NAME, f_TYPE, f_VITAMIN, f_ANTIOXIDATION, f_APPETITE, f_NUTRITION,
+                     f_STONE, f_HUMIDITY, f_MOUTH, f_SMELL, f_DIET, f_NEUTRAL, f_INDOOR, f_TEAR, f_EYE,
+                     f_ALLERGY, f_SKIN, f_FUR, f_URINATION, f_BONE, f_PERFORMANCE, f_DIGESTIVE, f_TOOTH,
+                     f_WEIGHT, f_REMEDY, f_KIDNEY, f_SITE, f_PRICE, f_IMG);
+               session.setAttribute("fdto", fdto);
+            }
+            }
          }
       } catch (Exception e) {
          System.out.println("클래스파일 로딩실패");
@@ -92,7 +122,8 @@ public class memberDAO {
       return dto;
    }
 
-   public int Update(String nick, String tel, String dogname, String dogkind, String dogage,String dogweight, String adoptdate, String id) {
+   public int Update(String nick, String tel, String dogname, String dogkind, String dogage, String dogweight,
+         String adoptdate, String id) {
 
       try {
          getConn();
@@ -112,7 +143,6 @@ public class memberDAO {
          psmt.setInt(6, numWeight);
          psmt.setString(7, adoptdate);
          psmt.setString(8, id);
-         
 
          // 6. SQL명령문 실행
          cnt = psmt.executeUpdate();
@@ -130,15 +160,6 @@ public class memberDAO {
       }
       return cnt;
    }
-
-<<<<<<< HEAD
-
-
-=======
-		}} catch (Exception e) {
-			System.out.println("클래스파일 로딩실패");
-			e.printStackTrace();
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
 
    public int Join(memberDTO dto) {
 
@@ -171,46 +192,67 @@ public class memberDAO {
 
    }
 
-   // dog_list dao
+   public ArrayList<foodDTO> selectFood() {
 
-   // public ArrayList<memberDTO> selectMember() {
+      ArrayList<foodDTO> arr = new ArrayList<foodDTO>();
 
-   // ArrayList<memberDTO> arr = new ArrayList<memberDTO>();
+      try {
+         getConn();
 
-   // try {
-   // getConn();
+         String sql = "select * from t_food order by f_price ";
+         psmt = conn.prepareStatement(sql);
+         rs = psmt.executeQuery();
 
-   // String sql = "select * from t_member";
-   // psmt = conn.prepareStatement(sql);
-   // rs = psmt.executeQuery();
+         while (rs.next() == true) {
+            String f_SEQ = rs.getString(1);
+            String f_NAME = rs.getString(2);
+            String f_TYPE = rs.getString(3);
+            String f_VITAMIN = rs.getString(4);
+            String f_ANTIOXIDATION = rs.getString(5);
+            String f_APPETITE = rs.getString(6);
+            String f_NUTRITION = rs.getString(7);
+            String f_STONE = rs.getString(8);
+            String f_HUMIDITY = rs.getString(9);
+            String f_MOUTH = rs.getString(10);
+            String f_SMELL = rs.getString(11);
+            String f_DIET = rs.getString(12);
+            String f_NEUTRAL = rs.getString(13);
+            String f_INDOOR = rs.getString(14);
+            String f_TEAR = rs.getString(15);
+            String f_EYE = rs.getString(16);
+            String f_ALLERGY = rs.getString(17);
+            String f_SKIN = rs.getString(18);
+            String f_FUR = rs.getString(19);
+            String f_URINATION = rs.getString(20);
+            String f_BONE = rs.getString(21);
+            String f_PERFORMANCE = rs.getString(22);
+            String f_DIGESTIVE = rs.getString(23);
+            String f_TOOTH = rs.getString(24);
+            String f_WEIGHT = rs.getString(25);
+            String f_REMEDY = rs.getString(26);
+            String f_KIDNEY = rs.getString(27);
+            String f_SITE = rs.getString(28);
+            String f_PRICE = rs.getString(29);
+            String f_IMG = rs.getString(30);
 
-<<<<<<< HEAD
-   // while (rs.next() == true) {
-   // String id = rs.getString(1);
-   // String tel = rs.getString(3);
-   // String nickname = rs.getString(4);
 
-   // dto = new memberDTO(nickname,id ,pw,tel ,nickname);
-   // arr.add(dto);
-   // }
-=======
-			System.out.println("클래스파일 로딩완료");
-			// 3.DB에서 사용하는 id/pw를 인증
-			String dbid = "cgi_8_2_1216";
-			String dbpw = "smhrd2";
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
+            fdto = new foodDTO(f_SEQ, f_NAME, f_TYPE, f_VITAMIN, f_ANTIOXIDATION, f_APPETITE, f_NUTRITION,
+                  f_STONE, f_HUMIDITY, f_MOUTH, f_SMELL, f_DIET, f_NEUTRAL, f_INDOOR, f_TEAR, f_EYE,
+                  f_ALLERGY, f_SKIN, f_FUR, f_URINATION, f_BONE, f_PERFORMANCE, f_DIGESTIVE, f_TOOTH,
+                  f_WEIGHT, f_REMEDY, f_KIDNEY, f_SITE, f_PRICE, f_IMG);
+            arr.add(fdto);
+         }
 
-   // } catch (Exception e) {
-   // System.out.println("클래스파일 로딩실패");
-   // e.printStackTrace();
+      } catch (Exception e) {
+         System.out.println("클래스파일 로딩실패");
+         e.printStackTrace();
 
-<<<<<<< HEAD
-   // } finally {
-   // close();
+      } finally {
+         close();
 
-   // }
-   // return arr;
-   // }
+      }
+      return arr;
+   }
 
    public boolean emailChechk(String id) { // id중복체크
       try {
@@ -237,11 +279,6 @@ public class memberDAO {
       return check;
    }
 
-   public ArrayList<memberDTO> searchMember(String id) {
-      // TODO Auto-generated method stub
-      return null;
-   }
-   
    public void getConn() {
       try {
          Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -283,39 +320,8 @@ public class memberDAO {
       }
    }
 
-public memberDTO Login(memberDTO dto1, HttpServletRequest request) {
-	// TODO Auto-generated method stub
-	return null;
-}
-=======
-			if (conn != null) {
-				System.out.println("연결성공");
-			} else {
-				System.out.println("연결실패");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	public void close() {
-		System.out.println("무조건실행");
-		try {
-			if (rs != null) {
-				rs.close();
-			}
-			if (psmt != null) {
-				psmt.close();
-			}
-			if (conn != null) {
-				conn.close();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	public ArrayList<memberDTO> searchMember(String email) {
-		// TODO Auto-generated method stub
-		return null;
-	}
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
+   public ArrayList<memberDTO> searchMember(String email) {
+      // TODO Auto-generated method stub
+      return null;
+   }
 }
