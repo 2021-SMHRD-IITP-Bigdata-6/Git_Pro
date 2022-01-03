@@ -16,6 +16,7 @@ public class memberDAO {
 	Connection conn = null;
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
+
 	String sql = "";
 	int cnt = 0;
 	int cnt1 = 0;
@@ -234,15 +235,7 @@ public class memberDAO {
 				String f_PRICE = rs.getString(29);
 				String f_IMG = rs.getString(30);
 
-
-				fdto = new foodDTO(f_SEQ, f_NAME, f_TYPE, f_VITAMIN, f_ANTIOXIDATION, f_APPETITE, f_NUTRITION,
-						f_STONE, f_HUMIDITY, f_MOUTH, f_SMELL, f_DIET, f_NEUTRAL, f_INDOOR, f_TEAR, f_EYE,
-						f_ALLERGY, f_SKIN, f_FUR, f_URINATION, f_BONE, f_PERFORMANCE, f_DIGESTIVE, f_TOOTH,
-						f_WEIGHT, f_REMEDY, f_KIDNEY, f_SITE, f_PRICE, f_IMG);
-				arr.add(fdto);
-			}
-
-		} catch (Exception e) {
+		}} catch (Exception e) {
 			System.out.println("클래스파일 로딩실패");
 			e.printStackTrace();
 
@@ -284,7 +277,6 @@ public class memberDAO {
 			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524";
 
 			System.out.println("클래스파일 로딩완료");
-
 			// 3.DB에서 사용하는 id/pw를 인증
 			String dbid = "cgi_8_2_1216";
 			String dbpw = "smhrd2";
@@ -296,12 +288,10 @@ public class memberDAO {
 			} else {
 				System.out.println("연결실패");
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
 	public void close() {
 		System.out.println("무조건실행");
 		try {
@@ -318,7 +308,6 @@ public class memberDAO {
 			e.printStackTrace();
 		}
 	}
-
 	public ArrayList<memberDTO> searchMember(String email) {
 		// TODO Auto-generated method stub
 		return null;
