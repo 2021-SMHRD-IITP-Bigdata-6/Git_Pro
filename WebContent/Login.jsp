@@ -165,9 +165,10 @@ body {
 						<section>
 							<br>
 							<h5>회원가입</h5>
-							<form action="UploadService" method="post"
-								enctype="multipart/form-data" id="fileUploadForm">
-								<input  type="text" name="m_id1" placeholder="아이디" ><br>
+							<form action="UploadService" method="post" enctype="multipart/form-data" id="fileUploadForm">
+								<li><input type="text" name="m_id1" id="m_id2" placeholder="아이디" >
+								<button type="button" id="check" onclick="idCheck()">중복체크</button>
+								<p id="result"></p></li><br>
                      <input type="password" name="m_pw1" placeholder="비밀번호"><br>
                      <input type="text" name="m_tel" placeholder="닉네임"><br>
                      <input type="text" name="m_nick" placeholder="전화번호 ex) 010-1234-5678"><br>
@@ -178,15 +179,9 @@ body {
                      <input type="text" name="date" placeholder="입양날짜  ex) 20/01/01"><br>
 								<tr>
 									<td>강아진 사진 :</td>
-									<td><div id="image_container">
-											<img src="/" style="width: 10%; display: none" id="user_img">
-										</div></td>
-									<td><input id="btnSubmit" type="submit" value="업로드"
-										style="display: none" /></td>
-									<br>
-									<td><input type="file" id="image" accept="image/*"
-										onchange="setThumbnail(event);" name="filename1" /></td>
-									<br>
+									<td><div id="image_container"><img src="/" style="width: 10%; display: none" id="user_img"></div></td>
+									<td><input id="btnSubmit" type="submit" value="업로드" style="display: none" /></td><br>
+									<td><input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" name="filename1" /></td><br>
 								</tr>
 								<br> <input type="submit" value="Sign up"
 									class="button fit" style="margin-right: 10px;">
@@ -223,6 +218,38 @@ body {
 
 				};
 				reader.readAsDataURL(event.target.files[0]);
+			}
 		</script>
+		<script type="text/javascript">
+		function idCheck() {
+
+			$.ajax({
+				url : 'check.do',
+				type : 'get',
+				data : {
+					"m_id1" : $('#m_id2').val()
+				},
+				success : function(res) {
+					console.log(res);
+					//rs.next() ==> true : 중복이 있다.
+					//fales : 중복이 없다
+
+					//기본적으로 out객체로 응답받은 데이터는 text/html
+					//boolean false =====> String "false"
+					if (res == 'true') {
+						$('#result').html("중복된 아이디입니다.").css('color', 'red');
+					} else {
+						$('#result').html("사용가능한 아이디입니다.")
+								.css('color', 'green');
+					}
+				},
+				error : function() {
+					alert('요청했어요? 아닐텐데....');
+					//404,405,500:요청자체가 실패
+				}
+			});
+
+		}
+	</script>
 </body>
 </html>

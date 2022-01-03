@@ -86,11 +86,11 @@ public class Frontcontroller extends HttpServlet {
 
 		else if (command.equals("check.do")) {
 			// 1, 파라미터 수집
-			String email = request.getParameter("email");
+			String id = request.getParameter("m_id1");
 			// 2. DAO 객체 생성
 			memberDAO dao = new memberDAO();
 			// 3. DAO 객체의 메서드 사용
-			boolean check = dao.emailChechk(email);
+			boolean check = dao.idChechk(id);
 			// 4 PR객체 생성
 			PrintWriter out = response.getWriter();
 			// 5 응답

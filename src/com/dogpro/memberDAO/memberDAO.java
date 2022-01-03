@@ -254,12 +254,12 @@ public class memberDAO {
       return arr;
    }
 
-   public boolean emailChechk(String id) { // id중복체크
+   public boolean idChechk(String id) { // id중복체크
       try {
          getConn();
 
 
-         String sql = "select * from t_member where id = ?";
+         String sql = "select * from t_member where m_id = ?";
 
          psmt = conn.prepareStatement(sql);
 
@@ -279,6 +279,7 @@ public class memberDAO {
 
       return check;
    }
+   
 
    public void getConn() {
       try {
