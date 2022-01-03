@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@page import="com.dogpro.memberDAO.imgfileDAO"%>
 <%@page import="com.dogpro.memberDTO.imgfileDTO"%>
 <%@page import="java.util.Date"%>
@@ -359,7 +358,7 @@
    <script src="assets/js/browser.min.js"></script>
    <script src="assets/js/breakpoints.min.js"></script>
    <script src="assets/js/util.js"></script>
-   <script type="text/javascript"> String img = {C:\Users\smhrd\Desktop\web(servlet)\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\DOGPRO_Final\Upload} + {images(실패시)4.jfif} </script>
+
    <!-- <script src="assets/js/main.js"></script> -->
 
 </body>
