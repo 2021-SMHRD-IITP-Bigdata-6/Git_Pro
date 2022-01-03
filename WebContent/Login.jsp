@@ -132,26 +132,6 @@ body {
 				<!-- Nav -->
 				<nav id="nav">
 					<ul>
-<<<<<<< HEAD
-
-						<li><a class="icon solid fa-home" href="Mainpage.jsp"><span>메인
-									페이지</span></a></li>
-
-=======
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
-						<!-- <li><a class="icon solid fa-home" href="Mainpage.jsp"><span>메인 페이지</span></a></li> -->
-<<<<<<< HEAD
-
-						<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>세번째
-									탭 </span></a></li>
-						<li><a class="icon solid fa-retweet"
-							href="right-sidebar.html"><span>마이 페이지</span></a></li>
-						<li><a class="icon solid fa-sitemap" href="Login.jsp"><span>로그인
-							</span></a></li>
-
-=======
-
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
 						<h1 id="logo">
 							<a href="Mainpage.jsp">DOGPRO+</a>
 						</h1>
@@ -159,10 +139,6 @@ body {
 					</ul>
 				</nav>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
 			</div>
 		</section>
 
@@ -175,32 +151,17 @@ body {
 					<article class="box post">
 						<header> </header>
 						<section>
-<<<<<<< HEAD
-                  <ul class="links" >
-                     <h5>로그인</h5>
-                     <form id = "join" action="LoginCon2.do" method="post">
-                        <input type="text" name="m_id" placeholder="ID"><br>
-                        <h5>비밀번호</h5>
-                        <input type="password" name="m_pw" placeholder="PW"><br>
-                        <input type="submit" value="Login" class="button fit" style="margin-right: 10px;">
-                        <!-- <input type="submit" value="Sign Up" class="button fit"><br> -->
-                     </form>
-                      </ul>
-                     </section>
-=======
 							<ul class="links">
 								<h5>로그인</h5>
 								<form id = "join" action="LoginCon2.do" method="post">
 									<input type="text" name="m_id" placeholder="ID"><br>
 									<h5>비밀번호</h5>
 									<input type="password" name="m_pw" placeholder="PW"><br>
-									<input type="submit" value="Login" class="button fit"
-										style="margin-right: 10px;">
+									<input type="submit" value="Login" class="button fit" style="margin-right: 10px;">
 									<!-- <input type="submit" value="Sign Up" class="button fit"><br> -->
 								</form>
 							</ul>
 						</section>
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
 						<section>
 							<br>
 							<h5>회원가입</h5>
@@ -239,11 +200,6 @@ body {
 			</div>
 		</section>
 
-<<<<<<< HEAD
-=======
-		<!-- Footer -->
-		
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
 		<!-- Scripts -->
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
@@ -267,11 +223,6 @@ body {
 
 				};
 				reader.readAsDataURL(event.target.files[0]);
-<<<<<<< HEAD
-			}
-=======
-			}
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
 		</script>
 </body>
 </html>

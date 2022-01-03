@@ -44,7 +44,7 @@
 
             <!-- Logo -->
             <h1 id="logo">
-               <a href="index.html">MY PAGE</a>
+               MY PAGE
             </h1>
 
             <!-- Nav -->
