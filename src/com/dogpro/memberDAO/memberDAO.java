@@ -58,7 +58,7 @@ public class memberDAO {
 
             if (dto1.getPw().equals(getpw)) {
                dto = new memberDTO(getid, getpw, m_nick, m_phone, m_dogKind, dog_name, m_dogWeight, m_dogAge, date, file);
-	
+   
                HttpSession session = request.getSession();
                session.setAttribute("dto", dto);
                
