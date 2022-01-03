@@ -150,11 +150,8 @@ ArrayList<foodDTO> arr = dao.selectFood(); %>
 			<!-- Nav -->
 			<nav id="nav">
 				<ul>
-					<li><a class="icon solid fa-home" href="Mainpage.jsp"><span>메인
-								페이지</span></a></li>
-					<li><a class="icon solid fa-cog" href="Mainpage.jsp"><span>세번째
-								탭</span></a></li>
-					<li><a class="icon solid fa-retweet"
+							
+					<li><a class="icon solid fa-file-alt"
 						href="Mypage_Firstjsp.jsp"><span>마이 페이지</span></a></li>
 					<%
 					foodDTO f_dto=(foodDTO) session.getAttribute("fdto");
@@ -162,7 +159,7 @@ ArrayList<foodDTO> arr = dao.selectFood(); %>
 					memberDTO dto = (memberDTO) session.getAttribute("dto");
          if (dto == null) {
       %>
-					<li><a class="icon solid fa-sitemap" href="Login.jsp"><span>로그인</span></a></li>
+					<li><a class="icon solid fa-sign-in-alt" href="Login.jsp"><span>로그인</span></a></li>
 					<% 
     } else {
  %>

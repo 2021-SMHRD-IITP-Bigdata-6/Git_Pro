@@ -132,19 +132,30 @@ body {
 				<!-- Nav -->
 				<nav id="nav">
 					<ul>
+<<<<<<< HEAD
 						<li><a class="icon solid fa-home" href="Mainpage.jsp"><span>메인
 									페이지</span></a></li>
+=======
+						<!-- <li><a class="icon solid fa-home" href="Mainpage.jsp"><span>메인 페이지</span></a></li> -->
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
 
+<<<<<<< HEAD
 						<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>세번째
 									탭 </span></a></li>
 						<li><a class="icon solid fa-retweet"
 							href="right-sidebar.html"><span>마이 페이지</span></a></li>
 						<li><a class="icon solid fa-sitemap" href="Login.jsp"><span>로그인
 							</span></a></li>
+=======
+						<h1 id="logo">
+							<a href="Mainpage.jsp">DOGPRO+</a>
+						</h1>
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
 
 					</ul>
 				</nav>
 
+<<<<<<< HEAD
 			</div>
 		</section>
 
@@ -209,9 +220,58 @@ body {
 		</section>
 
 		<!-- Footer -->
+=======
+               <!-- Post -->
+               <article class="box post">
+                  <header>
+                     
+                  </header>
+                  <section>
+                  <ul class="links" >
+                     <h5>로그인</h5>
+                     <form id = "join" action="LoginCon2.do" method="post">
+                        <input type="text" name="m_id" placeholder="ID"><br>
+                        <h5>비밀번호</h5>
+                        <input type="password" name="m_pw" placeholder="PW"><br>
+                        <input type="submit" value="Login" class="button fit" style="margin-right: 10px;">
+                        <!-- <input type="submit" value="Sign Up" class="button fit"><br> -->
+                     </form>
+                      </ul>
+                     </section>
+                     <section >
+                     <br>
+                     <h5>회원가입</h5>
+                     <form  id = "join" action="JoinCon.do" method="post">
+                     <input  type="text" name="m_id1" placeholder="아이디" ><br>
+                     <input type="password" name="m_pw1" placeholder="비밀번호"><br>
+                     <input type="text" name="m_tel" placeholder="닉네임"><br>
+                     <input type="text" name="m_nick" placeholder="전화번호 ex) 010-1234-5678"><br>
+                     <input type="text" name="m_dogname" placeholder="반려견 이름"><br>
+                     <input type="text" name="m_dog" placeholder="견종"><br>
+                     <input type="text" name="m_dogage" placeholder="반려견 나이(살) ex) 7"><br>
+                     <input type="text" name="m_dogweight" placeholder="반려견 무게(kg) ex) 5.5"><br>
+                     <input type="text" name="date" placeholder="입양날짜  ex) 20/01/01"><br>
+                   <!--     </form>
+                      <form action="UploadService" method="post" enctype="multipart/form-data">
+                     <tr>
+                     <td>강아진 사진 : </td>
+                     <td><input type="file" value="파일 선택" name="file"/></td>
+                    </tr>
+                    <br>
+                    <div> </div>-->
+								<input type="submit" value="Sign up" class="button fit"
+									style="margin-right: 10px;">
+							</form>
+						</section>
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
 
 
+<<<<<<< HEAD
+=======
+					</article>
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
 
+<<<<<<< HEAD
 
 		<!-- Scripts -->
 		<script src="assets/js/jquery.min.js"></script>
@@ -237,6 +297,29 @@ body {
 				};
 				reader.readAsDataURL(event.target.files[0]);
 			}
+=======
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+
+
+
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script>
+			$('#dog_imgFile').filebox({
+				buttonText : '파일 찾아보기',
+				buttonAlign : 'right'
+			});
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
 		</script>
 </body>
 </html>

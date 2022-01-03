@@ -11,9 +11,34 @@ import javax.servlet.http.HttpServletRequest;
 import com.dogpro.memberDTO.memberDTO;
 
 public class memberDAO {
+<<<<<<< HEAD
    Connection conn = null;
    PreparedStatement psmt = null;
    ResultSet rs = null;
+=======
+	Connection conn = null;
+	PreparedStatement psmt = null;
+	ResultSet rs = null;
+
+	String sql = "";
+	int cnt = 0;
+	int cnt1 = 0;
+	memberDTO dto = null;
+	foodDTO fdto = null;
+	private boolean check;
+	private String id;
+	ArrayList<foodDTO> farr = new ArrayList<foodDTO>();
+	
+	public memberDTO Login(memberDTO dto1,HttpServletRequest request) {
+		
+		try {
+			getConn();
+			
+			System.out.println("Login 메소드입니다.");
+			System.out.println("무슨 id?" + dto1.getId()); // DB 에서 가져온 id값
+			System.out.println("무슨 pw?" + dto1.getPw()); // DB 에서 가져온 pw값
+			sql = "select * from t_member where m_id= ? and m_pw= ?";
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
 
    int cnt = 0;
    int cnt1 = 0;
@@ -106,8 +131,14 @@ public class memberDAO {
       return cnt;
    }
 
+<<<<<<< HEAD
 
 
+=======
+		}} catch (Exception e) {
+			System.out.println("클래스파일 로딩실패");
+			e.printStackTrace();
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
 
    public int Join(memberDTO dto) {
 
@@ -153,6 +184,7 @@ public class memberDAO {
    // psmt = conn.prepareStatement(sql);
    // rs = psmt.executeQuery();
 
+<<<<<<< HEAD
    // while (rs.next() == true) {
    // String id = rs.getString(1);
    // String tel = rs.getString(3);
@@ -161,11 +193,18 @@ public class memberDAO {
    // dto = new memberDTO(nickname,id ,pw,tel ,nickname);
    // arr.add(dto);
    // }
+=======
+			System.out.println("클래스파일 로딩완료");
+			// 3.DB에서 사용하는 id/pw를 인증
+			String dbid = "cgi_8_2_1216";
+			String dbpw = "smhrd2";
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
 
    // } catch (Exception e) {
    // System.out.println("클래스파일 로딩실패");
    // e.printStackTrace();
 
+<<<<<<< HEAD
    // } finally {
    // close();
 
@@ -248,4 +287,35 @@ public memberDTO Login(memberDTO dto1, HttpServletRequest request) {
 	// TODO Auto-generated method stub
 	return null;
 }
+=======
+			if (conn != null) {
+				System.out.println("연결성공");
+			} else {
+				System.out.println("연결실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void close() {
+		System.out.println("무조건실행");
+		try {
+			if (rs != null) {
+				rs.close();
+			}
+			if (psmt != null) {
+				psmt.close();
+			}
+			if (conn != null) {
+				conn.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public ArrayList<memberDTO> searchMember(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-IITP-Bigdata-6/Git_Pro.git
 }

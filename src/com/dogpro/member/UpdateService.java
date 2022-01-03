@@ -23,7 +23,9 @@ public class UpdateService implements Command{
       String page=null;
       String id = dto.getId();
       
+      
       //사용자가 변경하려는 값 아래 6개 
+      
       String nick = request.getParameter("m_nick");
       String tel = request.getParameter("m_tel");
       String dogname = request.getParameter("m_dogname");
@@ -40,7 +42,7 @@ public class UpdateService implements Command{
          //memberDTO update_dto = new memberDTO(nick,tel,dogname,dogkind,dogage,dogweight);
          session.removeAttribute("dto");
          session.setAttribute("dto", update_dto);
-         page = "Mainpage.jsp";
+         page = "Mypage_Firstjsp.jsp";
          
       } else {
          System.out.println("testtest");
