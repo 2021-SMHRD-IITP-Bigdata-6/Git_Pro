@@ -57,8 +57,8 @@ public class memberDAO {
             System.out.println(getpw);
 
             if (dto1.getPw().equals(getpw)) {
-               dto = new memberDTO(getid, getpw, m_nick, m_phone, m_dogKind, dog_name, m_dogWeight, m_dogAge,
-                     date, file);
+               dto = new memberDTO(getid, getpw, m_nick, m_phone, m_dogKind, dog_name, m_dogWeight, m_dogAge, date, file);
+	
                HttpSession session = request.getSession();
                session.setAttribute("dto", dto);
                
@@ -257,6 +257,7 @@ public class memberDAO {
    public boolean emailChechk(String id) { // id중복체크
       try {
          getConn();
+
 
          String sql = "select * from t_member where id = ?";
 

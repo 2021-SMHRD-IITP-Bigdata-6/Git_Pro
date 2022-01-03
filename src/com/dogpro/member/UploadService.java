@@ -19,8 +19,6 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 @WebServlet("/UploadService")
 public class UploadService extends HttpServlet implements Command {
-	private static final long serialVersionUID = 1L;
-
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

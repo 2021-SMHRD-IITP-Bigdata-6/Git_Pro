@@ -50,12 +50,7 @@
             <!-- Nav -->
             <nav id="nav">
                <ul>
-                  <li><a class="icon solid fa-home" href="Mainpage.jsp"><span>메인페이지</span></a></li>
-
-                  <li><a class="icon solid fa-cog" href="left-sidebar.html"><span>두번째
-                           탭</span></a></li>
-                  <li><a class="icon solid fa-retweet"
-                     href="right-sidebar.html"><span>Right Sidebar</span></a></li>
+                                   <li><a class="icon solid fa-home" href="Mainpage.jsp"><span>메인페이지</span></a></li>
                   <li><a class="icon solid fa-sitemap" href="LogoutCon.do">로그아웃</a>
                </ul>
             </nav>
@@ -100,7 +95,14 @@
                                     
                                     %>
                                     <!-- 그러면 자동적으로 값을 가져올꺼같음 -->
-                                    <img src="Upload/<%=dto.getFilename1()%>" width=58% />
+                                    <div >
+                                    
+                                    <% if (dto.getFilename1() == null) { %>
+                                 <img style = "border: 2px solid black; border-color: #FFDAB9 ; border-radius: 16px; " src="images/마이페이지null사진.png" width=58%>
+                                 <%} else {%>
+                                    <img style = "border: 2px solid black; border-color: #FFDAB9 ; border-radius: 16px;" src="Upload/<%=dto.getFilename1()%>" width=58% />
+                                    <%} %>
+                              </div>
                              
                              
 
@@ -235,11 +237,11 @@
                                                       [
                                                             "평균 몸무게",
                                                             Number(userDogData[0]),
-                                                            "silver" ], // ??위에 dogData에 있는 값을 적으면 되는데 안됩니다
+                                                            "#9370DB" ], // ??위에 dogData에 있는 값을 적으면 되는데 안됩니다
                                                       [
                                                             "최대 몸무게",
                                                             Number(userDogData[1]),
-                                                            "silver" ], // 
+                                                            "#F5DEB3" ], // 
                                                 ]);
 
                                           /* var data = google.visualization

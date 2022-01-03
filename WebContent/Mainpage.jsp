@@ -561,14 +561,66 @@ how?
 	<!-- 일반쇼팡 -->
 	<section id="features">
 
-		<img
-			src="https://shop-phinf.pstatic.net/20211227_179/16405672092604Xbf3_PNG/41703043034370750_331789386.png?type=m510"
-			id="imgfood" style=""> <img id="imgfood"
-			src="https://shop-phinf.pstatic.net/20190816_56/ymy3610_1565895228726Xcyrw_JPEG/3258617282284687_474009739.jpg?type=m510">
-		<img id="imgfood"
-			src="https://shop-phinf.pstatic.net/20190816_208/ymy3610_1565893948450ro5hf_JPEG/3255491042927899_1148679319.jpg?type=m510">
-		<img id="imgfood"
-			src="https://shop-phinf.pstatic.net/20200701_236/1593615442594HzO58_JPEG/30976181189313696_1668720815.jpg?type=m510">
+
+<!-- 
+기능을 어떻게 저장시킬 것인가? 
+1) if option value = "체중유지" 
+2) "체중유지" -> f_weight
+3) select * from t_food where f_weight = 1;
+4) 나온 사료 값들을 
+5) img 태그 안에 넣어준다
+
+how?
+서블릿?
+포문? 와일?
+
+
+-->
+		
+		
+		<%if (dto == null) {%> 
+		  <div style="width: 1200px; height: 2000px; margin-left: 333px;">
+			<%  for(int i=0 ; i<9 ; i++){
+                %>
+			<div style="float: right; width: 380px; height: 620px; margin-left:">
+				<a href="<%=arr.get(i).getF_SITE()%>"><img
+					src="<%out.print(arr.get(i).getF_IMG()); %>" id="imgfood"></a>
+				<div style="width: 300px; margin: auto;"><%out.print(arr.get(i).getF_NAME());  %></div>
+				<div style="width: 100%; margin: auto;"><%out.print(arr.get(i).getF_PRICE());%></div>
+			</div>
+			<%      }%>
+		</div>
+		
+		<%} else {%>
+		<div style="width: 1200px; height: 2000px; margin-left: 333px;">
+			<%  for(int i=10 ; i<=21 ; i++){
+                %>
+			<div style="float: right; width: 380px; height: 620px; margin-left:">
+			<a href="<%=arr.get(i).getF_SITE()%>">	<img
+					src="<%out.print(arr.get(i).getF_IMG()); %>"
+					id="imgfood"></a>
+				<div style="width: 300px; margin: auto;"><%out.print(arr.get(i).getF_NAME());  %></div>
+				<div style="width: 100%; margin: auto;"><%out.print(arr.get(i).getF_PRICE());%></div>
+			</div>
+			<%     }}%>
+			
+		</div>-->
+		
+		
+
+		<!-- <img src ="https://shop-phinf.pstatic.net/20211227_179/16405672092604Xbf3_PNG/41703043034370750_331789386.png?type=m510" id="imgfood"  style=""> <img id="imgfood"
+				src="https://shop-phinf.pstatic.net/20190816_56/ymy3610_1565895228726Xcyrw_JPEG/3258617282284687_474009739.jpg?type=m510"> <img id="imgfood"
+				src="https://shop-phinf.pstatic.net/20190816_208/ymy3610_1565893948450ro5hf_JPEG/3255491042927899_1148679319.jpg?type=m510"> <img id="imgfood"
+				src="https://shop-phinf.pstatic.net/20200701_236/1593615442594HzO58_JPEG/30976181189313696_1668720815.jpg?type=m510">
+				</section>
+				<section id=features>
+				 <img id="imgfood"
+				src="https://shop-phinf.pstatic.net/20190425_62/jdog_1556162663833Jo0TX_JPEG/38793843487881718_1163767463.jpg?type=m510">
+			<img id="imgfood" src="https://shop-phinf.pstatic.net/20211227_297/1640567258711SSGk2_PNG/41703092464969437_2001816975.png?type=m510" > <img id="imgfood"
+				src="https://shop-phinf.pstatic.net/20190816_166/ymy3610_15658898547371n7ju_JPEG/3253243294775728_1306003153.jpg?type=m510"> <img id="imgfood"
+				src="https://shop-phinf.pstatic.net/20211124_72/1637737440095jPQSV_JPEG/38873335829819376_918322601.jpg?type=m510"> -->
+
+
 	</section>
 	<section id=features>
 		<img id="imgfood"
