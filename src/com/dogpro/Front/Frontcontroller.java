@@ -14,6 +14,7 @@ import com.dogpro.member.JoinService;
 import com.dogpro.member.LoginService;
 import com.dogpro.member.LogoutService;
 import com.dogpro.member.UpdateService;
+import com.dogpro.member.UploadService;
 import com.dogpro.memberDAO.memberDAO;
 import com.dogpro.memberDTO.memberDTO;
 import com.google.gson.Gson;
@@ -50,14 +51,14 @@ public class Frontcontroller extends HttpServlet {
 			// 사용자의 요청을 객체인 클래스 파일로 처리
 			else if (command.contentEquals("JoinCon.do")) {
 
-				com = new JoinService();
+				com = new UploadService();
 				com.execute(request, response);
 
 			} else if(command.equals("searchMember.do")) {
-				 String email = request.getParameter("email");
+				 String id = request.getParameter("id");
 				 memberDAO dao = new memberDAO();
 				
-				 ArrayList<memberDTO> list = dao.searchMember(email);
+				 ArrayList<memberDTO> list = dao.searchMember(id);
 				 
 				 Gson gson =new Gson();
 				 

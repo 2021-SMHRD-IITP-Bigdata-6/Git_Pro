@@ -102,15 +102,41 @@
 	align: bottom;
 }
 </style>
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+	google.charts.load("current", {
+		packages : [ "corechart" ]
+	});
+	google.charts.setOnLoadCallback(drawChart);
+	function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+				[ 'Task', 'Hours per Day' ], [ '조단백', 38 ], [ '조지방', 20 ],
+				[ '탄수화물', 17 ], [ '조회분', 8 ], [ '수분', 12 ], [ '칼슘', 1.4 ],
+				[ '인', 1.1 ], [ '오메가6', 3 ], [ '오메가3', 1.1 ], [ 'DHA', 0.4 ],
+				[ 'EPA', 0.3 ] ]);
+
+		var options = {
+			title : '사료성분(100g 당)',
+			pieHole : 0.4,
+		};
+
+		var chart = new google.visualization.PieChart(document
+				.getElementById('donutchart'));
+		chart.draw(data, options);
+	}
+</script>
 </head>
 <body class="homepage is-preload">
 	<div id="page-wrapper"></div>
 	<!-- Header -->
 	<section id="header">
 		<div class="container">
-<%		memberDAO dao = new memberDAO();
-foodDAO f_dao = new foodDAO();
-ArrayList<foodDTO> arr = dao.selectFood(); %>
+			<%
+				memberDAO dao = new memberDAO();
+			foodDAO f_dao = new foodDAO();
+			ArrayList<foodDTO> arr = dao.selectFood();
+			%>
 			<!-- Logo -->
 			<h1 id="logo">
 				<a href="Mainpage.jsp">DOGPRO+</a>
@@ -120,23 +146,23 @@ ArrayList<foodDTO> arr = dao.selectFood(); %>
 			<!-- Nav -->
 			<nav id="nav">
 				<ul>
-							
+
 					<li><a class="icon solid fa-file-alt"
 						href="Mypage_Firstjsp.jsp"><span>마이 페이지</span></a></li>
 					<%
-					foodDTO f_dto=(foodDTO) session.getAttribute("fdto");
-                 
+						foodDTO f_dto = (foodDTO) session.getAttribute("fdto");
+
 					memberDTO dto = (memberDTO) session.getAttribute("dto");
-         if (dto == null) {
-      %>
+					if (dto == null) {
+					%>
 					<li><a class="icon solid fa-sign-in-alt" href="Login.jsp"><span>로그인</span></a></li>
-					<% 
-    } else {
- %>
+					<%
+						} else {
+					%>
 					<li><a class="icon solid fa-sitemap" href="LogoutCon.do">로그아웃</a>
 						<%
-    }
- %>
+							}
+						%>
 				</ul>
 			</nav>
 
@@ -153,35 +179,34 @@ ArrayList<foodDTO> arr = dao.selectFood(); %>
 				</div>
 
 				<%
-               String id = (String)session.getAttribute("id");
-   int cnt = 0;
-   if (application.getAttribute("visit") == null) {
-      application.setAttribute("visit", 1);
-   } else {
-      int visit = (int) application.getAttribute("visit");
-      cnt = visit;
-      application.setAttribute("visit", visit + 1);
-   }
-   %>
+					String id = (String) session.getAttribute("id");
+				int cnt = 0;
+				if (application.getAttribute("visit") == null) {
+					application.setAttribute("visit", 1);
+				} else {
+					int visit = (int) application.getAttribute("visit");
+					cnt = visit;
+					application.setAttribute("visit", visit + 1);
+				}
+				%>
 				<%
-            
-    if (dto == null) {
- %>
+					if (dto == null) {
+				%>
 				<h1
 					style="float: left; font-size: xx-large; margin-left: 450px; margin-top: 50px; margin-bottom: 20px;">
 					어서오세요
-					<%out.print(cnt); %>
+					<%
+					out.print(cnt);
+				%>
 					번째 방문자 입니다 ♥
 				</h1>
-				<br>
-				<br>
-				<br>
+				<br> <br> <br>
 				<%
-            } else {
-         %>
+					} else {
+				%>
 				<h style=" font-size: xx-large;"> <strong> <%
-               out.print(dto.getNickname());
-            %></strong>님 환영합니다.
+ 	out.print(dto.getNickname());
+ %></strong>님 환영합니다.
 				</h1>
 
 				<%--   <div class="row aln-center">
@@ -217,8 +242,8 @@ ArrayList<foodDTO> arr = dao.selectFood(); %>
 		</div>
 
 		<%
-            }
-         %>
+			}
+		%>
 
 
 
@@ -228,55 +253,227 @@ ArrayList<foodDTO> arr = dao.selectFood(); %>
 		<!-- Feature -->
 
 		<%
-         
-    if (dto == null) {
- %>
+			if (dto == null) {
+		%>
 
 		<%
-            } else {
-         %>
+			} else {
+		%>
 		<div align="left" style="margin-left: 270px;">
 			<h1>
-				<%  
-            System.out.println("현재로그인한 강아지의 이름 : "+ dto.getDogname());
-               out.print(dto.getDogname());
-            %>를 위한 추천 사료
-			</h1>
-			<%  for(int i=25 ; i<29 ; i++){
-                %>
-			<div
-					style="width: 300px; heigh: 1000px; border: 3px; margin-left: 40px; float: left;">
-				<a href="<%=arr.get(i).getF_SITE()%>">	<img src="<%out.print(arr.get(i).getF_IMG()); %>" id="imgfood"
-						style="height: 500px; width: 300px; margin-bottom: 50px; float: right; "></a>
-				</div>
-			<%      }%>
-			
-			</div>
-
+				<%
+					System.out.println("현재로그인한 강아지의 이름 : " + dto.getDogname());
+				out.print(dto.getDogname());
+				%>를 위한 추천 사료
 			</h1>
 			<%
-            }
-         %>
+				for (int i = 25; i < 29; i++) {
+			%>
+			<div
+				style="width: 300px; heigh: 1000px; border: 3px; margin-left: 40px; float: left;">
+				<a href="<%=arr.get(i).getF_SITE()%>"> <img
+					src="<%out.print(arr.get(i).getF_IMG());%>" id="imgfood"
+					style="height: 500px; width: 300px; margin-bottom: 50px; float: right;"></a>
+			</div>
+			<%
+				}
+			%>
+
+		</div>
+
+		</h1>
+		<%
+			}
+		%>
 
 
-			<br>
+		<br>
+
+		<h2 align="left" style="float: left; margin-left: 90px;">
+			기능별 사료
+
 			<h2 align="left" style="float: left; margin-left: 280px;">기능별 사료
+
 				검색</h2>
-			<br> <br>
-			<br>
-			<br>
+			<br> <br> <br> <br>
 			<h6 align="left" style="float: left; margin-left: 90px;">기능별 사료
 				검색에 대한 설명!</h6>
-			<br>
-			<br>
+			<br> <br>
 	</section>
 
 
+	<!-- 일반쇼팡 -->
+	<section>
 
-<!--  기능 여기 아래 숨겨둠 -->
 
+		<img id="imgfood" src="images/터키앤치킨독.jpg"> <img id="imgfood"
+			src="images/터키앤치킨독.jpg"> <img id="imgfood"
+			src="images/터키앤치킨독.jpg"> <img id="imgfood"
+			src="images/터키앤치킨독.jpg"> <img id="imgfood"
+			src="images/터키앤치킨독.jpg">
+		<h2 align="right" style="float: left; margin-left: 550px;"></h2>
+		<img id="imgfood" src="images/터키앤치킨독.jpg"> <img id="imgfood"
+			src="images/터키앤치킨독.jpg"> <img id="imgfood"
+			src="images/터키앤치킨독.jpg">
+	</section>
+	<div id="donutchart" style="width: 900px; height: 500px;"></div>
+
+	<!--  기능 여기 아래 숨겨둠 -->
+	<section id="features">
+		<select id="browsers" name="browsers"
+			class="browsers" onchange="selectBoxChange1(this.value);">
+			<option>기능</option>
+			<option value="종합비타민">종합비타민</option>
+			<option value="향산화">향산화</option>
+			<option value="식욕증진">식욕증진</option>
+			<option value="영양공급">영양공급</option>
+			<option value="결석예방">결석예방</option>
+			<option value="보습">보습</option>
+			<option value="구강관리">구강관리</option>
+			<option value="냄새제거">냄새제거</option>
+			<option value="다이어트">다이어트</option>
+			<option value="중성화">중성화</option>
+			<option value="인도어">인도어</option>
+			<option value="눈물개선">눈물개선</option>
+			<option value="눈건강">눈건강</option>
+			<option value="저알러지">저알러지</option>
+			<option value="피부개선">피부개선</option>
+			<option value="털개선">털개선</option>
+			<option value="러너리비뇨계">러너리비뇨계</option>
+			<option value="뼈관절강화">뼈관절강화</option>
+			<option value="퍼포먼스">퍼포먼스</option>
+			<option value="소화 장기능 개선">소화 장기능 개선</option>
+			<option value="치석제거">치석제거</option>
+			<option value="체중유지">체중유지</option>
+			<option value="처방식">처방식</option>
+			<option value="신장요로">신장요로</option>
+		</select> <select id="browsers1" name="browsers1" class="browsers1"
+			onchange="selectBoxChange2(this.value);">
+			<option>기능</option>
+			<option value="종합비타민">종합비타민</option>
+			<option value="향산화">향산화</option>
+			<option value="식욕증진">식욕증진</option>
+			<option value="영양공급">영양공급</option>
+			<option value="결석예방">결석예방</option>
+			<option value="보습">보습</option>
+			<option value="구강관리">구강관리</option>
+			<option value="냄새제거">냄새제거</option>
+			<option value="다이어트">다이어트</option>
+			<option value="중성화">중성화</option>
+			<option value="인도어">인도어</option>
+			<option value="눈물개선">눈물개선</option>
+			<option value="눈건강">눈건강</option>
+			<option value="저알러지">저알러지</option>
+			<option value="피부개선">피부개선</option>
+			<option value="털개선">털개선</option>
+			<option value="러너리비뇨계">러너리비뇨계</option>
+			<option value="뼈관절강화">뼈관절강화</option>
+			<option value="퍼포먼스">퍼포먼스</option>
+			<option value="소화 장기능 개선">소화 장기능 개선</option>
+			<option value="치석제거">치석제거</option>
+			<option value="체중유지">체중유지</option>
+			<option value="처방식">처방식</option>
+			<option value="신장요로">신장요로</option>
+		</select> <select id="browsers2" name="browsers2" class="browsers2"
+			onchange="selectBoxChange3(this.value);">
+			<option>기능</option>
+			<option value="종합비타민">종합비타민</option>
+			<option value="향산화">향산화</option>
+			<option value="식욕증진">식욕증진</option>
+			<option value="영양공급">영양공급</option>
+			<option value="결석예방">결석예방</option>
+			<option value="보습">보습</option>
+			<option value="구강관리">구강관리</option>
+			<option value="냄새제거">냄새제거</option>
+			<option value="다이어트">다이어트</option>
+			<option value="중성화">중성화</option>
+			<option value="인도어">인도어</option>
+			<option value="눈물개선">눈물개선</option>
+			<option value="눈건강">눈건강</option>
+			<option value="저알러지">저알러지</option>
+			<option value="피부개선">피부개선</option>
+			<option value="털개선">털개선</option>
+			<option value="러너리비뇨계">러너리비뇨계</option>
+			<option value="뼈관절강화">뼈관절강화</option>
+			<option value="퍼포먼스">퍼포먼스</option>
+			<option value="소화 장기능 개선">소화 장기능 개선</option>
+			<option value="치석제거">치석제거</option>
+			<option value="체중유지">체중유지</option>
+			<option value="처방식">처방식</option>
+			<option value="신장요로">신장요로</option>
+		</select> <br> <br>
+	</section>
+	<!-- 일반쇼핑 -->
 	<section id="features">
 
+
+		<!-- 
+기능을 어떻게 저장시킬 것인가? 
+1) if option value = "체중유지" 
+2) "체중유지" -> f_weight
+3) select * from t_food where f_weight = 1;
+4) 나온 사료 값들을 
+5) img 태그 안에 넣어준다
+
+how?
+서블릿?
+포문? 와일?
+
+
+-->
+		<%
+			if (dto == null) {
+		%>
+		<div style="width: 1200px; height: 2000px; margin-left: 333px;">
+			<%
+				for (int i = 0; i < 9; i++) {
+			%>
+			<div style="float: right; width: 380px; height: 620px; margin-left:">
+				<a href="<%=arr.get(i).getF_SITE()%>"><img
+					src="<%out.print(arr.get(i).getF_IMG());%>" id="imgfood"></a>
+				<div style="width: 300px; margin: auto;">
+					<%
+						out.print(arr.get(i).getF_NAME());
+					%>
+				</div>
+				<div style="width: 100%; margin: auto;">
+					<%
+						out.print(arr.get(i).getF_PRICE());
+					%>
+				</div>
+			</div>
+			<%
+				}
+			%>
+		</div>
+
+		<%
+			} else {
+		%>
+		<div style="width: 1200px; height: 2000px; margin-left: 333px;">
+			<%
+				for (int i = 10; i <= 21; i++) {
+			%>
+			<div style="float: right; width: 380px; height: 620px; margin-left:">
+				<a href="<%=arr.get(i).getF_SITE()%>"> <img
+					src="<%out.print(arr.get(i).getF_IMG());%>" id="imgfood"></a>
+				<div style="width: 300px; margin: auto;">
+					<%
+						out.print(arr.get(i).getF_NAME());
+					%>
+				</div>
+				<div style="width: 100%; margin: auto;">
+					<%
+						out.print(arr.get(i).getF_PRICE());
+					%>
+				</div>
+			</div>
+			<%
+				}
+			}
+			%>
+
+		</div>
 		<select id="browsers" name="browsers" class="browsers"
 			onchange="selectBoxChange1(this.value);">
 			<option>기능</option>
@@ -358,10 +555,10 @@ ArrayList<foodDTO> arr = dao.selectFood(); %>
 			<option value="체중유지">체중유지</option>
 			<option value="처방식">처방식</option>
 			<option value="신장요로">신장요로</option>
-		</select> <br>
-		<br>
+		</select> <br> <br>
 	</section>
-	<!-- 일반쇼핑 -->
+
+	<!-- 일반쇼팡 -->
 	<section id="features">
 
 
@@ -422,10 +619,21 @@ how?
 			<img id="imgfood" src="https://shop-phinf.pstatic.net/20211227_297/1640567258711SSGk2_PNG/41703092464969437_2001816975.png?type=m510" > <img id="imgfood"
 				src="https://shop-phinf.pstatic.net/20190816_166/ymy3610_15658898547371n7ju_JPEG/3253243294775728_1306003153.jpg?type=m510"> <img id="imgfood"
 				src="https://shop-phinf.pstatic.net/20211124_72/1637737440095jPQSV_JPEG/38873335829819376_918322601.jpg?type=m510"> -->
+
+
 	</section>
-	
-		
-</table>
+	<section id=features>
+		<img id="imgfood"
+			src="https://shop-phinf.pstatic.net/20190425_62/jdog_1556162663833Jo0TX_JPEG/38793843487881718_1163767463.jpg?type=m510">
+		<img id="imgfood"
+			src="https://shop-phinf.pstatic.net/20211227_297/1640567258711SSGk2_PNG/41703092464969437_2001816975.png?type=m510">
+		<img id="imgfood"
+			src="https://shop-phinf.pstatic.net/20190816_166/ymy3610_15658898547371n7ju_JPEG/3253243294775728_1306003153.jpg?type=m510">
+		<img id="imgfood"
+			src="https://shop-phinf.pstatic.net/20211124_72/1637737440095jPQSV_JPEG/38873335829819376_918322601.jpg?type=m510">
+	</section>
+
+
 	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.dropotron.min.js"></script>
@@ -435,18 +643,18 @@ how?
 	<script src="assets/js/main.js"></script>
 
 	<script type="text/javascript">
-var selectBoxChange1 = function (value) {
-	console.log("첫번째 선택한 기능 : "+ value);
-	$("#changeInput").val(value);
-}
-var selectBoxChange2 = function (value) {
-	console.log("두번째 선택한 기능 : "+ value);
-	$("#changeInput").val(value);
-}
-var selectBoxChange3 = function (value) {
-	console.log("세번째 선택한 기능 : "+ value);
-	$("#changeInput").val(value);
-}
-</script>
+		var selectBoxChange1 = function(value) {
+			console.log("첫번째 선택한 기능 : " + value);
+			$("#changeInput").val(value);
+		}
+		var selectBoxChange2 = function(value) {
+			console.log("두번째 선택한 기능 : " + value);
+			$("#changeInput").val(value);
+		}
+		var selectBoxChange3 = function(value) {
+			console.log("세번째 선택한 기능 : " + value);
+			$("#changeInput").val(value);
+		}
+	</script>
 </body>
 </html>
