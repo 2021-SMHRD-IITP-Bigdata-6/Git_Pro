@@ -104,28 +104,7 @@
 </style>
 <script type="text/javascript"
 	src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-	google.charts.load("current", {
-		packages : [ "corechart" ]
-	});
-	google.charts.setOnLoadCallback(drawChart);
-	function drawChart() {
-		var data = google.visualization.arrayToDataTable([
-				[ 'Task', 'Hours per Day' ], [ '조단백', 38 ], [ '조지방', 20 ],
-				[ '탄수화물', 17 ], [ '조회분', 8 ], [ '수분', 12 ], [ '칼슘', 1.4 ],
-				[ '인', 1.1 ], [ '오메가6', 3 ], [ '오메가3', 1.1 ], [ 'DHA', 0.4 ],
-				[ 'EPA', 0.3 ] ]);
 
-		var options = {
-			title : '사료성분(100g 당)',
-			pieHole : 0.4,
-		};
-
-		var chart = new google.visualization.PieChart(document
-				.getElementById('donutchart'));
-		chart.draw(data, options);
-	}
-</script>
 </head>
 <body class="homepage is-preload">
 	<div id="page-wrapper"></div>
@@ -316,7 +295,6 @@
 			src="images/터키앤치킨독.jpg"> <img id="imgfood"
 			src="images/터키앤치킨독.jpg">
 	</section>
-	<div id="donutchart" style="width: 900px; height: 500px;"></div>
 
 	<!--  기능 여기 아래 숨겨둠 -->
 	<section id="features">
@@ -604,7 +582,7 @@ how?
 			</div>
 			<%     }}%>
 			
-		</div>-->
+		</div>
 		
 		
 
