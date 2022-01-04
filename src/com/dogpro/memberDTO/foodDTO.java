@@ -71,6 +71,13 @@ public class foodDTO {
 		F_IMG = f_IMG;
 	}
 
+	public foodDTO(String f_NAME,String f_SITE,String  f_PRICE, String f_IMG ) {
+		F_NAME = f_NAME;
+		F_SITE = f_SITE;
+		F_PRICE = f_PRICE;
+		F_IMG = f_IMG;
+	}
+	
 	public String getF_SEQ() {
 		return F_SEQ;
 	}

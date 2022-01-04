@@ -228,9 +228,7 @@ img#img1 {
 																					role : "style"
 																				} ],
 																		[
-																				"나이",
-																				Number(dogAge),
-																				"pink" ],
+																				"나이",Number(dogAge),"pink" ],
 																		[
 																				"몸무게",
 																				Number(dogWeight),

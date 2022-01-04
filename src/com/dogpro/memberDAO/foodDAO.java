@@ -4,19 +4,19 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.dogpro.memberDTO.foodDTO;
-import com.dogpro.memberDTO.memberDTO;
 
 public class foodDAO {
 	Connection conn = null;
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
 	foodDTO dto = null;
+	foodDTO dto1 = null;
 	int cnt = 0;
 	int cnt1 = 0;
-	private boolean check;
-	private String id;
 
 	public foodDTO selectFood(foodDTO dto) {
 		try {
@@ -76,6 +76,92 @@ public class foodDAO {
 
 		}
 		return dto;
+	}
+	
+	public ArrayList<foodDTO> getMuc(String content){
+		ArrayList<foodDTO> mucic = new ArrayList<foodDTO>();
+		getConn();
+		String menu = "";
+		
+		if(content.equals("종합비타민")) {
+			menu = "F_VITAMIN";
+		}else if(content.equals("항산화")) {
+			menu = "F_ANTIOXIDATION";
+		}else if(content.equals("식욕증진")) {
+			menu = "F_APPETITE";
+		}else if(content.equals("영양공급")) {
+			menu = "F_NUTRITION";
+		}else if(content.equals("결석예방")) {
+			menu = "T_STONE";
+		}else if(content.equals("보습")) {
+			menu = "F_HUMIDITY";
+		}else if(content.equals("구강관리")) {
+			menu = "F_MOUTH";
+		}else if(content.equals("냄새제거")) {
+			menu = "F_SMELL";
+		}else if(content.equals("다이어트")) {
+			menu = "F_DIET";
+		}else if(content.equals("중성화")) {
+			menu = "F_NEUTRAL";
+		}else if(content.equals("인도어")) {
+			menu = "F_INDOOR";
+		}else if(content.equals("눈물개선")) {
+			menu = "F_TEAR";
+		}else if(content.equals("눈건강")) {
+			menu = "F_EYE";
+		}else if(content.equals("저알러지")) {
+			menu = "F_ALLERGY";
+		}else if(content.equals("피부개선")) {
+			menu = "F_SKIN";
+		}else if(content.equals("털개선")) {
+			menu = "F_FUR";
+		}else if(content.equals("러너리비뇨계")) {
+			menu = "F_URINATION";
+		}else if(content.equals("뼈관절강화")) {
+			menu = "F_BONE";
+		}else if(content.equals("퍼포먼스")) {
+			menu = "F_PERFORMANCE";
+		}else if(content.equals("소화 장기능 개선")) {
+			menu = "F_DIGESTIVE";
+		}else if(content.equals("치석제거")) {
+			menu = "F_TOOTH";
+		}else if(content.equals("체중유지")) {
+			menu = "F_WEIGHT";
+		}else if(content.equals("처방식")) {
+			menu = "F_REMEDY";
+		}else if(content.equals("신장요로")) {
+			menu = "F_KIDNEY";
+		}else if(content.equals("건식")) {
+			menu = "F_TYPE";
+		}
+		
+		
+
+		try {
+			String sql = "select * from t_food where "+menu+" = 1";
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			
+			while (rs.next()==true) {
+				System.out.println("Test");
+				String f_NAME = rs.getString(2);
+				String f_SITE = rs.getString(28);
+				String f_PRICE = rs.getString(29);
+				String f_IMG= rs.getString(30);
+				dto1 = new foodDTO(f_NAME, f_SITE, f_PRICE, f_IMG);
+				mucic.add(dto1);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			close();
+		}
+		
+		return mucic;
+		
 	}
 
 	public void getConn() {
