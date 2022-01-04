@@ -30,7 +30,7 @@
 	<div id="page-wrapper"></div>
 	<!-- Header -->
 	<section id="header">
-		<div class="container">
+		<div class="container" style="padding-bottom: 100px; padding-top: 150px;">
 			<%
 				memberDAO dao = new memberDAO();
 			foodDAO dao2 = new foodDAO();
@@ -44,7 +44,9 @@
 			String seq = request.getParameter("seq");
 			ingDTO dto = dao3.selectIng(Integer.parseInt(seq));
 
-			System.out.print(dto.getPH());
+			System.out.print(site);
+			System.out.print("");
+			
 			%>
 			<script type="text/javascript"
 				src="https://www.gstatic.com/charts/loader.js"></script>
@@ -90,8 +92,9 @@
 	] ]);
 
 		var options = {
-			title : '사료 영양소 그래프',
+			title :   '사료 영양소 그래프',
 			pieHole : 0.4,
+			fontSize: 17
 		};
 
 		var chart = new google.visualization.PieChart(document
@@ -99,24 +102,10 @@
 		chart.draw(data, options);
 	}
 </script>
-			<!-- Logo -->
 			<h1 id="logo">
 				<a href="Mainpage.jsp">DOGPRO+</a>
 			</h1>
 			<br>
-
-			<!--  <p></p>-->
-
-			<!-- Nav -->
-			<nav id="nav">
-				<ul>
-					<li><a class="icon solid fa-home" href="Mainpage.jsp"><span>메인
-								페이지</span></a></li>
-
-
-				</ul>
-			</nav>
-
 		</div>
 	</section>
 
@@ -129,22 +118,20 @@
 		<body>
 			<div style="width: 1200px; margin-left: 333px;">
 				<div>
-					<h2 style="margin-left: 60px; padding-top: 50px;"><%=name%></h2>
-					<br>
-					<h5 align="right" style="margin-bottom: 5px; margin-right: 20px;"><%=price%>원
-					</h5>
-
+					<h2 align="right" style=" margin-right:18px; padding-top: 100px;"><%=name%></h2>
+					<h2 align="right" style="margin-bottom: 5px; margin-right: 20px;"><%=price%>원
+					</h2>
 				</div>
 				<div
-					style="width: 380px; height: 620px; position: absolute; left: 400px; top: 100px">
+					style="width: 470px; height: 770px; position: absolute; left: 250px; top: 100px">
 					<a href="<%out.print(site);%>"><img src="<%out.print(img);%>"
-						id="imgfood" style="width: 90%; height: 90%"></a>
+						id="imgfood" style="width: 100%; height: 90%"></a>
 				</div>
 				<div id="donutchart"
 					style="width: 1000px; height: 500px; position: relative; left: 500px; top: 10px;">
 				</div>
 				<button onclick="location.href='<%out.print(site);%>';"
-					style="margin-left: 550px; margin-bottom: 80px;">구매하기</button>
+					style="margin-left: 750px; margin-bottom: 80px;">구매하기</button>
 			</div>
 
 		</body>

@@ -144,11 +144,12 @@ public class foodDAO {
 			
 			while (rs.next()==true) {
 				System.out.println("Test");
+				String f_SEQ = rs.getNString(1);
 				String f_NAME = rs.getString(2);
 				String f_SITE = rs.getString(28);
 				String f_PRICE = rs.getString(29);
 				String f_IMG= rs.getString(30);
-				dto1 = new foodDTO(f_NAME, f_SITE, f_PRICE, f_IMG);
+				dto1 = new foodDTO(f_SEQ,f_NAME, f_SITE, f_PRICE, f_IMG);
 				mucic.add(dto1);
 			}
 			

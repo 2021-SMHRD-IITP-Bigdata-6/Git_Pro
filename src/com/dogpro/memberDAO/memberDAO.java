@@ -53,13 +53,15 @@ public class memberDAO {
 				String m_dogWeight = rs.getString(7);
 				String m_dogAge = rs.getString(8);
 				String date = rs.getString(9);
+				String file = rs.getString(10);
 
 				System.out.println(getid);
 				System.out.println(getpw);
 
 				if (dto1.getPw().equals(getpw)) {
-					dto = new memberDTO(getid, getpw, m_nick, m_phone, m_dogKind, dog_name, m_dogWeight, m_dogAge,
-							date);
+					dto = new memberDTO(getid, getpw, m_nick, m_phone, m_dogKind, dog_name, m_dogWeight, m_dogAge, date,
+							file);
+
 					HttpSession session = request.getSession();
 					session.setAttribute("dto", dto);
 
@@ -129,8 +131,8 @@ public class memberDAO {
 
 			// --------------------DB연결
 			int numAge = Integer.parseInt(dogage);
-			int numWeight = Integer.parseInt(dogweight);
-			String sql = "update t_member set m_nick=?,m_phone=?,m_dogname=?,m_dog=?,m_dogweight=?, m_dogage=?, adoptdate=? where m_id=?";
+			double numWeight = Double.parseDouble(dogweight);
+			String sql = "update t_member set m_nick=?,m_phone=?,m_dogname=?,m_dog=?,m_dogweight=?, m_dogage=?, adoptdate=?where m_id=?";
 			// 5. SQL명령문을 준비
 			psmt = conn.prepareStatement(sql);
 
@@ -139,7 +141,7 @@ public class memberDAO {
 			psmt.setString(3, dogname);
 			psmt.setString(4, dogkind);
 			psmt.setInt(5, numAge);
-			psmt.setInt(6, numWeight);
+			psmt.setDouble(6, numWeight);
 			psmt.setString(7, adoptdate);
 			psmt.setString(8, id);
 
@@ -244,7 +246,6 @@ public class memberDAO {
 		} catch (Exception e) {
 			System.out.println("클래스파일 로딩실패");
 			e.printStackTrace();
-
 		} finally {
 			close();
 
@@ -252,10 +253,11 @@ public class memberDAO {
 		return arr;
 	}
 
+
 	public ArrayList<ingDTO> selectIng() {
 
 		ArrayList<ingDTO> arr1 = new ArrayList<ingDTO>();
- 
+
 		try {
 			getConn();
 
@@ -288,12 +290,12 @@ public class memberDAO {
 
 		} finally {
 			close();
-
 		}
 		return arr1;
+
 	}
 
-	public boolean idChechk(String m_id) { // id중복체크
+	public boolean idChechk(String id) { // id중복체크
 		try {
 			getConn();
 
@@ -301,7 +303,7 @@ public class memberDAO {
 
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setString(1, m_id);
+			psmt.setString(1, id);
 
 			rs = psmt.executeQuery();
 
@@ -318,49 +320,49 @@ public class memberDAO {
 		return check;
 	}
 
-	public void getConn() {
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524";
-
-			System.out.println("클래스파일 로딩완료");
-
-			// 3.DB에서 사용하는 id/pw를 인증
-			String dbid = "cgi_8_2_1216";
-			String dbpw = "smhrd2";
-
-			conn = DriverManager.getConnection(url, dbid, dbpw);
-
-			if (conn != null) {
-				System.out.println("연결성공");
-			} else {
-				System.out.println("연결실패");
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void close() {
-		System.out.println("무조건실행");
-		try {
-			if (rs != null) {
-				rs.close();
-			}
-			if (psmt != null) {
-				psmt.close();
-			}
-			if (conn != null) {
-				conn.close();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 	public ArrayList<memberDTO> searchMember(String email) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public void getConn() {
+      try {
+         Class.forName("oracle.jdbc.driver.OracleDriver");
+         String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524";
+
+         System.out.println("클래스파일 로딩완료");
+
+         // 3.DB에서 사용하는 id/pw를 인증
+         String dbid = "cgi_8_2_1216";
+         String dbpw = "smhrd2";
+
+         conn = DriverManager.getConnection(url, dbid, dbpw);
+
+         if (conn != null) {
+            System.out.println("연결성공");
+         } else {
+            System.out.println("연결실패");
+         }
+
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+   }
+
+	public void close() {
+      System.out.println("무조건실행");
+      try {
+         if (rs != null) {
+            rs.close();
+         }
+         if (psmt != null) {
+            psmt.close();
+         }
+         if (conn != null) {
+            conn.close();
+         }
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+   }
 }

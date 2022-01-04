@@ -135,13 +135,12 @@
 					memberDTO dto = (memberDTO) session.getAttribute("dto");
 					if (dto == null) {
 					%>
-					<li><a class="icon solid fa-sitemap" href="Login.jsp"><span>로그인</span></a></li>
+					<li><a class="icon solid fa-sign-in-alt" href="Login.jsp"><span>로그인</span></a></li>
 					<%
 						} else {
 					%>
-					<li><a class="icon solid fa-retweet"
-						href="Mypage_Firstjsp.jsp"><span>마이 페이지</span></a></li>
-					<li><a class="icon solid fa-sitemap" href="LogoutCon.do">로그아웃</a>
+					<li><a class="icon solid fa-user-alt" href="Mypage_Firstjsp.jsp"><span>마이 페이지</span></a></li>
+					<li><a class="icon solid fa-sign-out-alt" href="LogoutCon.do">로그아웃</a>
 						<%
 							}
 						%>
@@ -155,6 +154,7 @@
 
 		<div class="container">
 			<header>
+			<br><br><br><br><br><br>
 				<div style="width: 1200px; heigh: 4000px; margin-left: 90px;">
 					<img src="images/메인사진3.png"
 						style="width: 100%; heigh: 100%; margin-bottom: 40px;">
@@ -174,23 +174,34 @@
 				<%
 					if (dto == null) {
 				%>
-				<h1
-					style="float: left; font-size: xx-large; margin-left: 450px; margin-top: 50px; margin-bottom: 20px;">
-					어서오세요
+				<br>
+				<div style="width: 1200px; margin-left: 90px;">
+					<h2>어서오세요
 					<%
 					out.print(cnt); 
 				%>
-					번째 방문자 입니다 ♥
-				</h1>
-				<br> <br> <br>
+					번째 방문자 입니다 ♥   </h2></div>
+					<br><br>				               
+					<div style="width: 1200px; margin-left: 90px;">
+						<h2 align="left" style="color: #ed786a">기능별 사료 검색</h2></div>
+	
+		<div style="width: 1700px; margin-left: 90px;"> 
+		<p style="margin-left: -1060px;">강아지에게 필요한 기능을 선택시 기능이 포함된 사료를 추천해 드립니다.</p></div>
+	
+		 <br><br>
 				<%
 					} else {
 				%>
-				<h style=" font-size: xx-large;"> <strong> <%
- 	out.print(dto.getNickname());
- %></strong>님 환영합니다.
-				</h1>
-		</div>
+				<div style="width: 1200px; margin-left: 90px;"><h2><%
+ 	out.print(dto.getNickname());%>님 환영합니다
+				</h2></div>
+				
+					<br><br>				               
+					<div style="width: 1200px; margin-left: 90px;">
+						<h2 align="left" style="color: #ed786a">기능별 사료 검색</h2></div>
+		<div style="width: 1700px; margin-left: 90px;"> 
+		<p style="margin-left: -1060px;">강아지에게 필요한 기능을 선택시 기능이 포함된 사료를 추천해 드립니다.</p></div>
+	<br><br>
 
 		<%
 			}
@@ -205,13 +216,7 @@
 
 
 
-		<br>
-		<h2 align="left" style="float: left; margin-left: 350px;">기능별 사료
-			검색</h2>
-		<br> <br> <br> <br>
-		<h6 align="left" style="float: left;margin-left: 350px;">강아지에게
-			필요한 기능을 선택시 기능이 포함된 사료를 추천해 드립니다.</h6>
-		<br> <br>
+		
 	</section>
 
 
@@ -307,14 +312,14 @@
 			<option value="신장요로">신장요로</option>
 	<option value="건식">건식</option>
 			<option value="습식">습식</option>
-		</select> <br> <br>
+		</select> <br> <br> <br>
 
 
 	</section>
 	<!-- 일반쇼핑 -->
 
 	<section id="features">
-
+<br>
 		<div id=plz style="width: 1200px; height: 2000px; margin-left: 333px;">
 			<%
 				if (dto == null) {
@@ -323,7 +328,8 @@
 				for (int i = 0; i < 9; i++) {
 			%>
 			<div style="float: right; width: 380px; height: 620px; margin-left:">
-				<a href="food.jsp?img=<%=arr.get(i).getF_IMG()%>&seq=<%out.print(arr.get(i).getF_SEQ()); %>&name=<%=arr.get(i).getF_NAME()%>&price=<%=arr.get(i).getF_PRICE()%>&site=<%=arr.get(i).getF_SITE()%>"><img
+				<a href="food.jsp?img=<%=arr.get(i).getF_IMG()%>&seq=<%out.print(arr.get(i).getF_SEQ()); %>&name=<%=arr.get(i).getF_NAME()%>&price=<%=arr.get(i).getF_PRICE()%>&site=<%=arr.get(i).getF_SITE()%>">
+				<img
 					src="<%out.print(arr.get(i).getF_IMG());%>" id="imgfood"></a>
 				<div style="width: 300px; margin: auto;">
 					<%
@@ -397,11 +403,14 @@
 							console.log(res);
 							console.log(res.length);
 							for (let i = 0; i < res.length; i++) {
-
+								var url = 'food.jsp?seq='+res[i].F_SEQ+'&img='+res[i].F_IMG+'&site='+res[i].F_SITE+'&price='+res[i].F_PRICE+'&name='+encodeURI(res[i].F_NAME)
+								var encoded = encodeURI(url);
 								$("#plz")
 										.prepend(
 												'<div style="float: right; width: 380px; height: 620px; ">'
-														+ '<a href="'+res[i].F_SITE+'"><img src="'+res[i].F_IMG+'"id="imgfood">'
+												 
+												+'<a href ="'+url+'">'
+											+'	<img src="'+res[i].F_IMG+'"id="imgfood">'
 														+ '</a>'
 														+ '<div style="width: 300px; margin: auto;">'
 														+ res[i].F_NAME
