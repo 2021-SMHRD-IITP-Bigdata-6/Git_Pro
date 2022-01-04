@@ -32,6 +32,18 @@ public class foodDTO {
 	private String F_PRICE;
 	private String F_IMG;
 	
+	public foodDTO() {};
+	
+	
+	public foodDTO(String f_NAME, String f_SITE, String f_PRICE, String f_IMG) {
+		super();
+		F_NAME = f_NAME;
+		F_SITE = f_SITE;
+		F_PRICE = f_PRICE;
+		F_IMG = f_IMG;
+	}
+
+
 	public foodDTO(String f_SEQ, String f_NAME, String f_TYPE, String f_VITAMIN, String f_ANTIOXIDATION,
 			String f_APPETITE, String f_NUTRITION, String t_STONE, String f_HUMIDITY, String f_MOUTH, String f_SMELL,
 			String f_DIET, String f_NEUTRAL, String f_INDOOR, String f_TEAR, String f_EYE, String f_ALLERGY,

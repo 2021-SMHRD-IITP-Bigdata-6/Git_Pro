@@ -1,3 +1,4 @@
+<%@page import="com.dogpro.memberDTO.foodDTO"%>
 <%@page import="com.dogpro.memberDAO.imgfileDAO"%>
 <%@page import="com.dogpro.memberDTO.imgfileDTO"%>
 <%@page import="java.util.Date"%>
@@ -6,7 +7,7 @@
 <%@page import="org.apache.catalina.tribes.util.Arrays"%>
 <%@page import="com.dogpro.memberDTO.memberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 <!DOCTYPE HTML>
 <!--
@@ -19,183 +20,187 @@
 <title>MyPage</title>
 <meta charset="utf-8" />
 <meta name="viewport"
-   content="width=device-width, initial-scale=1, user-scalable=no" />
+	content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
 <style>
-<!--
-.imgimg>img {
-   maring: 10px;
-   width: 30%;
+td {
+	text-align: center
 }
-
-.mgmg {
-   maring: 10px;
-   width: 30%;
-}
--->
 </style>
 </head>
 <body class="left-sidebar is-preload">
-   <div id="page-wrapper">
+	<div id="page-wrapper">
 
-      <!-- Header -->
-      <section id="header">
-         <div class="container">
+		<!-- Header -->
+		<section id="header">
+			<div class="container">
 
-            <!-- Logo -->
-            <h1 id="logo">
-               MY PAGE
-            </h1>
+				<!-- Logo -->
+				<h1 id="logo">MY PAGE</h1>
 
-            <!-- Nav -->
-            <nav id="nav">
-               <ul>
-                                   <li><a class="icon solid fa-home" href="Mainpage.jsp"><span>메인페이지</span></a></li>
-                  <li><a class="icon solid fa-sitemap" href="LogoutCon.do">로그아웃</a>
-               </ul>
-            </nav>
+				<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<li><a class="icon solid fa-home" href="Mainpage.jsp"><span>메인페이지</span></a></li>
+						<li><a class="icon solid fa-sitemap" href="LogoutCon.do">로그아웃</a>
+					</ul>
+				</nav>
 
-         </div>
-      </section>
+			</div>
+		</section>
 
-      <!-- Main -->
-      <section id="main">
-         <div class="container">
-            <div class="row">
+		<!-- Main -->
+		<section id="main">
+			<div class="container">
+				<div class="row">
 
-               <!-- Sidebar -->
-               <div id="sidebar" class="col-4 col-12-medium">
+					<!-- Sidebar -->
+					<div id="sidebar" class="col-4 col-12-medium">
 
-                  <!-- Highlights -->
-                  <section>
-                     <ul class="divided">
-                        <li>
-                           <!-- Highlight -->
-                           <article class="box highlight">
-                              <header>
-                                 <h5>
-                                    환영합니다 <br><br>
-                                    
-                                    <%//여기에 넣어주는 곳에서 img값도 넣어서 가져와야한다 / 현재 memberDTO에 img를 넣을 곳이 없음 (추가해줘야함)
-                                   
-                                       memberDTO dto = (memberDTO) session.getAttribute("dto");
-                                    %>
-                                    <%
-                                       out.print(dto.getNickname());
-                                    %>님
-                                 </h5><br>
+						<!-- Highlights -->
+						<section>
+							<ul class="divided">
+								<li>
+									<!-- Highlight -->
+									<article class="box highlight">
+										<header>
+											<h5>
+												환영합니다 <br> <br>
 
-                              </header>
-                              
-                              
-                                    <%
-                                    ServletContext context = getServletContext(); 
-                            		String saveDir = context.getRealPath("Upload");
-                                    System.out.println(saveDir+"BGM10.PNG");
-                                    
-                                    %>
-                                    <!-- 그러면 자동적으로 값을 가져올꺼같음 -->
-                                    <div >
-                                    
-                                    <% if (dto.getFilename1() == null) { %>
-                                 <img style = "border: 2px solid black; border-color: #FFDAB9 ; border-radius: 16px; " src="images/마이페이지null사진.png" width=58%>
-                                 <%} else {%>
-                                    <img style = "border: 2px solid black; border-color: #FFDAB9 ; border-radius: 16px;" src="Upload/<%=dto.getFilename1()%>" width=58% />
-                                    <%} %>
-                              </div>
-                             
-                             
+												<%
+													//여기에 넣어주는 곳에서 img값도 넣어서 가져와야한다 / 현재 memberDTO에 img를 넣을 곳이 없음 (추가해줘야함)
 
-                              <!-- Excerpt -->
-                              <article class="box excerpt">
-                                 <header>
+												memberDTO dto = (memberDTO) session.getAttribute("dto");
+												%>
+												<%
+													out.print(dto.getNickname());
+												%>님
+											</h5>
+											<br>
 
-                                    <br>
-                                    <h3>
-                                       <%
-                                         dto.getId();
-                                       %>
-                                    </h3>
-                                 </header>
+										</header>
 
-                                 <%
-                                    out.print(dto.getDogname());
-                                 %>와(과) 함께한지<br>
-                                 
-                                 <%
-                                    Calendar getToday = Calendar.getInstance();
-                                 getToday.setTime(new Date()); //금일 날짜
 
-                                 String s_date = dto.getDate();
-                                 Date date = new SimpleDateFormat("yy/MM/dd").parse(s_date);
-                                 Calendar cmpDate = Calendar.getInstance();
-                                 cmpDate.setTime(date); //특정 일자
+										<%
+											ServletContext context = getServletContext();
+										String saveDir = context.getRealPath("Upload");
+										System.out.println(saveDir + "BGM10.PNG");
+										%>
+										<!-- 그러면 자동적으로 값을 가져올꺼같음 -->
+										<div>
 
-                                 long diffSec = (getToday.getTimeInMillis() - cmpDate.getTimeInMillis()) / 1000;
-                                 long diffDays = diffSec / (24 * 60 * 60); //일자수 차이
+											<%
+												if (dto.getFilename1() == null) {
+											%>
+											<img
+												style="border: 2px solid black; border-color: #FFDAB9; border-radius: 16px;"
+												src="images/마이페이지null사진.png" width=58%>
+											<%
+												} else {
+											%>
+											<img
+												style="border: 2px solid black; border-color: #FFDAB9; border-radius: 16px;"
+												src="Upload/<%=dto.getFilename1()%>" width=58% />
+											<%
+												}
+											%>
+										</div>
 
-                                 out.println(diffDays);
-                                 %> 일째
 
-                              </article>
 
-                              <!--  <p>Phasellus </p>-->
-                              <ul class="actions">
-                                 <li><a href="회원정보수정.jsp"
-                                    class="button icon solid fa-file">회원 정보 수정</a></li>
-                              </ul>
-                           </article>
+										<!-- Excerpt -->
+										<article class="box excerpt">
+											<header>
 
-                        </li>
-                     </ul>
-                  </section>
 
-               </div>
+												<h3>
+													<%
+														dto.getId();
+													%>
+												</h3>
+											</header>
 
-               <!-- Content -->
-               <div id="content" class="col-8 col-12-medium imp-medium">
+											<%
+												out.print(dto.getDogname());
+											%>와(과) 함께한지<br>
 
-                  <!-- Post -->
-                  <article class="box post">
-                     <header>
-                        <h5>반려견 정보</h5><br>
+											<%
+												Calendar getToday = Calendar.getInstance();
+											getToday.setTime(new Date()); //금일 날짜
 
-                        <h5>
-                        
-                           <%
-                              out.print(dto.getNickname());
-                           %>님의 반려견
-                           <%
-                              out.print("   " + dto.getDogname());
-                           %>는
-                           <%
-                              out.print("   " + dto.getDogage());
-                           String age = dto.getDogage();
-                           %>살의
-                           <%
-                              out.print("   " + dto.getDogweight());
-                           String weight = dto.getDogweight();
-                           %>kg의
-                           <%
-                              String userDogKind = dto.getDogkind(); //사용자의 개의 종류
-                           out.print("   " + userDogKind);
-                           %>입니다.
-                        </h5>
-                        <p class="chart_info"></p>
+											String s_date = dto.getDate();
+											Date date = new SimpleDateFormat("yy/MM/dd").parse(s_date);
+											Calendar cmpDate = Calendar.getInstance();
+											cmpDate.setTime(date); //특정 일자
 
-                     </header>
+											long diffSec = (getToday.getTimeInMillis() - cmpDate.getTimeInMillis()) / 1000;
+											long diffDays = diffSec / (24 * 60 * 60); //일자수 차이
 
-                     <!-- 차트 -->
-                     <div>
+											out.println(diffDays);
+											%>
+											일째
 
-                        <script type="text/javascript"
-                           src="https://www.gstatic.com/charts/loader.js"></script>
-                        <script src="./assets/js/jquery.min.js"></script>
-                        <script type="text/javascript">
+										</article>
+
+										<!--  <p>Phasellus </p>-->
+										<ul class="actions">
+											<li><a href="회원정보수정.jsp"
+												class="button icon solid fa-file">회원 정보 수정</a></li>
+										</ul>
+									</article>
+
+								</li>
+							</ul>
+						</section>
+
+					</div>
+
+					<!-- Content -->
+					<div id="content" class="col-8 col-12-medium imp-medium">
+
+						<!-- Post -->
+						<article class="box post">
+							<header>
+								<h5>반려견 정보</h5>
+								<br>
+
+								<p>
+
+									<%
+										out.print(dto.getNickname());
+									%>님의 반려견
+									<%
+										out.print("   " + dto.getDogname());
+									%>는
+									<%
+										out.print("   " + dto.getDogage());
+									String age = dto.getDogage();
+									%>살의
+									<%
+										out.print("   " + dto.getDogweight());
+									String weight = dto.getDogweight();
+									%>kg의
+									<%
+										String userDogKind = dto.getDogkind(); //사용자의 개의 종류
+									out.print("   " + userDogKind);
+									%>입니다.
+								</p>
+								<p class="chart_info"></p>
+
+							</header>
+
+							<!-- 차트 -->
+							<div>
+
+								<script type="text/javascript"
+									src="https://www.gstatic.com/charts/loader.js"></script>
+								<script src="./assets/js/jquery.min.js"></script>
+								<script type="text/javascript">
                         let userDogData = []; //
                         let dogAge = "<%=age%>";
                         let dogWeight = "<%=weight%>";
                         let userDogKind = "<%=userDogKind%>"; //사용자의 강아지 종류를 가져옴!
+                        //let dogavgw = "";
                            $.ajax({
                                     url : "GetDogInfo",
                                     type : "get",
@@ -244,6 +249,7 @@
                                                             "#F5DEB3" ], // 
                                                 ]);
 
+                                          //dogavgw = userDogData[0];
                                           /* var data = google.visualization
                                           .arrayToDataTable([
                                           [
@@ -253,7 +259,6 @@
                                           [ "Gold", 19.30, "gold" ],
                                           [ "Platinum", 21.45,
                                           "color: #e5e4e2" ] ]); */
-
                                           console.log(data);
                                           var view = new google.visualization.DataView(data);
                                           view.setColumns([
@@ -280,6 +285,18 @@
                                           var chart = new google.visualization.ColumnChart(
                                                 document.getElementById("columnchart_values"));
                                           chart.draw(view,options);
+                                          
+                                          
+                                          // 차트 사이즈 조정
+                                          //$(window).resize(function() { 
+                                        	//  if(this.resizeTO) clearTimeout(this.resizeTO); 
+                                        	  //this.resizeTO = setTimeout(function() { 
+                                        		//  drawVisualization(); 
+                                        		  //}, 600);
+                                        	  //});
+
+                                          //
+                                          
                                        }
 
                                     },
@@ -298,39 +315,179 @@
                          %> --%>
                            
                         </script>
-                        <div id="columnchart_values"
-                           style="width: 750px; height: 300px;"></div>
-                     </div>
-                     <br> <br> <br> <br> <br> <br> <br>
+								<div id="columnchart_values"
+									style="width: 750px; height: 300px;"></div>
+							</div>
+							<br> <br> <br> <br> <br> <br> <br>
+
+
+							<!-- 추천 표 -->
+							<header>
+								<h5>추천 상품</h5>
+								<br>
+
+							</header>
+
+
+							<p>나이에 따른 추천 사료</p>
+
+							<div>
+								<table border="1">
+									<tbody id="tbody">
+									</tbody>
+								</table>
+							</div>
+
+							<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+							<script type="text/javascript">	
+									
+								
+								$.ajax({
+									url : "FoodRec",
+		                           	type : "get",
+		                            dataType : "json",
+		                            data : {dogage: dogAge},
+		                            
+		                            success : function(ageRange) {
+		                            	
+		                            	//var allum = [ageRange]
+
+		                            	var newnum = []
+
+		                            	while(ageRange.length > 3) {
+		                            		var movenum = ageRange.splice(Math.floor(Math.random() * ageRange.length),1)[0]
+		                            		newnum.push(movenum)
+		                            	}  
+
+		                            	
+		                            	console.log("test"+newnum);
+		                           
+										$('#tbody').html('');
+									
+						let table = '';
+						
+							table += '<tr>';						
+						for (let j=0; j<3; j++) {
+							table += '<td><img src=' + newnum[j].F_IMG + ' style ="margin:10px;" width=75% height=100%></td>'
+						}
+							table += '</tr>';
+							table += '<tr>';
+					
+						for (let k=0;k<3;k++) {
+							table += '<td>' + newnum[k].F_NAME + '</td>'
+						}
+							table += '</tr>';
+							table += '<tr>';
+
+						for (let l=0;l<3;l++) {
+							table += '<td>' + newnum[l].F_PRICE + '원</td>'
+						}	
+							table += '</tr>';
+							table += '<tr>';
+						
+						for (let m=0;m<3;m++) {
+							table += '<td><a href=' + newnum[m].F_SITE + '><button>구매하기</button></a></td>';
+						}
+						
+							table += '</tr>';
+						
+						$('#tbody').append(table);
+                                },
+					
+					
+                            	error : function() {
+                            		alert("실패")
+                            	}
+                            	
+                            });
+									
+										
+													
+                            </script>
 
 
 
-                     <header>
-                        <h5>추천 상품</h5>
-                        <br>
 
-                     </header>
-                     <p>나이에 따른 추천 사료</p>
-                     <div>
-                        <img style="margin: 10px;" src="images/터키앤치킨독.jpg" width=30%;>
-                        <img style="margin: 10px;" src="images/터키앤치킨독.jpg" width=30%;>
-                        <img style="margin: 10px;" src="images/터키앤치킨독.jpg" width=30%;>
+							<br> <br>
 
-                     </div>
-                     <br><br>
-                     <p>몸무게에 따른 추천 사료</p>
-                     <div>
-                        <img style="margin: 10px;" src="images/터키앤치킨독.jpg" width=30%;>
-                        <img style="margin: 10px;" src="images/터키앤치킨독.jpg" width=30%;>
-                        <img style="margin: 10px;" src="images/터키앤치킨독.jpg" width=30%;>
 
-                     </div>
-                     
-                  </article>
+							<div>
+								<p>몸무게에 따른 추천 사료</p>
 
-                  <!-- Post -->
-                  <article class="box post">
-                     <!--  <header>
+								<div>
+								<table border="1">
+									<tbody id="tbody1">
+									</tbody>
+								</table>
+							</div>
+
+							<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+							<script type="text/javascript">	
+									
+								
+								$.ajax({
+									url : "WeightRec",
+		                           	type : "get",
+		                            dataType : "json",
+		                            data : {dogweight: dogWeight, dogkind : userDogKind},
+		                            success : function(weightRange) {
+		                            	console.log("test해본다"+weightRange);
+		                           
+		                            	var newnum1 = []
+
+		                            	while(weightRange.length > 3) {
+		                            		var movenum1 = weightRange.splice(Math.floor(Math.random() * weightRange.length),1)[0]
+		                            		newnum1.push(movenum1)
+		                            	} 
+		                            	
+										$('#tbody1').html('');
+									
+						let table = '';
+						
+							table += '<tr>';						
+						for (let j=0; j<3; j++) {
+							table += '<td><img src=' + weightRange[j].F_IMG + ' style ="margin:10px;" width=75% height=100%></td>'
+						}
+							table += '</tr>';
+							table += '<tr>';
+					
+						for (let k=0;k<3;k++) {
+							table += '<td>' + weightRange[k].F_NAME + '</td>'
+						}
+							table += '</tr>';
+							table += '<tr>';
+
+						for (let l=0;l<3;l++) {
+							table += '<td>' + weightRange[l].F_PRICE + '원</td>'
+						}	
+							table += '</tr>';
+							table += '<tr>';
+						
+						for (let m=0;m<3;m++) {
+							table += '<td><a href=' + weightRange[m].F_SITE + '><button>구매하기</button></a></td>';
+						}
+						
+							table += '</tr>';
+						
+						$('#tbody1').append(table);
+                                },
+					
+					
+                            	error : function() {
+                            		alert("실패")
+                            	}
+                            	
+                            });
+									
+										
+													
+                            </script>
+							</div>
+						</article>
+
+						<!-- Post -->
+						<article class="box post">
+							<!--  <header>
                         <h5>최근 본 상품</h5>
                         <br>
                      </header>
@@ -345,23 +502,23 @@
 
 
 
-                  </article>
+						</article>
 
-               </div>
+					</div>
 
-            </div>
-         </div>
-      </section>
-   </div>
+				</div>
+			</div>
+		</section>
+	</div>
 
-   <!-- Scripts -->
-   <script src="assets/js/jquery.min.js"></script>
-   <script src="assets/js/jquery.dropotron.min.js"></script>
-   <script src="assets/js/browser.min.js"></script>
-   <script src="assets/js/breakpoints.min.js"></script>
-   <script src="assets/js/util.js"></script>
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
 
-   <!-- <script src="assets/js/main.js"></script> -->
+	<!-- <script src="assets/js/main.js"></script> -->
 
 </body>
 </html>
