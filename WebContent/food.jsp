@@ -60,35 +60,16 @@
 				[ 'Task', 'Hours per Day' ],
 				 [ '인(PH)',<%=dto.getPH()%>],
 				[ 'DHA',<%=dto.getDHA()%>],
-				[ 'EPA',
-<%=dto.getEPA()%>
-	],
-				[ '수분(HYD)',
-<%=dto.getHYD()%>
-	],
-				[ '오메가3(O3)',
-					<%=dto.getO3()%>
-	],
-				[ '오메가6(O6)',
-					<%=dto.getO6()%>
-	],
-				[ '조단백(PRO)',
-					<%=dto.getPROT()%>
-	],
-				[ '조섬유(FIB)',
-					<%=dto.getFIB()%>
-	],
-				[ '조지방(FAT)',
-					<%=dto.getFAT()%>
-	],
-				[ '조회분(ASH)',
-					<%=dto.getASH()%>
-	],
-				[ '칼슘(CAL)',
-					<%=dto.getCAL()%>
-	],
-				[ '탄수화물(CAR)',
-					<%=dto.getCAR()%>
+				[ 'EPA',<%=dto.getEPA()%>],
+				[ '수분(HYD)',<%=dto.getHYD()%>],
+				[ '오메가3(O3)',<%=dto.getO3()%>],
+				[ '오메가6(O6)',<%=dto.getO6()%>
+				[ '조단백(PRO)',<%=dto.getPROT()%>],
+				[ '조섬유(FIB)',<%=dto.getFIB()%>],
+				[ '조지방(FAT)',<%=dto.getFAT()%>],
+				[ '조회분(ASH)',<%=dto.getASH()%>],
+				[ '칼슘(CAL)',<%=dto.getCAL()%>],
+				[ '탄수화물(CAR)',<%=dto.getCAR()%>
 	] ]);
 
 		var options = {
